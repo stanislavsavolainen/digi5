@@ -2,14 +2,15 @@
 
 //NodeJS Hapi - module   ( Hapi / static-express )
 
-//const Hapi = require('hapi');
+const Hapi = require('hapi');
 
 const knex = require('knex')({
     client: 'mysql',
     connection: {
         host: '127.0.0.1', 
         user: 'root',  
-        password: '123456', 
+        password: '123456',
+         database: 'dbtest1' 
        
     },
     debug: true
