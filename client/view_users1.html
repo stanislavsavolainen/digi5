@@ -1,0 +1,46 @@
+<style>
+
+</style>
+
+<script>
+    function getUsers() {
+        console.log("Get users from mysql database via fetch !");
+
+        let host = "http://127.0.0.1:5659";
+        let link = "/read_from_database1";
+
+        fetch(host + link, { method: 'get', credentials: "same-origin", headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+
+
+            .then((resp) => {
+                console.log(" >>>>> first then");
+                //return resp.json(); 
+                return resp.text();
+            })
+
+            .then((response) => {
+                document.getElementById("answer_field").innerHTML = response;
+                console.log("Fetch response happen !");
+            })
+
+            .catch(function (error_msg) {
+                /* error if connection problem happens */
+                console.log("Fetch error : " + error_msg);
+                 document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+    }
+
+</script>
+
+<html>
+
+<title> View all users from database </title>
+
+<body onload="getUsers()">
+    <button onclick="getUsers()"> Refresh data</button>
+    <br /><br />
+    <p id="answer_field"></p>
+</body>
+
+</html>
