@@ -7,11 +7,10 @@ const Hapi = require('hapi');
 const knex = require('knex')({
     client: 'mysql',
     connection: {
-        host: '127.0.0.1', 
-        user: 'root',  
+        host: '127.0.0.1',
+        user: 'root',
         password: '123456',
-         database: 'dbtest1' 
-       
+        database: 'dbtest1'
     },
     debug: true
     //connection: process.env.PG_CONNECTION_STRING
@@ -213,21 +212,22 @@ server.route([
 
             var user_data = [];
 
+            //SELECT users.fname FROM users;
             knex("users").select(['users.fname']).then(function (a) {
                 // user_data.push(a);
                 // console.log(" =====> "+a);
                 console.log("=-=-=>" + JSON.stringify(a) + "\n");
                 console.log("DB data -----> " + a[1].fname + "\n \n");
-               // user_data.push(a[index].fname);
+                // user_data.push(a[index].fname);
 
                 for (var element in a) {
-                  //  user_data.push(element);
+                    //  user_data.push(element);
                     console.log("Element >>>>>>>" + a[element].fname);
 
                     user_data.push(a[element].fname);
                 }
 
-                reply(JSON.stringify({ body: { msg :'server reply 56789' , db : user_data }  }));
+                reply(JSON.stringify({ body: { msg: 'server reply 56789', db: user_data } }));
                 /*
                 a.forEach(function (element) {
                     user_data.push(element.fname);
@@ -249,11 +249,47 @@ server.route([
 
             //console.log(" DB data : " + JSON.stringify(user_data));
 
-          //  return reply(JSON.stringify({ body: 'server reply 56789' }));
+            //  return reply(JSON.stringify({ body: 'server reply 56789' }));
 
-         //  reply(JSON.stringify({ body: { msg :'server reply 56789' , db : user_data }  }));
+            //  reply(JSON.stringify({ body: { msg :'server reply 56789' , db : user_data }  }));
         }
     },
+    //-------------- 
+    {
+       method: 'POST',
+        path: '/read_from_database3',
+        handler: function (request, reply) {
+
+           console.log("User enter database read 3 endpoint"); 
+
+           var db_fname = []; db_fname.splice(0, db_fname.length);
+           var db_lname = []; db_lname.splice(0, db_lname.length);
+           var db_status = []; db_status.splice(0, db_status.length);
+
+            //SELECT * FROM users;
+             knex("users").select().then(function (database_result) {
+
+                //save data to javascript array from mysql-database
+                for(var element_index in database_result){
+                    db_fname.push(database_result[element_index].fname);
+                    db_lname.push(database_result[element_index].lname);
+                    db_status.push(database_result[element_index].status);
+                }
+
+                //hapi http-response required to be inside knex anonymous function,
+                //because it wait when knex-query will be done to send http-response to
+                //client with database content 
+                reply(JSON.stringify({ body:
+                     { msg: '',
+                      r_fname:  db_fname,
+                      r_lname: db_lname,
+                      r_status: db_status
+                } }));
+            
+            });
+        }
+        
+    }            
 
 
 
