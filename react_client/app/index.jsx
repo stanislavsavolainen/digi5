@@ -5,22 +5,32 @@ import { render } from 'react-dom';
 
 //material-ui
 import AppBar from 'material-ui/AppBar';
-import Button from 'material-ui/Button';
+import Button from 'material-ui/RaisedButton';
 import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import RegisterUser from './register_user.jsx';
 import ViewAllUsers from './view_all_user.jsx';
 import UserProfile from './user_profile.jsx';
-import { ButtonStyle, field_name, TextStyle } from './theme_styles.jsx';
+import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';
 //import field_name from './theme_styles.jsx';
+
+
+const muiTheme = getMuiTheme({
+//  card: {
+//    titleColor: "red",
+//  },
+});
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            screen: 'A'
+            screen: 'R'
         }
     }
 
@@ -29,6 +39,7 @@ class App extends React.Component {
         this.state.screen = action;
         this.setState(this.state);
 
+        /*
         switch (action) {
             case "R":
                 console.log("Register");
@@ -43,7 +54,7 @@ class App extends React.Component {
                 console.log("Profiles");
                 break;
         }
-
+        */
     }
 
     render() {
@@ -57,31 +68,32 @@ class App extends React.Component {
         //border-style: solid;
         // border-width: 15px;
 
-        var button_style = {
-            backgroundColor: 'darkred',
-            color: 'gold',
-
-            // borderWidth: '3px',
-            //  borderColor: 'gold',
-            //  borderStyle : 'solid'
-
-        }
+//        
+//        var button_style = {
+//            backgroundColor: 'darkred',
+//            color: 'gold',
+//
+//             borderWidth: '3px',
+//             borderColor: 'gold',
+//             borderStyle : 'solid'
+//
+//        }
 
 
         return (
-            <div style={{ backgroundColor: 'chocolate' }}>
-                <div style={TextStyle}>
-                    <h1> User maitenance system </h1><br /><br />
-                    <br /><br />
-                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("R")}> Register user </Button>
-                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("A")}> View All users ( only view data ) </Button>
-                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("P")}> View user profile ( detailed data of selecte user) </Button>
-                    <Button></Button>
-                    <br /><br />
-                    {drawScreen}
-                </div>
+            <MuiThemeProvider  muiTheme={muiTheme}>
+                <div>
+                    <div>
+                        <AppBar title="User maintenance system" showMenuIconButton={false}/>
+                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("R")} label="Register user" /> 
+                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("A")} label="View All users ( only view data )" /> 
+                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("P")} label="View user profile ( detailed data of selecte user)" /> 
+                        {drawScreen}
+                    </div>
 
-            </div>);
+                </div>
+            </MuiThemeProvider>
+        );
     }
 }
 

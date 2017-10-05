@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 //material-ui
 import AppBar from 'material-ui/AppBar';
-import Button from 'material-ui/Button';
+import FlatButton from 'material-ui/FlatButton';
 import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 
@@ -35,7 +35,7 @@ export default class UserProfile extends React.Component {
             drawContent.push(<div style={TextStyle2}>  <br /> {advanced_field_name[i]} </div>);
         }
 
-        return (<div style={{ backgroundColor: 'burlywood' }} > <h1> User profile </h1> {drawContent}  < br /> </div>);
+        return (<div > <h1> User profile </h1> {drawContent}  < br /> </div>);
     }
 
 }
