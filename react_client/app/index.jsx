@@ -12,6 +12,8 @@ import TextField from 'material-ui/TextField';
 import RegisterUser from './register_user.jsx';
 import ViewAllUsers from './view_all_user.jsx';
 import UserProfile from './user_profile.jsx';
+import { ButtonStyle, field_name, TextStyle } from './theme_styles.jsx';
+//import field_name from './theme_styles.jsx';
 
 class App extends React.Component {
 
@@ -23,7 +25,6 @@ class App extends React.Component {
     }
 
     buttonEventListener(action) {
-
 
         this.state.screen = action;
         this.setState(this.state);
@@ -67,17 +68,20 @@ class App extends React.Component {
         }
 
 
-        return (<div style={{ backgroundColor: 'chocolate' }}>
-            <h1> User maitenance system </h1><br /><br />
-            <br /><br />
-            <Button style={button_style} onClick={() => this.buttonEventListener("R")}> Register user </Button>
-            <Button style={button_style} onClick={() => this.buttonEventListener("A")}> View All users ( only view data ) </Button>
-            <Button style={button_style} onClick={() => this.buttonEventListener("P")}> View user profile ( detailed data of selecte user) </Button>
-            <Button></Button>
-            <br /><br />
-            {drawScreen}
+        return (
+            <div style={{ backgroundColor: 'chocolate' }}>
+                <div style={TextStyle}>
+                    <h1> User maitenance system </h1><br /><br />
+                    <br /><br />
+                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("R")}> Register user </Button>
+                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("A")}> View All users ( only view data ) </Button>
+                    <Button style={ButtonStyle} onClick={() => this.buttonEventListener("P")}> View user profile ( detailed data of selecte user) </Button>
+                    <Button></Button>
+                    <br /><br />
+                    {drawScreen}
+                </div>
 
-        </div>);
+            </div>);
     }
 }
 
