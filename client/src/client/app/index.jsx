@@ -20,9 +20,9 @@ import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx'
 
 
 const muiTheme = getMuiTheme({
-//  card: {
-//    titleColor: "red",
-//  },
+    //  card: {
+    //    titleColor: "red",
+    //  },
 });
 
 class App extends React.Component {
@@ -62,32 +62,32 @@ class App extends React.Component {
         let drawScreen;
 
         if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers />); }
-        else if (this.state.screen === 'R') { drawScreen = (<RegisterUser />); }
+        else if (this.state.screen === 'R') {drawScreen = (<RegisterUser /> );}
         else if (this.state.screen === 'P') { drawScreen = (<UserProfile />); }
 
         //border-style: solid;
         // border-width: 15px;
 
-//        
-//        var button_style = {
-//            backgroundColor: 'darkred',
-//            color: 'gold',
-//
-//             borderWidth: '3px',
-//             borderColor: 'gold',
-//             borderStyle : 'solid'
-//
-//        }
+        //        
+        //        var button_style = {
+        //            backgroundColor: 'darkred',
+        //            color: 'gold',
+        //
+        //             borderWidth: '3px',
+        //             borderColor: 'gold',
+        //             borderStyle : 'solid'
+        //
+        //        }
 
 
         return (
-            <MuiThemeProvider  muiTheme={muiTheme}>
+            <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <div>
-                        <AppBar title="User maintenance system" showMenuIconButton={false}/>
-                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("R")} label="Register user" /> 
-                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("A")} label="View All users ( only view data )" /> 
-                        <Button style={{margin:12}} primary={true} onClick={() => this.buttonEventListener("P")} label="View user profile ( detailed data of selecte user)" /> 
+                        <AppBar title="User maintenance system" showMenuIconButton={false} />
+                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("R")} label="Register user" />
+                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("A")} label="View All users ( only view data )" />
+                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("P")} label="View user profile ( detailed data of selecte user)" />
                         {drawScreen}
                     </div>
 

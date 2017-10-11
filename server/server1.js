@@ -105,59 +105,70 @@ server.route([
         path: '/save_to_database2',
         handler: function (request, reply) {
 
+            console.log("User enter endpoint 2");
+
             //let input_name = request.payload.k_name; //request.payload.user_data.s_name;
             //let input_name = request.payload.user_data.s_name;
             //let input_lname = request.payload.user_data.s_lname;
             // let input_status = request.payload.user_data.s_status;
 
-            let input_id_user = request.payload.user_data.p_id_user;
-            let input_fname = request.payload.user_data.p_fname;
-            let input_lname = request.payload.user_data.p_lname;
-            let input_work_start = request.payload.user_data.p_work_start;
-            let input_work_end = request.payload.user_data.p_work_end;
-            let input_status = request.payload.user_data.p_status;
-            let input_title = request.payload.user_data.p_title;
-            let input_team = request.payload.user_data.p_team;
-            let input_phone = request.payload.user_data.p_phone;
-            let input_keys = request.payload.user_data.p_keys;
-            let input_lukoton = request.payload.user_data.p_lukoton;
-            let input_active = request.payload.user_data.p_active;
-            let input_email = request.payload.user_data.p_email;
-            let input_slack = request.payload.user_data.p_slack;
-            let input_comments = request.payload.user_data.p_comments;
-            let input_school = request.payload.user_data.p_school;
-            let input_location = request.payload.user_data.p_location;
-            let input_usercol = request.payload.user_data.p_usercol;
-            let input_photo = request.payload.user_data.p_photo;
-            let input_address = request.payload.user_data.p_address;
-            let input_ad_user = request.payload.user_data.p_ad_user;
+            //let input_id_user = request.payload.user_data.p_id_user;
+            //let input_fname = request.payload.user_data.p_fname;
+            //let input_lname = request.payload.user_data.p_lname;
+            //let input_work_start = request.payload.user_data.p_work_start;
+            //let input_work_end = request.payload.user_data.p_work_end;
+            //let input_status = request.payload.user_data.p_status;
+            //let input_title = request.payload.user_data.p_title;
+            //let input_team = request.payload.user_data.p_team;
+            //let input_phone = request.payload.user_data.p_phone;
+            //let input_keys = request.payload.user_data.p_keys;
+            //let input_lukoton = request.payload.user_data.p_lukoton;
+            //let input_active = request.payload.user_data.p_active;
+            //let input_email = request.payload.user_data.p_email;
+            //let input_slack = request.payload.user_data.p_slack;
+            //let input_comments = request.payload.user_data.p_comments;
+            //let input_school = request.payload.user_data.p_school;
+            //let input_location = request.payload.user_data.p_location;
+            //let input_usercol = request.payload.user_data.p_usercol;
+            //let input_photo = request.payload.user_data.p_photo;
+            //let input_address = request.payload.user_data.p_address;
+            //let input_ad_user = request.payload.user_data.p_ad_user;
 
-            knex('users').insert({
-                // id_user: input_id_user,
-                id_user: 0,
-                fname: input_fname,
-                lname: input_lname,
-                // work_start: input_work_start,
-                // work_end: input_work_end,
-                status: input_status,
-                title: input_title,
-                team: input_team,
-                phone: input_phone,
-                //keys: input_keys,
-                //lukon: input_lukoton,
-                //active: input_active,
-                email: input_email,
-                // slack: input_slack,
-                comments: input_comments,
-                school: input_school,
-                location: input_location,
-                userscol: input_usercol,
-                photo: input_photo,
-                address: input_address,
-                ad_user: input_ad_user
+            knex('users2').insert(request.payload.user_data).then(() => {
+                console.log("Inserted user")
+                reply("Insert succesful")
+            })
+                .catch((e) => {
+                    console.log(e)
+                    reply("Failed")
+                })
 
-            }).then(results => results[0]);
-
+            //knex('users2').insert({
+            //    // id_user: input_id_user,
+            //   // id_user: 0,
+            //    fname: input_fname,
+            //    lname: input_lname,
+            //    // work_start: input_work_start,
+            //    // work_end: input_work_end,
+            //    status: input_status,
+            //    title: input_title,
+            //    team: input_team,
+            //    phone: input_phone,
+            //    //keys: input_keys,
+            //    //lukon: input_lukoton,
+            //    //active: input_active,
+            //    email: input_email,
+            //    // slack: input_slack,
+            //    comments: input_comments,
+            //    school: input_school,
+            //    location: input_location,
+            //    userscol: input_usercol,
+            //    photo: input_photo,
+            //    address: input_address,
+            //    ad_user: input_ad_user
+            //
+            //}).then(results => results[0]);
+            //
             console.log(" Payload array : -----> ");
 
             Object.keys(request.payload).forEach(key =>
@@ -256,40 +267,15 @@ server.route([
     },
     //-------------- 
     {
-       method: 'POST',
+        method: 'POST',
         path: '/read_from_database3',
         handler: function (request, reply) {
-
-           console.log("User enter database read 3 endpoint"); 
-
-           var db_fname = []; db_fname.splice(0, db_fname.length);
-           var db_lname = []; db_lname.splice(0, db_lname.length);
-           var db_status = []; db_status.splice(0, db_status.length);
-
-            //SELECT * FROM users;
-             knex("users").select().then(function (database_result) {
-
-                //save data to javascript array from mysql-database
-                for(var element_index in database_result){
-                    db_fname.push(database_result[element_index].fname);
-                    db_lname.push(database_result[element_index].lname);
-                    db_status.push(database_result[element_index].status);
-                }
-
-                //hapi http-response required to be inside knex anonymous function,
-                //because it wait when knex-query will be done to send http-response to
-                //client with database content 
-                reply(JSON.stringify({ body:
-                     { msg: '',
-                      r_fname:  db_fname,
-                      r_lname: db_lname,
-                      r_status: db_status
-                } }));
-            
+            knex("users2").select().then(function (database_result) {
+                reply(JSON.stringify(database_result))
             });
         }
-        
-    }            
+
+    }
 
 
 
