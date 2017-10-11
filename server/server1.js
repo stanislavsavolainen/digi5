@@ -275,6 +275,24 @@ server.route([
             });
         }
 
+    },
+    {
+        method: 'POST',
+        path: '/read_from_database4',
+        handler: function (request, reply) {
+
+           // request.payload.
+
+            let id_value = request.payload.user_id;
+
+          //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
+            knex("users2").where( {id_user : id_value} ).then(function (database_result) {
+            reply(JSON.stringify(database_result));
+            });
+
+
+        }
+
     }
 
 

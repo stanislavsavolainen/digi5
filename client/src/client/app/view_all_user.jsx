@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 //material-ui
 //import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/FlatButton';
 //import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 
@@ -21,7 +21,7 @@ export default class ViewAllUsers extends React.Component {
             p_fname: [],
             p_lname: [],
             p_states: [],
-
+            on_select: props.on_select,
             users: []
         }
     }
@@ -63,7 +63,6 @@ export default class ViewAllUsers extends React.Component {
             })
     }
 
-
     render() {
 
         return (<div >
@@ -76,6 +75,7 @@ export default class ViewAllUsers extends React.Component {
                         <TableHeaderColumn>First name</TableHeaderColumn>
                         <TableHeaderColumn>Last name</TableHeaderColumn>
                         <TableHeaderColumn>Status</TableHeaderColumn>
+                        <TableHeaderColumn>Profile</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
@@ -85,6 +85,7 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.fname}</TableRowColumn>
                                 <TableRowColumn>{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
+                                <TableRowColumn><Button label = {val.id_user} primary={true} onClick = {(e) => this.state.on_select(val.id_user)}  /></TableRowColumn>
                             </TableRow>
                         )
                     }

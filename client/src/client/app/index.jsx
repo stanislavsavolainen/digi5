@@ -57,13 +57,19 @@ class App extends React.Component {
         */
     }
 
+    openUserProfile(id) {
+        this.state.user_id = id;
+        this.state.screen = 'P';
+        this.setState(this.state);
+    }
+
     render() {
         // return <p> Hello React!</p>;
         let drawScreen;
 
-        if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers />); }
+        if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers on_select={(id) => this.openUserProfile(id)} />); }
         else if (this.state.screen === 'R') {drawScreen = (<RegisterUser /> );}
-        else if (this.state.screen === 'P') { drawScreen = (<UserProfile />); }
+        else if (this.state.screen === 'P') { drawScreen = (<UserProfile user_id={this.state.user_id}/>); }
 
         //border-style: solid;
         // border-width: 15px;

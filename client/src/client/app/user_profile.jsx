@@ -18,14 +18,17 @@ export default class UserProfile extends React.Component {
         this.state = {
             // screen: 'A'
             user_data: make_user_data_structure(),
-            user_index : 0,
-            users : []
+            user_index: 5,
+            profile_user: [],
+            user_id: props.user_id ? props.user_id : 0
         }
     }
 
+    componentWillMount() {
+        this.readProfileDataFromDB();
+    }
 
     readProfileDataFromDB() {
-
         //post body
         let postData = {
             method: 'POST',
@@ -33,7 +36,7 @@ export default class UserProfile extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify("OK"),
+            body: JSON.stringify({ user_id: this.state.user_id}),
         };
 
         //fetch
@@ -43,14 +46,17 @@ export default class UserProfile extends React.Component {
         fetch(host + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
-                //return resp.json(); 
-                return resp.text();
+                return resp.json(); 
+               // return resp.text();
             })
             .then((response) => {
                 console.log("Fetch response happen !");
 
                 //  this.handleResponse(response);
+                console.log("User profile data :" + JSON.stringify(response));
 
+               this.state.profile_user = response;
+                this.setState(this.state)
 
             })
             .catch(function (error_msg) {
@@ -75,7 +81,7 @@ export default class UserProfile extends React.Component {
                                 <div>{
                                     row.map((field, field_key) =>
                                         <div>{
-                                            field.fieldName
+                                            this.state.profile_user.length > 0 ? field.fieldName + "  :  " + this.state.profile_user[0][field.db_name] : "empty"
                                         } </div>,
 
                                         {/* <Button
