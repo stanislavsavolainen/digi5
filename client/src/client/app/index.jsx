@@ -11,11 +11,13 @@ import TextField from 'material-ui/TextField';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 import RegisterUser from './register_user.jsx';
 import ViewAllUsers from './view_all_user.jsx';
 import UserProfile from './user_profile.jsx';
 import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';
+import LinkButton from './LinkButton.jsx';
 //import field_name from './theme_styles.jsx';
 
 
@@ -56,20 +58,22 @@ class App extends React.Component {
         }
         */
     }
-
-    openUserProfile(id) {
-        this.state.user_id = id;
-        this.state.screen = 'P';
-        this.setState(this.state);
+    drawScreen() {
+        return (
+            <div>
+                <Route path="/view-all" component={ViewAllUsers} />
+                <Route path="/view-user/:userId" component={UserProfile} />
+                <Route path="/register-user" component={RegisterUser} />
+                <Route exact={true} path="/" render={() => "Welcome"} />
+            </div>
+        )
     }
 
     render() {
         // return <p> Hello React!</p>;
-        let drawScreen;
-
-        if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers on_select={(id) => this.openUserProfile(id)} />); }
-        else if (this.state.screen === 'R') {drawScreen = (<RegisterUser /> );}
-        else if (this.state.screen === 'P') { drawScreen = (<UserProfile user_id={this.state.user_id}/>); }
+        //if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers on_select={(id) => this.openUserProfile(id)} />); }
+        //else if (this.state.screen === 'R') {drawScreen = (<RegisterUser /> );}
+        //else if (this.state.screen === 'P') { drawScreen = (<UserProfile user_id={this.state.user_id}/>); }
 
         //border-style: solid;
         // border-width: 15px;
@@ -87,18 +91,19 @@ class App extends React.Component {
 
 
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <div>
+            <Router>
+                <MuiThemeProvider muiTheme={muiTheme}>
                     <div>
-                        <AppBar title="User maintenance system" showMenuIconButton={false} />
-                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("R")} label="Register user" />
-                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("A")} label="View All users ( only view data )" />
-                        <Button style={{ margin: 12 }} primary={true} onClick={() => this.buttonEventListener("P")} label="View user profile ( detailed data of selecte user)" />
-                        {drawScreen}
+                        <div>
+                            <AppBar title="User maintenance!! system" showMenuIconButton={false} />
+                            <LinkButton url="/view-all" label="Users" />
+                            <LinkButton url="/view-user" label="View user" />
+                            <LinkButton url="/register-user" label="Register user" />
+                            {this.drawScreen()}
+                        </div>
                     </div>
-
-                </div>
-            </MuiThemeProvider>
+                </MuiThemeProvider>
+            </Router>
         );
     }
 }

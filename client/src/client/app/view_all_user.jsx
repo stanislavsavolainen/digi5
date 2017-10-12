@@ -11,6 +11,8 @@ import { ButtonStyle, user_data_structure, field_name } from './theme_styles.jsx
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
+import LinkButton from './LinkButton.jsx'
+
 export default class ViewAllUsers extends React.Component {
 
     constructor(props) {
@@ -85,7 +87,7 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.fname}</TableRowColumn>
                                 <TableRowColumn>{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
-                                <TableRowColumn><Button label = {val.id_user} primary={true} onClick = {(e) => this.state.on_select(val.id_user)}  /></TableRowColumn>
+                                <TableRowColumn><LinkButton label={val.id_user} url={"/view-user/" + val.id_user}  /></TableRowColumn>
                             </TableRow>
                         )
                     }

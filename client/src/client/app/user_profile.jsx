@@ -18,9 +18,8 @@ export default class UserProfile extends React.Component {
         this.state = {
             // screen: 'A'
             user_data: make_user_data_structure(),
-            user_index: 5,
             profile_user: [],
-            user_id: props.user_id ? props.user_id : 0
+            user_id: props.match.params.userId,
         }
     }
 
