@@ -13,10 +13,15 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
-import RegisterUser from './register_user.jsx';
-import ViewAllUsers from './view_all_user.jsx';
-import UserProfile from './user_profile.jsx';
-import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';
+import RegisterUser from './User/register_user.jsx';
+import ViewAllUsers from './User/view_all_user.jsx';
+import UserProfile from './User/user_profile.jsx';
+import ViewDevices from './Device/view_devices.jsx';
+import ViewLicense from './License/view_license.jsx';
+import AddDevice from './Device/add_device.jsx';
+import AddLicense from './License/add_license.jsx';
+import ViewLogs from './Logs/view_logs.jsx'
+//import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';
 import LinkButton from './LinkButton.jsx';
 //import field_name from './theme_styles.jsx';
 
@@ -41,55 +46,26 @@ class App extends React.Component {
         this.state.screen = action;
         this.setState(this.state);
 
-        /*
-        switch (action) {
-            case "R":
-                console.log("Register");
-
-                break;
-
-            case "A":
-                console.log("All");
-                break;
-
-            case "P":
-                console.log("Profiles");
-                break;
-        }
-        */
     }
+
     drawScreen() {
         return (
             <div>
                 <Route path="/view-all" component={ViewAllUsers} />
                 <Route path="/view-user/:userId" component={UserProfile} />
                 <Route path="/register-user" component={RegisterUser} />
+                <Route path="/view-devices" component={ViewDevices} />
+                <Route path="/add-device" component={AddDevice} />
+                <Route path="/view-license" component={ViewLicense} />
+                <Route path="/add-license" component={AddLicense} />
+                <Route path="/view-logs" component={ViewLogs} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )
     }
 
     render() {
-        // return <p> Hello React!</p>;
-        //if (this.state.screen === 'A') { drawScreen = (<ViewAllUsers on_select={(id) => this.openUserProfile(id)} />); }
-        //else if (this.state.screen === 'R') {drawScreen = (<RegisterUser /> );}
-        //else if (this.state.screen === 'P') { drawScreen = (<UserProfile user_id={this.state.user_id}/>); }
-
-        //border-style: solid;
-        // border-width: 15px;
-
-        //        
-        //        var button_style = {
-        //            backgroundColor: 'darkred',
-        //            color: 'gold',
-        //
-        //             borderWidth: '3px',
-        //             borderColor: 'gold',
-        //             borderStyle : 'solid'
-        //
-        //        }
-
-
+       
         return (
             <Router>
                 <MuiThemeProvider muiTheme={muiTheme}>
@@ -99,6 +75,11 @@ class App extends React.Component {
                             <LinkButton url="/view-all" label="Users" />
                             <LinkButton url="/view-user" label="View user" />
                             <LinkButton url="/register-user" label="Register user" />
+                            <LinkButton url="/view-devices" label="View devices" />
+                            <LinkButton url="/add-device" label="Add devices" />
+                            <LinkButton url="/view-license" label="View license" />
+                            <LinkButton url="/add-license" label="Add license" />
+                            <LinkButton url="/view-logs" label="Logs" />
                             {this.drawScreen()}
                         </div>
                     </div>
