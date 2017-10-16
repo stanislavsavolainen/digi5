@@ -42,20 +42,27 @@ function initRoute() {
     
 
     route[0].handler = function ( request, reply){
-        myknex.DBreadAllUsers();
+      //var db_users =  myknex.DBreadAllUsers();
         //get return from knex function
-        reply("View all users");
+       // reply("View all users");
+       //reply(db_users);
+
+       myknex.DBreadAllUsers().then(reply);
+
     }
 
     route[1].handler = function ( request, reply){
-        myknex.DBregisterNewUser();
-        reply("Register new user");
+        var registered_user = myknex.DBregisterNewUser( request.payload.user_data );
+        //reply("Register new user");
+        reply(registered_user);
+
     }
 
     route[2].handler = function ( request, reply){
-        var profile_index = 1;
-        myknex.DBgetSingleUserProfile(profile_index);
-        reply("Selected user profile");
+        var profile_index = request.payload.user_id;
+      // var db_user_profile =  myknex.DBgetSingleUserProfile(profile_index);
+        //reply("Selected user profile");
+        myknex.DBgetSingleUserProfile(profile_index).then(reply);
     }
 
 

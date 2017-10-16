@@ -48,7 +48,8 @@ export default class ViewAllUsers extends React.Component {
 
         //fetch
         let host = "http://127.0.0.1:5659";
-        let link = "/read_from_database3";
+        //let link = "/read_from_database3";
+        let link = "/view_all_users";
 
         fetch(host + link, postData)
             .then((resp) => {

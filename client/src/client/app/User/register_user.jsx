@@ -110,7 +110,8 @@ export default class RegisterUser extends React.Component {
 
         //fetch
         let host = "http://127.0.0.1:5659";
-        let link = "/save_to_database2";
+        //let link = "/save_to_database2";
+        let link = "/register_user";
 
         fetch(host + link, postData)
             .then(() => {

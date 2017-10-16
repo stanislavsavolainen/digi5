@@ -40,7 +40,8 @@ export default class UserProfile extends React.Component {
 
         //fetch
         let host = "http://127.0.0.1:5659";
-        let link = "/read_from_database4"; //read profile data
+       // let link = "/read_from_database4"; //read profile data
+        let link = "/user_profile";
 
         fetch(host + link, postData)
             .then((resp) => {
