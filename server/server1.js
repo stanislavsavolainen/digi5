@@ -281,19 +281,40 @@ server.route([
         path: '/read_from_database4',
         handler: function (request, reply) {
 
-           // request.payload.
+            // request.payload.
 
             let id_value = request.payload.user_id;
 
-          //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
-            knex("users2").where( {id_user : id_value} ).then(function (database_result) {
-            reply(JSON.stringify(database_result));
+            //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
+            knex("users2").where({ id_user: id_value }).then(function (database_result) {
+                reply(JSON.stringify(database_result));
             });
 
 
         }
 
-    }
+    },
+    {
+        method: 'POST',
+        path: '/save_data_to_database3',
+        handler: function (request, reply) {
+
+            // console.log("heheheh");
+            console.log("Add new device happen !");
+
+            knex('users2').insert(request.payload.user_data).then(() => {
+                console.log("Inserted device")
+                reply("Insert succesful")
+            })
+                .catch((e) => {
+                    console.log(e)
+                    reply("Failed")
+                })
+
+
+            return reply(JSON.stringify({ body: 'server reply 56789' }));
+        }
+    },
 
 
 
