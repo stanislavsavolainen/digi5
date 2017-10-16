@@ -45,13 +45,14 @@ export default class AddDevice extends React.Component {
 
                 {
                     //remember map return content !
+                    //lambda one line = return
                     this.state.show_devices.map(block =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>
                                 {
-                                    blocks.rows.map(block.rows, row =>
-                                        rows.map(row, field =>
+                                    block.rows.map(row =>
+                                        row.map(field =>
                                             <TextField hintText={field.fieldName} />))
                                 }
                             </CardActions>
