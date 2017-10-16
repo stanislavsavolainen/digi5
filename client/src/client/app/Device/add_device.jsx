@@ -19,7 +19,7 @@ export default class AddDevice extends React.Component {
     }
 
 
-    
+
     // mymap(array, fn) {
     //     var result = []
     //     for (var i = 0; i < array.length; ++i) {
@@ -28,13 +28,13 @@ export default class AddDevice extends React.Component {
     //     return result;
     // }
 
-        // myreduce(arary, fn, initial) {
-        //     var result = initial;
-        //     for (var i = 0; i < array.length; ++i) {
-        //         result = fn(result, array[i])
-        //     }
-        //     return result;
-        // }
+    // myreduce(arary, fn, initial) {
+    //     var result = initial;
+    //     for (var i = 0; i < array.length; ++i) {
+    //         result = fn(result, array[i])
+    //     }
+    //     return result;
+    // }
 
     drawDeviceAddingLayout() {
 
@@ -52,8 +52,9 @@ export default class AddDevice extends React.Component {
                             <CardActions>
                                 {
                                     block.rows.map(row =>
-                                        row.map(field =>
-                                            <TextField hintText={field.fieldName} />))
+                                        <div>
+                                            {row.map(field => <TextField hintText={field.fieldName} />)}
+                                        </div>)
                                 }
                             </CardActions>
                         </Card>)
