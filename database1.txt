@@ -1,0 +1,57 @@
+mysql> 
+mysql> describe users2;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_user    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname      | varchar(45) | YES  |     | NULL    |                |
+| lname      | varchar(45) | YES  |     | NULL    |                |
+| work_start | date        | YES  |     | NULL    |                |
+| work_end   | date        | YES  |     | NULL    |                |
+| status     | varchar(45) | YES  |     | NULL    |                |
+| title      | varchar(45) | YES  |     | NULL    |                |
+| team       | varchar(45) | YES  |     | NULL    |                |
+| phone      | varchar(45) | YES  |     | NULL    |                |
+| keys       | int(11)     | YES  |     | NULL    |                |
+| lukoton    | int(11)     | YES  |     | NULL    |                |
+| active     | int(11)     | YES  |     | NULL    |                |
+| email      | varchar(45) | YES  |     | NULL    |                |
+| slack      | int(11)     | YES  |     | NULL    |                |
+| comments   | varchar(45) | YES  |     | NULL    |                |
+| school     | varchar(45) | YES  |     | NULL    |                |
+| location   | varchar(45) | YES  |     | NULL    |                |
+| userscol   | varchar(45) | YES  |     | NULL    |                |
+| photo      | varchar(45) | YES  |     | NULL    |                |
+| address    | varchar(45) | YES  |     | NULL    |                |
+| ad_user    | varchar(45) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+21 rows in set (0,00 sec)
+
+mysql> 
+
+mysql> describe device1;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| device_id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| type             | int(11)      | YES  |     | NULL    |                |
+| name             | varchar(45)  | YES  |     | NULL    |                |
+| model            | varchar(45)  | YES  |     | NULL    |                |
+| serial_number    | varchar(45)  | YES  |     | NULL    |                |
+| warranty         | varchar(45)  | YES  |     | NULL    |                |
+| about_device     | varchar(100) | YES  |     | NULL    |                |
+| owner_id         | int(11)      | YES  |     | NULL    |                |
+| owner_group      | varchar(45)  | YES  |     | NULL    |                |
+| current_user_id  | int(11)      | YES  |     | NULL    |                |
+| lat_user_id      | int(11)      | YES  |     | NULL    |                |
+| device_available | int(11)      | YES  |     | NULL    |                |
+| available_after  | varchar(45)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+13 rows in set (0,00 sec)
+
+mysql> 
+
+
+
+
+
