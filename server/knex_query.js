@@ -78,10 +78,22 @@ function DBgetSingleUserProfile(parameter_id) {
 
 function DBreadAllDevices() {
     console.log("SELECT * FROM device1");
+
 }
 
-function DBaddNewDevice() {
+function DBaddNewDevice(device_data) {
     console.log("INSERT INTO device1 (data, data , data) values(? ? ? )");
+
+            knex('device1').insert(device_data).then(() => {
+                console.log("Inserted device")
+               // reply("Insert succesful")
+               return ("Insert succesful");
+            })
+                .catch((e) => {
+                    console.log(e)
+                   return ("Failed");
+                })
+
 }
 
 // =================== LICENSE DATABASE HANDLER ==================

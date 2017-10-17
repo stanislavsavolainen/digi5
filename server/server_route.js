@@ -14,6 +14,7 @@ var pathArray = [
     '/view_all_users',
     '/register_user',
     '/user_profile',
+    '/add_device',
 
 ];
 
@@ -65,6 +66,17 @@ function initRoute() {
         myknex.DBgetSingleUserProfile(profile_index).then(reply);
     }
 
+    //addDevice functionality
+    route[3].handler = function ( request, reply){
+        //insert *into device 1 ???????;
+        console.log("Welcome to add device endpoint !");
+
+       // let dev_data = request.payload.device_data;
+
+        myknex.DBaddNewDevice(request.payload.device_data)
+
+        reply(JSON.stringify("OK"));
+    }    
 
 
     return route;

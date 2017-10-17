@@ -18,7 +18,7 @@ import ViewAllUsers from './User/view_all_user.jsx';
 import UserProfile from './User/user_profile.jsx';
 import ViewDevices from './Device/view_devices.jsx';
 import ViewLicense from './License/view_license.jsx';
-import AddDevice from './Device/add_device.jsx';
+import AddDevice from './Device/add_device2.jsx'; //same class-name as in add_device.jsx
 import AddLicense from './License/add_license.jsx';
 import ViewLogs from './Logs/view_logs.jsx'
 //import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';

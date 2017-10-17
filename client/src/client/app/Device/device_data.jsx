@@ -67,12 +67,12 @@ let device_data_object = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner" },
+                { fieldName: "Owner", type: "number", db_name: "owner_id" },
                 { fieldName: "Owner group", type: "string", db_name: "owner_group" },
             ],
             [
                 { fieldName: "Current user id", type: "number", db_name: "current_user_id" },
-                { fieldName: "Previous user id", type: "number", db_name: "last_user_id" },
+                { fieldName: "Previous user id", type: "number", db_name: "lat_user_id" },
             ],
         ]
     }
