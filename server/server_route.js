@@ -83,7 +83,8 @@ function initRoute() {
 
         console.log("View all devices");
 
-        reply(JSON.stringify("OK"));
+       // reply(JSON.stringify("OK"));
+        myknex.DBreadAllDevices().then(reply);
     }    
 
 

@@ -54,4 +54,37 @@ mysql>
 
 
 
+mysql> ALTER TABLE device1 CHANGE lat_user_id  last_user_id int;
+Query OK, 0 rows affected (0,02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe devices1;
+ERROR 1146 (42S02): Table 'dbtest1.devices1' doesn't exist
+mysql> describe device1;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| device_id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| type             | int(11)      | YES  |     | NULL    |                |
+| name             | varchar(45)  | YES  |     | NULL    |                |
+| model            | varchar(45)  | YES  |     | NULL    |                |
+| serial_number    | varchar(45)  | YES  |     | NULL    |                |
+| warranty         | varchar(45)  | YES  |     | NULL    |                |
+| about_device     | varchar(100) | YES  |     | NULL    |                |
+| owner_id         | int(11)      | YES  |     | NULL    |                |
+| owner_group      | varchar(45)  | YES  |     | NULL    |                |
+| current_user_id  | int(11)      | YES  |     | NULL    |                |
+| last_user_id     | int(11)      | YES  |     | NULL    |                |
+| device_available | int(11)      | YES  |     | NULL    |                |
+| available_after  | varchar(45)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+13 rows in set (0,00 sec)
+
+
+
+
+
+
+
+
 

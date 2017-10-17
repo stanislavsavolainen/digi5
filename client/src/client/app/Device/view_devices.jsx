@@ -4,13 +4,15 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 export default class ViewDevices extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            show_devices : make_device_data_structure()
+            show_devices : make_device_data_structure(),
+            devices : []
         }
 
     }
@@ -41,9 +43,12 @@ export default class ViewDevices extends React.Component {
             .then((resp) => {
                 return resp.json();
             })
-            .then((users) => {
+            .then((db_devices) => {
                // this.state.users = users;
                // this.setState(this.state);
+               this.state.devices = db_devices;
+               this.setState(this.state);
+
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
@@ -56,6 +61,33 @@ export default class ViewDevices extends React.Component {
 
     deviceTableLayout(){
 
+        return (
+            <div>
+                  <Table>
+                <TableHeader displaySelectAll={false}>
+                    <TableRow>
+                        <TableHeaderColumn>Device name</TableHeaderColumn>
+                        <TableHeaderColumn>Device owner</TableHeaderColumn>
+                        <TableHeaderColumn>...</TableHeaderColumn>
+                        
+                    </TableRow>
+                </TableHeader>
+                <TableBody displayRowCheckbox={false}>
+                    {
+                        this.state.devices.map((val) =>
+                            <TableRow>
+                                <TableRowColumn>{val.name}</TableRowColumn>
+                                <TableRowColumn>{val.owner_id}</TableRowColumn>
+                                <TableRowColumn>...</TableRowColumn>
+                            </TableRow>
+                        )
+                    }
+                </TableBody>
+            </Table>
+            </div>    
+        );
+
+
     }
 
 
@@ -65,7 +97,8 @@ export default class ViewDevices extends React.Component {
                 Show all devices :
             <br /> Device name : <font color="green"> {device_data_model.name} </font>
                 <br /> Device serial number : <font color="green"> {device_data_model.serial_number} </font>
-
+                <br /><br />
+                { this.deviceTableLayout() }
             </div>);
     }
 

@@ -79,6 +79,15 @@ function DBgetSingleUserProfile(parameter_id) {
 function DBreadAllDevices() {
     console.log("SELECT * FROM device1");
 
+       return (
+
+        knex("device1").select().then(function (database_result) {
+            //return JSON.stringify(database_result)
+            return JSON.stringify(database_result);
+        })
+
+    );
+
 
 //    return (
   //     <div></div>
