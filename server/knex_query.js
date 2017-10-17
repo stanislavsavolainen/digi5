@@ -79,6 +79,10 @@ function DBgetSingleUserProfile(parameter_id) {
 function DBreadAllDevices() {
     console.log("SELECT * FROM device1");
 
+
+//    return (
+  //     <div></div>
+  //  )
 }
 
 function DBaddNewDevice(device_data) {

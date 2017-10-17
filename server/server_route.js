@@ -15,6 +15,7 @@ var pathArray = [
     '/register_user',
     '/user_profile',
     '/add_device',
+    '/view_all_devices',
 
 ];
 
@@ -76,7 +77,17 @@ function initRoute() {
         myknex.DBaddNewDevice(request.payload.device_data)
 
         reply(JSON.stringify("OK"));
+    }   
+    
+    route[4].handler = function(request, reply){
+
+        console.log("View all devices");
+
+        reply(JSON.stringify("OK"));
     }    
+
+
+
 
 
     return route;
