@@ -24,6 +24,9 @@ import ViewLogs from './Logs/view_logs.jsx'
 //import { ButtonStyle, user_data_structure, TextStyle } from './theme_styles.jsx';
 import LinkButton from './LinkButton.jsx';
 //import field_name from './theme_styles.jsx';
+import ModifyDevice from './Device/modify_device.jsx';
+import ModifyUser from './User/modify_user.jsx';
+import DeleteUser from './User/delete_user.jsx';
 
 
 const muiTheme = getMuiTheme({
@@ -59,6 +62,9 @@ class App extends React.Component {
                 <Route path="/view-license" component={ViewLicense} />
                 <Route path="/add-license" component={AddLicense} />
                 <Route path="/view-logs" component={ViewLogs} />
+                <Route path="/modify-device" component={ModifyDevice} />
+                 <Route path="/modify-user/:userId" component={ModifyUser} />
+                 <Route path="/delete-user/:userId" component={DeleteUser} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )
@@ -73,7 +79,7 @@ class App extends React.Component {
                         <div>
                             <AppBar title="User maintenance!! system" showMenuIconButton={false} />
                             <LinkButton url="/view-all" label="Users" />
-                            <LinkButton url="/view-user" label="View user" />
+                           { /* <LinkButton url="/view-user" label="View user" />  */ }
                             <LinkButton url="/register-user" label="Register user" />
                             <LinkButton url="/view-devices" label="View devices" />
                             <LinkButton url="/add-device" label="Add devices" />

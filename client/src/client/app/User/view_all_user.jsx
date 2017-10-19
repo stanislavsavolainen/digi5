@@ -11,7 +11,7 @@ import { ButtonStyle, user_data_structure, field_name } from './theme_styles.jsx
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
-import LinkButton from './../LinkButton.jsx'
+import LinkButton from './../LinkButton.jsx';
 
 export default class ViewAllUsers extends React.Component {
 
@@ -96,10 +96,11 @@ export default class ViewAllUsers extends React.Component {
                                     <LinkButton label={val.id_user} url={"/view-user/" + val.id_user} />
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    <Button label="M" title="Modify user" primary={true} />
+                                   { /* <Button label="M" title="Modify user" primary={true} /> */ }
+                                    <LinkButton url={"/modify-user/" + val.id_user} label="M" />
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    <Button label="X" title="Delete user" primary={true} />
+                                    <LinkButton url={"/delete-user/" + val.id_user} label="X" />
                                 </TableRowColumn>
 
                             </TableRow>

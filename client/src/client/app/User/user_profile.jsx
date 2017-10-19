@@ -8,6 +8,8 @@ import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
+import LinkButton from './../LinkButton.jsx';
+
 
 import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './theme_styles.jsx';
 
@@ -95,7 +97,10 @@ export default class UserProfile extends React.Component {
                 </Card>
 
             </div>
-        )} <Button label="test1"></Button> </div>);
+        )} <LinkButton url={"/modify-user/" + this.state.user_id} label="Modify user" />
+        { /*<Button label="Delete" primary={true} title="Delete user" /> */}
+         <LinkButton url={"/delete-user/" + this.state.user_id} label="Delete user"  />
+         </div>);
 
 
 
