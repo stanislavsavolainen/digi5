@@ -68,6 +68,8 @@ export default class ViewAllUsers extends React.Component {
 
     render() {
 
+        //Added button modify and delete (not done)
+
         return (<div >
             <h1> View All users : </h1>
             {/*drawContent*/}
@@ -79,6 +81,8 @@ export default class ViewAllUsers extends React.Component {
                         <TableHeaderColumn>Last name</TableHeaderColumn>
                         <TableHeaderColumn>Status</TableHeaderColumn>
                         <TableHeaderColumn>Profile</TableHeaderColumn>
+                        <TableHeaderColumn>Modify</TableHeaderColumn>
+                        <TableHeaderColumn>Delete</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
@@ -88,8 +92,16 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.fname}</TableRowColumn>
                                 <TableRowColumn>{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
-                                <TableRowColumn><LinkButton label={val.id_user} url={"/view-user/" + val.id_user}  /></TableRowColumn>
-                            
+                                <TableRowColumn>
+                                    <LinkButton label={val.id_user} url={"/view-user/" + val.id_user} />
+                                </TableRowColumn>
+                                <TableRowColumn>
+                                    <Button label="M" title="Modify user" primary={true} />
+                                </TableRowColumn>
+                                <TableRowColumn>
+                                    <Button label="X" title="Delete user" primary={true} />
+                                </TableRowColumn>
+
                             </TableRow>
                         )
                     }

@@ -6,6 +6,8 @@ import { render } from 'react-dom';
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
+import Button from 'material-ui/RaisedButton';
+
 export default class ViewDevices extends React.Component {
 
     constructor(props) {
@@ -60,6 +62,9 @@ export default class ViewDevices extends React.Component {
 
     deviceTableLayout() {
 
+
+        //Added button modify and delete (not done)
+
         return (
             <div>
                 <Table>
@@ -67,7 +72,9 @@ export default class ViewDevices extends React.Component {
                         <TableRow>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device owner</TableHeaderColumn>
-                            <TableHeaderColumn>...</TableHeaderColumn>
+                            <TableHeaderColumn>Profiles</TableHeaderColumn>
+                            <TableHeaderColumn>Modify</TableHeaderColumn>
+                            <TableHeaderColumn>Remove</TableHeaderColumn>
 
                         </TableRow>
                     </TableHeader>
@@ -77,7 +84,16 @@ export default class ViewDevices extends React.Component {
                                 <TableRow>
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.owner_id}</TableRowColumn>
-                                    <TableRowColumn>...</TableRowColumn>
+                                    <TableRowColumn> 
+                                        <Button label="Profile" primary={true} />
+                                    </TableRowColumn>
+                                    <TableRowColumn> 
+                                        <Button label="M" title="modify device" primary={true} />
+                                    </TableRowColumn>
+                                    <TableRowColumn> 
+                                        <Button label="X" title="delete device" primary={true} />
+                                    </TableRowColumn>
+
                                 </TableRow>
                             )
                         }
