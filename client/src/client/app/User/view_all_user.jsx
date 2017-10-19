@@ -89,6 +89,7 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
                                 <TableRowColumn><LinkButton label={val.id_user} url={"/view-user/" + val.id_user}  /></TableRowColumn>
+                            
                             </TableRow>
                         )
                     }

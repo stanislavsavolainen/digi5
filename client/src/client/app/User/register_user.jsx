@@ -116,16 +116,24 @@ export default class RegisterUser extends React.Component {
         fetch(host + link, postData)
             .then(() => {
                 console.log("Fetch done")
+
+                 this.props.history.push("/view-all");
+
             })
             .catch(function (error_msg) {
                 console.log("Fetch error : " + error_msg);
             })
 
 
-
-
+        //go to registered user profile page, like view_all_users.jsx
+        //special user profile button click can navigate to user_profile.jsx 
+        //page with user_id parameter after user is registered to database
+        // ===> avoid register same users many times ( only one time )
+        
+       // this.goToAllUsersPage();    
 
     }
+
 
     // *****************************************************************
 

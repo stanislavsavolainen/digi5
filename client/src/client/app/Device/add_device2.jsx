@@ -71,12 +71,12 @@ export default class AddDevice extends React.Component {
 
         fetch(host + link, postData)
             .then(() => {
-                console.log("Fetch done")
+                console.log("Fetch done");
+                this.props.history.push("/view-devices");
             })
             .catch(function (error_msg) {
                 console.log("Fetch error : " + error_msg);
             })
-
 
 
     }

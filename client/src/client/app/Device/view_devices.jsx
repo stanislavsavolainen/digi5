@@ -11,10 +11,9 @@ export default class ViewDevices extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show_devices : make_device_data_structure(),
-            devices : []
+            show_devices: make_device_data_structure(),
+            devices: []
         }
-
     }
 
     componentWillMount() {
@@ -24,7 +23,7 @@ export default class ViewDevices extends React.Component {
 
     readDevicesFromDatabase() {
 
-         //post body
+        //post body
         let postData = {
             method: 'POST',
             headers: {
@@ -34,7 +33,7 @@ export default class ViewDevices extends React.Component {
             body: JSON.stringify("OK"),
         };
 
-            //fetch
+        //fetch
         let host = "http://127.0.0.1:5659";
         //let link = "/read_from_database3";
         let link = "/view_all_devices";
@@ -44,10 +43,10 @@ export default class ViewDevices extends React.Component {
                 return resp.json();
             })
             .then((db_devices) => {
-               // this.state.users = users;
-               // this.setState(this.state);
-               this.state.devices = db_devices;
-               this.setState(this.state);
+                // this.state.users = users;
+                // this.setState(this.state);
+                this.state.devices = db_devices;
+                this.setState(this.state);
 
             })
             .catch(function (error_msg) {
@@ -59,32 +58,32 @@ export default class ViewDevices extends React.Component {
     }
 
 
-    deviceTableLayout(){
+    deviceTableLayout() {
 
         return (
             <div>
-                  <Table>
-                <TableHeader displaySelectAll={false}>
-                    <TableRow>
-                        <TableHeaderColumn>Device name</TableHeaderColumn>
-                        <TableHeaderColumn>Device owner</TableHeaderColumn>
-                        <TableHeaderColumn>...</TableHeaderColumn>
-                        
-                    </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false}>
-                    {
-                        this.state.devices.map((val) =>
-                            <TableRow>
-                                <TableRowColumn>{val.name}</TableRowColumn>
-                                <TableRowColumn>{val.owner_id}</TableRowColumn>
-                                <TableRowColumn>...</TableRowColumn>
-                            </TableRow>
-                        )
-                    }
-                </TableBody>
-            </Table>
-            </div>    
+                <Table>
+                    <TableHeader displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>Device name</TableHeaderColumn>
+                            <TableHeaderColumn>Device owner</TableHeaderColumn>
+                            <TableHeaderColumn>...</TableHeaderColumn>
+
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false}>
+                        {
+                            this.state.devices.map((val) =>
+                                <TableRow>
+                                    <TableRowColumn>{val.name}</TableRowColumn>
+                                    <TableRowColumn>{val.owner_id}</TableRowColumn>
+                                    <TableRowColumn>...</TableRowColumn>
+                                </TableRow>
+                            )
+                        }
+                    </TableBody>
+                </Table>
+            </div>
         );
 
 
@@ -98,7 +97,7 @@ export default class ViewDevices extends React.Component {
             <br /> Device name : <font color="green"> {device_data_model.name} </font>
                 <br /> Device serial number : <font color="green"> {device_data_model.serial_number} </font>
                 <br /><br />
-                { this.deviceTableLayout() }
+                {this.deviceTableLayout()}
             </div>);
     }
 

@@ -49,6 +49,8 @@ function initRoute() {
        // reply("View all users");
        //reply(db_users);
 
+        console.log(" >>>> View all users <<<<<<<< ");
+
        myknex.DBreadAllUsers().then(reply);
 
     }
