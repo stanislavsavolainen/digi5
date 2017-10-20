@@ -67,7 +67,7 @@ export default class ViewAllUsers extends React.Component {
 
 
 
-    deleteUserById(deleted_user_id) {
+    deleteUserById(deleted_user_id, array_index) {
 
         //post body
         let postData = {
@@ -100,8 +100,14 @@ export default class ViewAllUsers extends React.Component {
 
                 //  this.state.profile_user = response;
                 //    this.setState(this.state)
-                //this.state.users.splice( deleted_user_id  , 1);
+                //this.state.users.splice( this.state.users[deleted_user_id]  , 1);
+               
+                // this.state.users.splice(deleted_user_id, 1);
+               this.state.users.splice(array_index, 1);
+
+                //delete this.state.users[deleted_user_id];
                 this.setState(this.state);
+                // this.forceUpdate();
 
             })
             .catch(function (error_msg) {
@@ -137,7 +143,7 @@ export default class ViewAllUsers extends React.Component {
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {
-                        this.state.users.map((val) =>
+                        this.state.users.map((val, index) =>
                             <TableRow>
                                 <TableRowColumn>{val.fname}</TableRowColumn>
                                 <TableRowColumn>{val.lname}</TableRowColumn>
@@ -150,7 +156,7 @@ export default class ViewAllUsers extends React.Component {
                                     <LinkButton url={"/modify-user/" + val.id_user} label="M" />
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    {<Button label="X" title="Modify user" primary={true} onClick={() => { this.deleteUserById(val.id_user); this.setState(this.state); }} />}
+                                    {<Button label="X" title="Modify user" primary={true} onClick={() => { this.deleteUserById(val.id_user, index); }} />}
                                     {/* <LinkButton url={"/delete-user/" + val.id_user} label="X" /> */}
                                 </TableRowColumn>
 
