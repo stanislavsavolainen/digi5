@@ -8,6 +8,8 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 import Button from 'material-ui/RaisedButton';
 
+import LinkButton from './../LinkButton.jsx';
+
 export default class ViewDevices extends React.Component {
 
     constructor(props) {
@@ -49,7 +51,6 @@ export default class ViewDevices extends React.Component {
                 // this.setState(this.state);
                 this.state.devices = db_devices;
                 this.setState(this.state);
-
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
@@ -85,13 +86,16 @@ export default class ViewDevices extends React.Component {
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.owner_id}</TableRowColumn>
                                     <TableRowColumn> 
-                                        <Button label="Profile" primary={true} />
+                                        { /* <Button label="Profile" primary={true} /> */ }
+                                         <LinkButton label={val.device_id} url={"/device-profile/" + val.device_id} />
                                     </TableRowColumn>
                                     <TableRowColumn> 
-                                        <Button label="M" title="modify device" primary={true} />
+                                       { /* <Button label="M" title="modify device" primary={true} />  */ }
+                                       <LinkButton label="M" url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
                                     <TableRowColumn> 
-                                        <Button label="X" title="delete device" primary={true} />
+                                       {/* <Button label="X" title="delete device" primary={true} /> */}
+                                       <LinkButton label="X" url={"/delete-device/" + val.device_id} />
                                     </TableRowColumn>
 
                                 </TableRow>

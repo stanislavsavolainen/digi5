@@ -6,9 +6,15 @@ import Button from 'material-ui/RaisedButton';
 
 export default class ModifyDevice extends React.Component {
 
+      constructor(props) {
+        super(props);
+        this.state = {
+            device_id: props.match.params.deviceId,
+        }
+    }
 
     render() {
-        return ( <div> <h1>  Modify device </h1>  </div>  );
+        return ( <div> <h1>  Modify device { this.state.device_id }  </h1>  </div>  );
     }
 
 }

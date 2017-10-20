@@ -27,6 +27,8 @@ import LinkButton from './LinkButton.jsx';
 import ModifyDevice from './Device/modify_device.jsx';
 import ModifyUser from './User/modify_user.jsx';
 import DeleteUser from './User/delete_user.jsx';
+import DeviceProfile from './Device/device_profile.jsx';
+import DeleteDevice from './Device/delete_device.jsx'
 
 
 const muiTheme = getMuiTheme({
@@ -62,16 +64,19 @@ class App extends React.Component {
                 <Route path="/view-license" component={ViewLicense} />
                 <Route path="/add-license" component={AddLicense} />
                 <Route path="/view-logs" component={ViewLogs} />
-                <Route path="/modify-device" component={ModifyDevice} />
-                 <Route path="/modify-user/:userId" component={ModifyUser} />
-                 <Route path="/delete-user/:userId" component={DeleteUser} />
+                <Route path="/modify-device/:deviceId" component={ModifyDevice} />
+                <Route path="/modify-user/:userId" component={ModifyUser} />
+                <Route path="/delete-user/:userId" component={DeleteUser} />
+                <Route path="/device-profile/:deviceId" component={DeviceProfile} />
+                <Route path="/delete-device/:deviceId" component={DeleteDevice} />
+
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )
     }
 
     render() {
-       
+
         return (
             <Router>
                 <MuiThemeProvider muiTheme={muiTheme}>
@@ -79,7 +84,7 @@ class App extends React.Component {
                         <div>
                             <AppBar title="User maintenance!! system" showMenuIconButton={false} />
                             <LinkButton url="/view-all" label="Users" />
-                           { /* <LinkButton url="/view-user" label="View user" />  */ }
+                            { /* <LinkButton url="/view-user" label="View user" />  */}
                             <LinkButton url="/register-user" label="Register user" />
                             <LinkButton url="/view-devices" label="View devices" />
                             <LinkButton url="/add-device" label="Add devices" />

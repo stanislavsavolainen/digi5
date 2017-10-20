@@ -109,6 +109,19 @@ function DBaddNewDevice(device_data) {
 
 }
 
+
+function DBdeleteUser(user_id){
+
+    console.log("Trying to delete user-data from database -> user index : " +user_id);
+
+    knex('users2').del().where({id_user : user_id})
+    .then(  () => { 
+        console.log("User id ;" +user_id + "successfyly deleted from database" ); 
+    })
+    .catch( (e) => { console.log("Problem to delete user error : "+e); } ) ; 
+
+}
+
 // =================== LICENSE DATABASE HANDLER ==================
 
 
@@ -137,7 +150,8 @@ module.exports = {
     DBregisterNewUser,
     DBgetSingleUserProfile,
     DBreadAllDevices,
-    DBaddNewDevice
+    DBaddNewDevice,
+    DBdeleteUser
 }
 
 

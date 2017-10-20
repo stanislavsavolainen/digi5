@@ -23,7 +23,6 @@ export default class ViewAllUsers extends React.Component {
             p_fname: [],
             p_lname: [],
             p_states: [],
-            on_select: props.on_select,
             users: []
         }
     }
@@ -66,6 +65,57 @@ export default class ViewAllUsers extends React.Component {
             })
     }
 
+
+
+    deleteUserById(deleted_user_id) {
+
+        //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: deleted_user_id }),
+        };
+
+        //fetch
+        let host = "http://127.0.0.1:5659";
+        // let link = "/read_from_database4"; //read profile data
+        let link = "/delete_user";
+
+
+
+        fetch(host + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+
+                //  this.handleResponse(response);
+                // console.log("User profile data :" + JSON.stringify(response));
+
+                //  this.state.profile_user = response;
+                //    this.setState(this.state)
+                //this.state.users.splice( deleted_user_id  , 1);
+                this.setState(this.state);
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+
+        //this.setState(this.state);
+    }
+
+
+
     render() {
 
         //Added button modify and delete (not done)
@@ -96,11 +146,12 @@ export default class ViewAllUsers extends React.Component {
                                     <LinkButton label={val.id_user} url={"/view-user/" + val.id_user} />
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                   { /* <Button label="M" title="Modify user" primary={true} /> */ }
+                                    { /* <Button label="M" title="Modify user" primary={true} /> */}
                                     <LinkButton url={"/modify-user/" + val.id_user} label="M" />
                                 </TableRowColumn>
                                 <TableRowColumn>
-                                    <LinkButton url={"/delete-user/" + val.id_user} label="X" />
+                                    {<Button label="X" title="Modify user" primary={true} onClick={() => { this.deleteUserById(val.id_user); this.setState(this.state); }} />}
+                                    {/* <LinkButton url={"/delete-user/" + val.id_user} label="X" /> */}
                                 </TableRowColumn>
 
                             </TableRow>
