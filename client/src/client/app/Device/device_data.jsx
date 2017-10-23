@@ -52,13 +52,14 @@ let device_data_object = [
         title: "device information",
         rows: [
             [
-                { fieldName: "Name", type: "string", db_name: "name" },
-                { fieldName: "Type", type: "number", db_name: "type" },
+                 { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
+                { fieldName: "Name", type: "string", db_name: "name", modify : false },
+                { fieldName: "Type", type: "number", db_name: "type" , modify : false},
             ],
             [
-                { fieldName: "Serial number", type: "string", db_name: "serial_number" },
-                { fieldName: "Warranty", type: "string", db_name: "warranty" },
-                 { fieldName: "About", type: "string", db_name: "about_device" },
+                { fieldName: "Serial number", type: "string", db_name: "serial_number", modify : false },
+                { fieldName: "Warranty", type: "string", db_name: "warranty", modify : false },
+                 { fieldName: "About", type: "string", db_name: "about_device", modify : false },
             ],
            
         ],
@@ -67,12 +68,12 @@ let device_data_object = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id" },
-                { fieldName: "Owner group", type: "string", db_name: "owner_group" },
+                { fieldName: "Owner", type: "number", db_name: "owner_id", modify : false },
+                { fieldName: "Owner group", type: "string", db_name: "owner_group", modify : false },
             ],
             [
-                { fieldName: "Current user id", type: "number", db_name: "current_user_id" },
-                { fieldName: "Previous user id", type: "number", db_name: "last_user_id" },
+                { fieldName: "Current user id", type: "number", db_name: "current_user_id", modify : false },
+                { fieldName: "Previous user id", type: "number", db_name: "last_user_id", modify : false },
             ],
         ]
     }

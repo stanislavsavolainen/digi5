@@ -74,15 +74,15 @@ function DBgetSingleUserProfile(parameter_id) {
 }
 
 
-function DBdeleteUser(user_id){
+function DBdeleteUser(user_id) {
 
-    console.log("Trying to delete user-data from database -> user index : " +user_id);
+    console.log("Trying to delete user-data from database -> user index : " + user_id);
 
-    knex('users2').del().where({id_user : user_id})
-    .then(  () => { 
-        console.log("User id ;" +user_id + "successfyly deleted from database" ); 
-    })
-    .catch( (e) => { console.log("Problem to delete user error : "+e); } ) ; 
+    knex('users2').del().where({ id_user: user_id })
+        .then(() => {
+            console.log("User id ;" + user_id + "successfyly deleted from database");
+        })
+        .catch((e) => { console.log("Problem to delete user error : " + e); });
 
 }
 
@@ -92,7 +92,7 @@ function DBdeleteUser(user_id){
 function DBreadAllDevices() {
     console.log("SELECT * FROM device1");
 
-       return (
+    return (
 
         knex("device1").select().then(function (database_result) {
             //return JSON.stringify(database_result)
@@ -102,39 +102,39 @@ function DBreadAllDevices() {
     );
 
 
-//    return (
-  //     <div></div>
-  //  )
+    //    return (
+    //     <div></div>
+    //  )
 }
 
 function DBaddNewDevice(device_data) {
     console.log("INSERT INTO device1 (data, data , data) values(? ? ? )");
 
-            knex('device1').insert(device_data).then(() => {
-                console.log("Inserted device")
-               // reply("Insert succesful")
-               return ("Insert succesful");
-            })
-                .catch((e) => {
-                    console.log(e)
-                   return ("Failed");
-                })
-
-}
-
-function DBdeleteDevice(device_index){
-
- console.log("Trying to delete device-data from database -> device index : " +device_index);
-
-    knex('device1').del().where({device_id : device_index})
-    .then(  () => { 
-        console.log("Device id ;" +device_index + "successfyly deleted from database" ); 
+    knex('device1').insert(device_data).then(() => {
+        console.log("Inserted device")
+        // reply("Insert succesful")
+        return ("Insert succesful");
     })
-    .catch( (e) => { console.log("Problem to delete user error : "+e); } ) ; 
+        .catch((e) => {
+            console.log(e)
+            return ("Failed");
+        })
 
 }
 
-function DBgetSingleDeviceProfile( device_id_parameter ){
+function DBdeleteDevice(device_index) {
+
+    console.log("Trying to delete device-data from database -> device index : " + device_index);
+
+    knex('device1').del().where({ device_id: device_index })
+        .then(() => {
+            console.log("Device id ;" + device_index + "successfyly deleted from database");
+        })
+        .catch((e) => { console.log("Problem to delete user error : " + e); });
+
+}
+
+function DBgetSingleDeviceProfile(device_id_parameter) {
 
     console.log("Trying to get device id : " + device_id_parameter + "  profile data from database");
 
@@ -149,6 +149,18 @@ function DBgetSingleDeviceProfile( device_id_parameter ){
         })
     );
 
+
+}
+
+function DBmodifyDevice(device_object, device_id_parameter) {
+    console.log("Trying to modify device id : " + device_id_parameter + "  at database");
+
+    knex('device1').update(device_object).where({ device_id: device_id_parameter }).then(
+        () => { console.log("Device data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
 
 }
 
@@ -184,7 +196,8 @@ module.exports = {
     DBaddNewDevice,
     DBdeleteUser,
     DBdeleteDevice,
-    DBgetSingleDeviceProfile
+    DBgetSingleDeviceProfile,
+    DBmodifyDevice
 }
 
 

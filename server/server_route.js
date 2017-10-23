@@ -18,7 +18,8 @@ var pathArray = [
     '/view_all_devices',
     '/delete_user',
     '/delete_device',
-    '/device_profile'
+    '/device_profile',
+    '/modify_device'
 
 ];
 
@@ -123,6 +124,21 @@ function initRoute() {
 
         //reply(JSON.stringify("OK"));
     }    
+
+    //modifyDevice
+     route[8].handler = function (request, reply) {
+
+        console.log("Modify device");
+
+        console.log("Payload content : " + JSON.stringify(request.payload) );
+        console.log("Device id : " +request.payload.device_id);
+
+      // myknex.DBmodifyDevice( request.payload , request.payload.device_id);     
+
+       // myknex.DBgetSingleDeviceProfile(request.payload.device_id).then(reply);
+
+        reply(JSON.stringify("OK"));
+    } 
 
 
 
