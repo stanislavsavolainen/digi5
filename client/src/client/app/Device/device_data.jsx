@@ -58,7 +58,7 @@ let device_data_object = [
             [
                 { fieldName: "Serial number", type: "string", db_name: "serial_number" },
                 { fieldName: "Warranty", type: "string", db_name: "warranty" },
-                 { fieldName: "About", type: "string", db_name: "serial_number" },
+                 { fieldName: "About", type: "string", db_name: "about_device" },
             ],
            
         ],

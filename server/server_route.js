@@ -119,10 +119,9 @@ function initRoute() {
 
         console.log("Device profile");
 
-       // myknex.DBdeleteDevice(request.payload.device_id);
+        myknex.DBgetSingleDeviceProfile(request.payload.device_id).then(reply);
 
-
-        reply(JSON.stringify("OK"));
+        //reply(JSON.stringify("OK"));
     }    
 
 

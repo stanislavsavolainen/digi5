@@ -134,6 +134,23 @@ function DBdeleteDevice(device_index){
 
 }
 
+function DBgetSingleDeviceProfile( device_id_parameter ){
+
+    console.log("Trying to get device id : " + device_id_parameter + "  profile data from database");
+
+    return (
+        //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
+        knex("device1").where({ device_id: device_id_parameter }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
+
+
+}
 
 
 // =================== LICENSE DATABASE HANDLER ==================
@@ -166,7 +183,8 @@ module.exports = {
     DBreadAllDevices,
     DBaddNewDevice,
     DBdeleteUser,
-    DBdeleteDevice
+    DBdeleteDevice,
+    DBgetSingleDeviceProfile
 }
 
 

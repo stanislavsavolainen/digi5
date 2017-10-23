@@ -30,7 +30,7 @@ export default class DeviceProfile extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user_id: this.state.user_id }),
+            body: JSON.stringify({ device_id: this.state.device_id }),
         };
 
         //fetch
