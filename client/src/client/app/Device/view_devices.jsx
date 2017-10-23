@@ -61,8 +61,48 @@ export default class ViewDevices extends React.Component {
     }
 
 
-    deviceTableLayout() {
+    deleteDeviceById(deleted_device_id, array_index) {
 
+        console.log("Delete device id : " + deleted_device_id + " and array index " + array_index);
+
+        //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ device_id: deleted_device_id }),
+        };
+
+        //fetch
+        let host = "http://127.0.0.1:5659";
+        // let link = "/read_from_database4"; //read profile data
+        let link = "/delete_device";
+
+        fetch(host + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+
+                this.state.devices.splice(array_index, 1);
+                this.setState(this.state);
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+    }
+
+
+    deviceTableLayout() {
 
         //Added button modify and delete (not done)
 
@@ -81,21 +121,22 @@ export default class ViewDevices extends React.Component {
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
                         {
-                            this.state.devices.map((val) =>
+                            this.state.devices.map((val, index) =>
                                 <TableRow>
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.owner_id}</TableRowColumn>
-                                    <TableRowColumn> 
-                                        { /* <Button label="Profile" primary={true} /> */ }
-                                         <LinkButton label={val.device_id} url={"/device-profile/" + val.device_id} />
+                                    <TableRowColumn>
+                                        { /* <Button label="Profile" primary={true} /> */}
+                                        <LinkButton label={val.device_id} url={"/device-profile/" + val.device_id} />
                                     </TableRowColumn>
-                                    <TableRowColumn> 
-                                       { /* <Button label="M" title="modify device" primary={true} />  */ }
-                                       <LinkButton label="M" url={"/modify-device/" + val.device_id} />
+                                    <TableRowColumn>
+                                        { /* <Button label="M" title="modify device" primary={true} />  */}
+                                        <LinkButton label="M" url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
-                                    <TableRowColumn> 
-                                       {/* <Button label="X" title="delete device" primary={true} /> */}
-                                       <LinkButton label="X" url={"/delete-device/" + val.device_id} />
+                                    <TableRowColumn>
+                                        {/* <Button label="X" title="delete device" primary={true} /> */}
+                                        {<Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteDeviceById(val.device_id, index); }} />}
+                                        { /* <LinkButton label="X" url={"/delete-device/" + val.device_id} /> */}
                                     </TableRowColumn>
 
                                 </TableRow>

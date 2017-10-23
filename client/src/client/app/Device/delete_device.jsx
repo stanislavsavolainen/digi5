@@ -15,7 +15,7 @@ export default class DeleteDevice extends React.Component {
     }
 
 
-    deleteUserFuncion() {
+    deleteDeviceFuncion() {
 
         //post body
         let postData = {
@@ -41,12 +41,6 @@ export default class DeleteDevice extends React.Component {
             .then((response) => {
                 console.log("Fetch response happen !");
 
-                //  this.handleResponse(response);
-                // console.log("User profile data :" + JSON.stringify(response));
-
-                //  this.state.profile_user = response;
-                //    this.setState(this.state)
-
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
@@ -60,7 +54,7 @@ export default class DeleteDevice extends React.Component {
 
 
     componentWillMount() {
-        this.deleteUserFuncion();
+        this.deleteDeviceFuncion();
     }
 
     render() {

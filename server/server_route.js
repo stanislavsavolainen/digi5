@@ -106,6 +106,10 @@ function initRoute() {
     route[6].handler = function (request, reply) {
 
         console.log("Delete device");
+
+        myknex.DBdeleteDevice(request.payload.device_id);
+
+
         reply(JSON.stringify("OK"));
     }
 

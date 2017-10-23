@@ -74,6 +74,19 @@ function DBgetSingleUserProfile(parameter_id) {
 }
 
 
+function DBdeleteUser(user_id){
+
+    console.log("Trying to delete user-data from database -> user index : " +user_id);
+
+    knex('users2').del().where({id_user : user_id})
+    .then(  () => { 
+        console.log("User id ;" +user_id + "successfyly deleted from database" ); 
+    })
+    .catch( (e) => { console.log("Problem to delete user error : "+e); } ) ; 
+
+}
+
+
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
@@ -109,18 +122,19 @@ function DBaddNewDevice(device_data) {
 
 }
 
+function DBdeleteDevice(device_index){
 
-function DBdeleteUser(user_id){
+ console.log("Trying to delete device-data from database -> device index : " +device_index);
 
-    console.log("Trying to delete user-data from database -> user index : " +user_id);
-
-    knex('users2').del().where({id_user : user_id})
+    knex('device1').del().where({device_id : device_index})
     .then(  () => { 
-        console.log("User id ;" +user_id + "successfyly deleted from database" ); 
+        console.log("Device id ;" +device_index + "successfyly deleted from database" ); 
     })
     .catch( (e) => { console.log("Problem to delete user error : "+e); } ) ; 
 
 }
+
+
 
 // =================== LICENSE DATABASE HANDLER ==================
 
@@ -151,7 +165,8 @@ module.exports = {
     DBgetSingleUserProfile,
     DBreadAllDevices,
     DBaddNewDevice,
-    DBdeleteUser
+    DBdeleteUser,
+    DBdeleteDevice
 }
 
 

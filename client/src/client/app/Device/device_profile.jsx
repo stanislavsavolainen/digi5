@@ -15,6 +15,8 @@ export default class DeviceProfile extends React.Component {
     }
 
     render() {
+
+        
         return (
             <div> Device profile : {this.state.device_id}
                 <br /><br />

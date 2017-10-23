@@ -137,8 +137,7 @@ export default class ViewAllUsers extends React.Component {
                         <TableHeaderColumn>Last name</TableHeaderColumn>
                         <TableHeaderColumn>Status</TableHeaderColumn>
                         <TableHeaderColumn>Profile</TableHeaderColumn>
-                        <TableHeaderColumn>Modify</TableHeaderColumn>
-                        <TableHeaderColumn>Delete</TableHeaderColumn>
+                        {/*<TableHeaderColumn>Modify</TableHeaderColumn> */}
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
@@ -148,15 +147,12 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.fname}</TableRowColumn>
                                 <TableRowColumn>{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
+                                
                                 <TableRowColumn>
                                     <LinkButton label={val.id_user} url={"/view-user/" + val.id_user} />
-                                </TableRowColumn>
-                                <TableRowColumn>
                                     { /* <Button label="M" title="Modify user" primary={true} /> */}
-                                    <LinkButton url={"/modify-user/" + val.id_user} label="M" />
-                                </TableRowColumn>
-                                <TableRowColumn>
-                                    {<Button label="X" title="Modify user" primary={true} onClick={() => { this.deleteUserById(val.id_user, index); }} />}
+                                   {/* <LinkButton url={"/modify-user/" + val.id_user} label="M" /> */}
+                                    {<Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteUserById(val.id_user, index); }} />}
                                     {/* <LinkButton url={"/delete-user/" + val.id_user} label="X" /> */}
                                 </TableRowColumn>
 
