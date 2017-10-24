@@ -152,6 +152,8 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
 
 }
 
+
+
 function DBmodifyDevice(device_object, device_id_parameter) {
     console.log("Trying to modify device id : " + device_id_parameter + "  at database");
 

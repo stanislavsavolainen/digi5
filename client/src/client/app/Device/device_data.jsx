@@ -52,7 +52,7 @@ let device_data_object = [
         title: "device information",
         rows: [
             [
-                 { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
+             //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
                 { fieldName: "Name", type: "string", db_name: "name", modify : false },
                 { fieldName: "Type", type: "number", db_name: "type" , modify : false},
             ],

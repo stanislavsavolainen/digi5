@@ -133,7 +133,7 @@ function initRoute() {
         console.log("Payload content : " + JSON.stringify(request.payload) );
         console.log("Device id : " +request.payload.device_id);
 
-      // myknex.DBmodifyDevice( request.payload , request.payload.device_id);     
+       myknex.DBmodifyDevice( request.payload , request.payload.device_id);     
 
        // myknex.DBgetSingleDeviceProfile(request.payload.device_id).then(reply);
 

@@ -17,14 +17,17 @@ export default class ModifyDevice extends React.Component {
         super(props);
         this.state = {
             device_id: props.match.params.deviceId,
-            show_devices: make_device_data_structure(),
-            device_profile: [],
+            
+            device_profile: {},
         }
     }
 
 
-    FieldListener(block_key, row_key, field_key, data, type) {
-        this.state.show_devices[block_key].rows[row_key][field_key].value = data;
+    FieldListener(block_key, row_key, field_key, data, type, fieldDBName) {
+      
+        this.state.device_profile[fieldDBName] = data;
+
+        this.setState(this.state);
 
         console.log("Data lenght :" + data.length)
 
@@ -32,56 +35,7 @@ export default class ModifyDevice extends React.Component {
 
 
 
-    renderProfileLayout() {
-
-        return (
-            <div>
-                {this.state.show_devices.map((block, block_key) =>
-                    <div style={{ margin: "30px" }}>
-                        <Card>
-                            <CardHeader title={block.title} />
-                            <CardActions>
-                                {
-                                    block.rows.map((row, row_key) =>
-                                        <div>{
-                                            row.map((field, field_key) =>
-
-                                                <div> {
-
-
-                                                    field.modify == false ? <Button label="Modify field" primary={true} onClick={() => { field.modify = true; this.setState(this.state) }} />
-                                                        :
-                                                        <Button label="Cancel" primary={true} onClick={() => { field.modify = false; this.setState(this.state) }} />
-
-                                                }
-                                                    {
-
-                                                        this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty"
-
-                                                    } {
-
-                                                        field.modify == true ? <TextField /> : ""
-
-                                                    }  </div>,
-
-                                                {/* <Button
-                                        label={field.fieldName}
-                                        onChange={(event) => console.log("")} /> */},
-
-                                            )}</div>)
-                                }
-
-                            </CardActions>
-                        </Card>
-
-                    </div>
-                )}
-            </div>
-        );
-
-    }
-
-
+  
     renderProfileLayout2() {
 
         return (
@@ -90,7 +44,7 @@ export default class ModifyDevice extends React.Component {
                 {
                     //remember map return content !
                     //lambda one line = return
-                    this.state.device_profile.length == 0 ? <div /> : this.state.show_devices.map((block, block_key) =>
+                    this.state.device_profile.length == 0 ? <div /> : make_device_data_structure().map((block, block_key) =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>
@@ -100,9 +54,9 @@ export default class ModifyDevice extends React.Component {
                                             {row.map((field, field_key) =>
 
                                                 <TextField hintText={field.fieldName}
-                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)}
-                                                    // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>      
-                                                    value={this.state.device_profile[0][field.db_name]}
+                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
+                                                    // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>
+                                                    value={this.state.device_profile[field.db_name]}
                                                 />
                                             )
 
@@ -151,7 +105,7 @@ export default class ModifyDevice extends React.Component {
                 //  this.handleResponse(response);
                 console.log("User profile data :" + JSON.stringify(response));
 
-                this.state.device_profile = response;
+                this.state.device_profile = response[0];
                 this.setState(this.state)
 
             })
@@ -167,15 +121,10 @@ export default class ModifyDevice extends React.Component {
     UpdateDeviceDataAtDB() {
 
            console.log("Add device to database");
-        console.log("Field data : " + JSON.stringify(this.state.show_devices));
+        console.log("Field data : " + JSON.stringify(this.state.device_profile));
 
-        let post_body = {
-            device_data: this.state.show_devices
-                .reduce((result, block) => result.concat(block.rows), [])
-                .reduce((result, row) => result.concat(result, row))
-                .filter((field) => field.value != undefined && field.db_name != undefined)
-                .reduce((result, field) => Object.assign(result, { [field.db_name]: field.value }), {})
-        };
+        let post_body = this.state.device_profile;
+        
 
 
         //post body
