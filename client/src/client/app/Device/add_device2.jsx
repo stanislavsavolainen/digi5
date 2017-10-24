@@ -10,13 +10,18 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my
 //import LinkButton from './../LinkButton.jsx';
 import Button from 'material-ui/RaisedButton';
 
+import DatePicker from 'material-ui/DatePicker';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+
 
 export default class AddDevice extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            show_devices: make_device_data_structure()
+            show_devices: make_device_data_structure(),
+            value : 2,
         }
 
     }
@@ -117,12 +122,34 @@ export default class AddDevice extends React.Component {
 
     }
 
+    //this function is for DropDownMenu component test
+   // handleChange = (event, index, value) => this.setState({value});
+    handleChange(event, index, value){
+       // this.setState({value})
+       this.state.value = value;
+        this.setState(this.state);
+    }
 
     render() {
         return (
             <div>
                 {this.drawDeviceAddingLayout()}
                 <Button label="Add device" primary={true} onClick={() => this.addDeviceToDB()} />
+                <br /><br />
+                <div>
+                    <DatePicker hintText="Portrait Dialog" />
+                    <DatePicker hintText="Landscape Dialog" mode="landscape" />
+                    <DatePicker hintText="Dialog Disabled" disabled={true} />
+                    <DatePicker hintText="Open to Year" openToYearSelection={true} />
+                </div>
+                <br /><br />
+                <DropDownMenu value={this.state.value} onChange={(e,i,v) => this.handleChange(e,i,v) } openImmediately={true} style={ { backgroundColor: 'silver', color: 'blue' }} >
+                    <MenuItem value={1} primaryText="Never" />
+                    <MenuItem value={2} primaryText="Every Night" />
+                    <MenuItem value={3} primaryText="Weeknights" />
+                    <MenuItem value={4} primaryText="Weekends" />
+                    <MenuItem value={5} primaryText="Weekly" />
+                </DropDownMenu>
             </div>);
     }
 

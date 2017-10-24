@@ -19,7 +19,8 @@ var pathArray = [
     '/delete_user',
     '/delete_device',
     '/device_profile',
-    '/modify_device'
+    '/modify_device',
+    '/modify_user'
 
 ];
 
@@ -139,6 +140,19 @@ function initRoute() {
 
         reply(JSON.stringify("OK"));
     } 
+
+
+    //modifyUser
+    route[9].handler = function (request, reply) {
+
+        console.log("Modify user");
+
+        reply(JSON.stringify("OK"));
+    }
+
+
+
+
 
 
 
