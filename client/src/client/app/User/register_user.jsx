@@ -168,7 +168,7 @@ export default class RegisterUser extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                  field.type === "date" ?  <DatePicker hintText={field.fieldName} />   :  
+                                  field.type === "date" ?  <DatePicker  hintText={field.fieldName} onChange={ ( e, date ) => this.FieldListener(block_key, row_key, field_key, date.toISOString().slice(0,10), field.type) } />   :  
 
                                     <TextField
                                         hintText={field.fieldName}

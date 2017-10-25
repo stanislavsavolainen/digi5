@@ -40,8 +40,8 @@ function make_user_data_structure() {
                 { fieldName: "Team", type: "string", db_name: "team" }
             ],
             [
-                { fieldName: "Work start", type: "date" },
-                { fieldName: "Work end", type: "date" },
+                { fieldName: "Work start", type: "date" , db_name : "work_start" },
+                { fieldName: "Work end", type: "date", db_name : "work_end"  },
             ]]
         },
         {
