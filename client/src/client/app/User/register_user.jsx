@@ -8,6 +8,8 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
 import { ButtonStyle, make_user_data_structure, user_data_structure, TextStyle, advanced_field_name } from './theme_styles.jsx';
+import DatePicker from 'material-ui/DatePicker';
+
 
 export default class RegisterUser extends React.Component {
 
@@ -165,9 +167,14 @@ export default class RegisterUser extends React.Component {
                         {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
+
+                                  field.type === "date" ?  <DatePicker hintText={field.fieldName} />   :  
+
                                     <TextField
                                         hintText={field.fieldName}
-                                        onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}</div>)
+                                        onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />
+                                          
+                                        )}</div>)
 
                             // if( field.type === "number")
                         }

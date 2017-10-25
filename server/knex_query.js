@@ -87,6 +87,22 @@ function DBdeleteUser(user_id) {
 }
 
 
+function DBmodifyUser(user_object, user_id_parameter) {
+
+      console.log("Trying to modify user id : " + user_id_parameter + "  at database");
+
+    knex('users2').update(user_object).where({ id_user: user_id_parameter }).then(
+        () => { console.log("User data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
+
+
+
+}
+
+
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
@@ -121,6 +137,8 @@ function DBaddNewDevice(device_data) {
         })
 
 }
+
+
 
 function DBdeleteDevice(device_index) {
 
@@ -199,7 +217,8 @@ module.exports = {
     DBdeleteUser,
     DBdeleteDevice,
     DBgetSingleDeviceProfile,
-    DBmodifyDevice
+    DBmodifyDevice,
+    DBmodifyUser
 }
 
 

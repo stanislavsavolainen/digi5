@@ -53,14 +53,16 @@ function initRoute() {
         //get return from knex function
         // reply("View all users");
         //reply(db_users);
-
-        console.log(" >>>> View all users <<<<<<<< ");
+          printLine();
+       printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
 
         myknex.DBreadAllUsers().then(reply);
 
     }
 
     route[1].handler = function (request, reply) {
+          printLine();
+          printLogText1("Register new user");
         var registered_user = myknex.DBregisterNewUser(request.payload.user_data);
         //reply("Register new user");
         reply(registered_user);
@@ -71,13 +73,15 @@ function initRoute() {
         var profile_index = request.payload.user_id;
         // var db_user_profile =  myknex.DBgetSingleUserProfile(profile_index);
         //reply("Selected user profile");
+         printLine();
         myknex.DBgetSingleUserProfile(profile_index).then(reply);
     }
 
     //addDevice functionality
     route[3].handler = function (request, reply) {
         //insert *into device 1 ???????;
-        console.log("Welcome to add device endpoint !");
+         printLine();
+      printLogText1("Welcome to add device endpoint"); //console.log("Welcome to add device endpoint !");
 
         // let dev_data = request.payload.device_data;
 
@@ -87,8 +91,8 @@ function initRoute() {
     }
 
     route[4].handler = function (request, reply) {
-
-        console.log("View all devices");
+         printLine();
+          printLogText1("View all devices"); // console.log("View all devices");
 
         // reply(JSON.stringify("OK"));
         myknex.DBreadAllDevices().then(reply);
@@ -97,8 +101,8 @@ function initRoute() {
     
     //deleteUser
     route[5].handler = function (request, reply) {
-
-        console.log("Delete user");
+          printLine();
+     printLogText1("Delete user"); // console.log("Delete user");
 
         myknex.DBdeleteUser(request.payload.user_id);
 
@@ -108,7 +112,8 @@ function initRoute() {
     //deleteDevice
     route[6].handler = function (request, reply) {
 
-        console.log("Delete device");
+         printLine();
+      printLogText1("Delete device"); // console.log("Delete device");
 
         myknex.DBdeleteDevice(request.payload.device_id);
 
@@ -119,7 +124,8 @@ function initRoute() {
     //deviceProfile
      route[7].handler = function (request, reply) {
 
-        console.log("Device profile");
+          printLine();
+        printLogText1("Device profile");//console.log("Device profile");
 
         myknex.DBgetSingleDeviceProfile(request.payload.device_id).then(reply);
 
@@ -129,7 +135,8 @@ function initRoute() {
     //modifyDevice
      route[8].handler = function (request, reply) {
 
-        console.log("Modify device");
+         printLine(); 
+        printLogText1("Modify device"); // console.log("Modify device");
 
         console.log("Payload content : " + JSON.stringify(request.payload) );
         console.log("Device id : " +request.payload.device_id);
@@ -145,7 +152,14 @@ function initRoute() {
     //modifyUser
     route[9].handler = function (request, reply) {
 
-        console.log("Modify user");
+        printLine();
+       
+        printLogText1( "Modify user" );//console.log("Modify user");
+
+        console.log("Payload content : " + JSON.stringify(request.payload) );
+        console.log("User id : " +request.payload.id_user);
+
+        myknex.DBmodifyUser( request.payload , request.payload.id_user);  
 
         reply(JSON.stringify("OK"));
     }
@@ -158,6 +172,16 @@ function initRoute() {
 
 
     return route;
+}
+
+
+function printLine(){
+ console.log('\x1b[5m"\x1b[33m%s\x1b[0m',"==============================================================");
+//console.log("\x1b[5m", "_________________________________________________________");
+}
+
+function printLogText1( string ){
+    console.log('\x1b[42m%s\x1b[0m', ""+ string);
 }
 
 
