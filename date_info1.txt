@@ -1,0 +1,8 @@
+date.toISOString().slice(0,10)
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
