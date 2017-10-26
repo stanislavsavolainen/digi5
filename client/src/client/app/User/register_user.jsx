@@ -139,10 +139,23 @@ export default class RegisterUser extends React.Component {
 
     // *****************************************************************
 
-    FieldListener(block_key, row_key, field_key, data, type) {
+    FieldListener(block_key, row_key, field_key, data) {
+        console.log(data);
         this.state.user_data[block_key].rows[row_key][field_key].value = data;
+/*
+        console.log("Data lenght :" + data.length);
 
-        console.log("Data lenght :" + data.length)
+        if(type == "date"){
+            data.setHours(9);
+            console.log(" Date field -> " + data);
+            console.log(" Date field -> " + data.toISOString());
+            
+
+            let date_data = data.split("-");
+            console.log("Modified date "+date_data[2] + "/"+date_data[1] + "/" +date_data[0]);
+
+        }
+*/
 
     }
 
@@ -150,7 +163,10 @@ export default class RegisterUser extends React.Component {
         this.state.advanced_fields[index] = data;
     }
 
-
+    ConvertDate(date) {
+        date.setHours(9)
+        return date.toISOString().substring(0, 10);
+    }
 
     render() {
 
@@ -168,7 +184,7 @@ export default class RegisterUser extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                  field.type === "date" ?  <DatePicker  hintText={field.fieldName} onChange={ ( e, date ) => this.FieldListener(block_key, row_key, field_key, date.toISOString().slice(0,10), field.type) } />   :  
+                                  field.type === "date" ?  <DatePicker style={{display: "inline-block"}} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={ ( e, date ) => this.FieldListener(block_key, row_key, field_key, this.ConvertDate(date), field.type) } />   :  
 
                                     <TextField
                                         hintText={field.fieldName}
