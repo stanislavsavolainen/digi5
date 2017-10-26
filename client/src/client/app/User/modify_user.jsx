@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
+import DatePicker from 'material-ui/DatePicker';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
@@ -16,12 +17,11 @@ export default class ModifyUser extends React.Component {
         super(props);
         this.state = {
             user_id: props.match.params.userId,
-            user_profile: {},
+            user_profile: null,
         }
     }
 
-
-    FieldListener(block_key, row_key, field_key, data, type, fieldDBName) {
+    FieldListener(data, fieldDBName) {
         this.state.user_profile[fieldDBName] = data;
         this.setState(this.state);
     }
@@ -65,7 +65,7 @@ export default class ModifyUser extends React.Component {
     }
 
 
-     readUserProfileFromDB() {
+    readUserProfileFromDB() {
 
         //post body
         let postData = {
@@ -108,8 +108,20 @@ export default class ModifyUser extends React.Component {
 
 
 
-       componentWillMount() {
+    componentWillMount() {
         this.readUserProfileFromDB();
+    }
+
+    pickField(field, field_key) {
+        return field.type === "date"
+            ? <DatePicker style={{ display: "inline-block" }}
+                value={new Date(this.state.user_profile[field.db_name])}
+                formatDate={new Intl.DateTimeFormat('en-GB').format}
+                locale={'en-GB'} hintText={field.fieldName}
+                onChange={(e, date) => this.FieldListener(date, field.db_name)} />
+            : <TextField hintText={field.fieldName}
+                onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
+                value={this.state.user_profile[field.db_name]} />
     }
 
     renderUserProfile() {
@@ -120,23 +132,14 @@ export default class ModifyUser extends React.Component {
                 {
                     //remember map return content !
                     //lambda one line = return
-                    this.state.user_profile.length == 0 ? <div /> : make_user_data_structure().map((block, block_key) =>
+                    this.state.user_profile == null ? <div /> : make_user_data_structure().map((block, block_key) =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>
                                 {
                                     block.rows.map((row, row_key) =>
                                         <div>
-                                            {row.map((field, field_key) =>
-
-                                                <TextField hintText={field.fieldName}
-                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
-                                                    value={this.state.user_profile[field.db_name]}
-                                                />
-                                            )
-
-                                            }
-
+                                            {row.map((field, field_key) => this.pickField(field, field_key))}
                                         </div>)
                                 }
                             </CardActions>
@@ -160,7 +163,7 @@ export default class ModifyUser extends React.Component {
 
     render() {
         return (<div> <h1>  Modify user {this.state.user_id} </h1>
-       {this.renderUserProfile()}
+            {this.renderUserProfile()}
         </div>);
     }
 

@@ -8,7 +8,8 @@ const knex = require('knex')({
         host: '127.0.0.1',
         user: 'root',
         password: '123456',
-        database: 'dbtest1'
+        database: 'dbtest1',
+        timezone: '+00:00'
     },
     debug: true
     //connection: process.env.PG_CONNECTION_STRING
