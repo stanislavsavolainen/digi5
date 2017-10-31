@@ -177,7 +177,7 @@ export default class ModifyUser extends React.Component {
                 onChange={(e, date) => this.FieldListener(date, field.db_name)} />
             : <TextField hintText={field.fieldName}
                 onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
-                value={this.state.user_profile[field.db_name]} />
+                value={this.state.user_profile[field.db_name]} style={{ margin: 12 }} />
     }
 
     renderUserProfile() {

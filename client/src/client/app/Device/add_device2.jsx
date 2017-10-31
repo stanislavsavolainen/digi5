@@ -111,7 +111,7 @@ export default class AddDevice extends React.Component {
                                     block.rows.map((row, row_key) =>
                                         <div>
                                             {row.map((field, field_key) =>
-                                                <TextField hintText={field.fieldName}
+                                                <TextField hintText={field.fieldName} style={{ margin: 12 }}
                                                     onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
                                         </div>)
                                 }

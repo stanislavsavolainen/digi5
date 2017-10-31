@@ -56,7 +56,7 @@ export default class ModifyDevice extends React.Component {
                                                 <TextField hintText={field.fieldName}
                                                     onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
                                                     // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>
-                                                    value={this.state.device_profile[field.db_name]}
+                                                    value={this.state.device_profile[field.db_name]} style={{ margin: 12 }}
                                                 />
                                             )
 
