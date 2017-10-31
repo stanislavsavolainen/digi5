@@ -68,7 +68,8 @@ export default class ModifyDevice extends React.Component {
                         </Card>)
                         
                 }
-                <Button label="Update device" primary = {true} onClick={ () => this.UpdateDeviceDataAtDB() } />
+                <Button label="Update device" style={{ margin: 12 }} primary = {true} onClick={ () => this.UpdateDeviceDataAtDB() } />
+                 <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} />    
             </div>);
 
     }
@@ -153,6 +154,54 @@ export default class ModifyDevice extends React.Component {
             })
 
     }
+
+
+     deleteDeviceById(deleted_device_id, array_index) {
+
+        console.log("Delete device id : " + deleted_device_id + " and array index " + array_index);
+
+        //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ device_id: deleted_device_id }),
+        };
+
+        //fetch
+        let host = "http://127.0.0.1:5659";
+        // let link = "/read_from_database4"; //read profile data
+        let link = "/delete_device";
+
+        fetch(host + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+
+               // this.state.devices.splice(array_index, 1);
+                this.setState(this.state);
+
+                 this.props.history.push("/view-devices");
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+    }
+
+
+
+
+
 
 
     componentWillMount() {

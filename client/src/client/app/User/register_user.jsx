@@ -179,7 +179,7 @@ export default class RegisterUser extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                  field.type === "date" ?  <DatePicker style={{display: "inline-block"}} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={ ( e, date ) => this.FieldListener(block_key, row_key, field_key, date, field.type) } />   :  
+                                  field.type === "date" ?  <DatePicker style={{display: "inline-block"}} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={ ( e, date ) => this.FieldListener(block_key, row_key, field_key, date, field.type) } okLabel="Yeah" cancelLabel="Nvm" />   :  
 
                                     <TextField
                                         hintText={field.fieldName}

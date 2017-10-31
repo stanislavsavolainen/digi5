@@ -102,43 +102,49 @@ export default class ViewDevices extends React.Component {
     }
 
 
-    deviceTableLayout() {
+    deviceTableLayout_old() {
 
         //Added button modify and delete (not done)
 
         return (
             <div>
-                <Table>
-                    <TableHeader displaySelectAll={false}>
+                <Table style={{ tableLayout: 'auto' }}  fixedHeader={false} >
+                    <TableHeader displaySelectAll={false}  >
                         <TableRow>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device owner</TableHeaderColumn>
                             <TableHeaderColumn>Profiles</TableHeaderColumn>
-                            <TableHeaderColumn>Modify</TableHeaderColumn>
+                           { /* <TableHeaderColumn>Modify</TableHeaderColumn>
                             <TableHeaderColumn>Remove</TableHeaderColumn>
-
+                           
+                            <TableHeaderColumn>...</TableHeaderColumn>
+                            <TableHeaderColumn>Remove</TableHeaderColumn>
+                            */}
                         </TableRow>
                     </TableHeader>
+
                     <TableBody displayRowCheckbox={false}>
                         {
                             this.state.devices.map((val, index) =>
                                 <TableRow>
+                                     <TableRowColumn ></TableRowColumn>
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.owner_id}</TableRowColumn>
                                     <TableRowColumn>
                                         { /* <Button label="Profile" primary={true} /> */}
-                                        <LinkButton label={val.device_id} url={"/device-profile/" + val.device_id} />
+                                        <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
+                                    
                                     <TableRowColumn>
                                         { /* <Button label="M" title="modify device" primary={true} />  */}
-                                        <LinkButton label="M" url={"/modify-device/" + val.device_id} />
+                                        { /* <LinkButton label="M" url={"/modify-device/" + val.device_id} /> */ }
                                     </TableRowColumn>
                                     <TableRowColumn>
                                         {/* <Button label="X" title="delete device" primary={true} /> */}
-                                        {<Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteDeviceById(val.device_id, index); }} />}
+                                        {/*  <Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteDeviceById(val.device_id, index); }} /> */}
                                         { /* <LinkButton label="X" url={"/delete-device/" + val.device_id} /> */}
                                     </TableRowColumn>
-
+                                            
                                 </TableRow>
                             )
                         }
@@ -151,13 +157,54 @@ export default class ViewDevices extends React.Component {
     }
 
 
+    deviceTableLayout(){
+
+        return (
+            <div>
+                <Table>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>Device name</TableHeaderColumn>
+                            <TableHeaderColumn>Device owner</TableHeaderColumn>
+                            <TableHeaderColumn>Profiles</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+
+                    <TableBody displayRowCheckbox={false}>
+                        {
+                            this.state.devices.map((val, index) =>
+                                <TableRow>
+                                     
+                                    <TableRowColumn>{val.name}</TableRowColumn>
+                                    <TableRowColumn>{val.owner_id}</TableRowColumn>
+                                    <TableRowColumn>
+                                        <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
+                                    </TableRowColumn>
+                                                      
+                                </TableRow>
+                            )
+                        }
+                    </TableBody>
+                </Table>
+            </div>
+        );
+
+
+    }
+
+
+
+
     render() {
         return (
             <div>
-                Show all devices :
-            <br /> Device name : <font color="green"> {device_data_model.name} </font>
-                <br /> Device serial number : <font color="green"> {device_data_model.serial_number} </font>
-                <br /><br />
+             {   
+            // <div>
+            //     Show all devices :
+            // <br /> Device name : <font color="green"> {device_data_model.name} </font>
+            //     <br /> Device serial number : <font color="green"> {device_data_model.serial_number} </font>
+            //     <br /><br />
+             }
                 {this.deviceTableLayout()}
             </div>);
     }

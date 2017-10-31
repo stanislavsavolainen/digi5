@@ -69,7 +69,6 @@ class App extends React.Component {
                 <Route path="/delete-user/:userId" component={DeleteUser} />
                 <Route path="/device-profile/:deviceId" component={DeviceProfile} />
                 <Route path="/delete-device/:deviceId" component={DeleteDevice} />
-
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )

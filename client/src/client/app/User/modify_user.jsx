@@ -107,6 +107,62 @@ export default class ModifyUser extends React.Component {
     }
 
 
+    deleteUserById(deleted_user_id, array_index) {
+
+        //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: deleted_user_id }),
+        };
+
+        //fetch
+        let host = "http://127.0.0.1:5659";
+        // let link = "/read_from_database4"; //read profile data
+        let link = "/delete_user";
+
+
+
+        fetch(host + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+
+                //  this.handleResponse(response);
+                // console.log("User profile data :" + JSON.stringify(response));
+
+                //  this.state.profile_user = response;
+                //    this.setState(this.state)
+                //this.state.users.splice( this.state.users[deleted_user_id]  , 1);
+               
+                // this.state.users.splice(deleted_user_id, 1);
+               //this.state.users.splice(array_index, 1);
+                this.props.history.push("/view-all");
+
+                //delete this.state.users[deleted_user_id];
+                this.setState(this.state);
+                // this.forceUpdate();
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+
+        //this.setState(this.state);
+    }
+
+
+
 
     componentWillMount() {
         this.readUserProfileFromDB();
@@ -146,7 +202,9 @@ export default class ModifyUser extends React.Component {
                         </Card>)
 
                 }
-                <Button label="Update user" primary={true} onClick={() => this.UpdateUserDataAtDB()} />
+                <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateUserDataAtDB()} />
+                <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.deleteUserById(this.state.user_id, 0); }} />
+                 
             </div>);
 
     }

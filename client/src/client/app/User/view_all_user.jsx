@@ -19,10 +19,10 @@ export default class ViewAllUsers extends React.Component {
         super(props);
         this.state = {
             // screen: 'A'
-            result: "",
-            p_fname: [],
-            p_lname: [],
-            p_states: [],
+          //  result: "",
+          //  p_fname: [],
+          //  p_lname: [],
+          //  p_states: [],
             users: []
         }
     }
@@ -131,8 +131,8 @@ export default class ViewAllUsers extends React.Component {
             {/*drawContent*/}
             <br /><br />
             <Table>
-                <TableHeader displaySelectAll={false}>
-                    <TableRow>
+                <TableHeader adjustForCheckbox={false} displaySelectAll={false} >
+                    <TableRow >
                         <TableHeaderColumn>First name</TableHeaderColumn>
                         <TableHeaderColumn>Last name</TableHeaderColumn>
                         <TableHeaderColumn>Status</TableHeaderColumn>
@@ -144,16 +144,12 @@ export default class ViewAllUsers extends React.Component {
                     {
                         this.state.users.map((val, index) =>
                             <TableRow>
-                                <TableRowColumn>{val.fname}</TableRowColumn>
-                                <TableRowColumn>{val.lname}</TableRowColumn>
+                                <TableRowColumn >{val.fname}</TableRowColumn>
+                                <TableRowColumn >{val.lname}</TableRowColumn>
                                 <TableRowColumn>{val.status}</TableRowColumn>
                                 
                                 <TableRowColumn>
-                                    <LinkButton label={val.id_user} url={"/view-user/" + val.id_user} />
-                                    { /* <Button label="M" title="Modify user" primary={true} /> */}
-                                   {/* <LinkButton url={"/modify-user/" + val.id_user} label="M" /> */}
-                                    {<Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteUserById(val.id_user, index); }} />}
-                                    {/* <LinkButton url={"/delete-user/" + val.id_user} label="X" /> */}
+                                    <LinkButton label={val.id_user} url={"/modify-user/" + val.id_user} />
                                 </TableRowColumn>
 
                             </TableRow>
