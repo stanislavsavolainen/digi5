@@ -161,9 +161,6 @@ export default class ModifyUser extends React.Component {
         //this.setState(this.state);
     }
 
-
-
-
     componentWillMount() {
         this.readUserProfileFromDB();
     }
@@ -204,11 +201,21 @@ export default class ModifyUser extends React.Component {
                 }
                 <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateUserDataAtDB()} />
                 <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.deleteUserById(this.state.user_id, 0); }} />
-                 
+                <Button label="Dialog"  style={{ margin: 12 }} primary={true} /> 
             </div>);
 
     }
 
+    areYouSure(){
+
+        return(<div> 
+            Do you want delete/update this data ? 
+            <Button label="NO"  primary={true} style={{ margin: 12 }} />  
+            <Button label="YES"  primary={true} style={{ margin: 12 }}  />
+            
+            </div>);
+
+    }
 
 
 
@@ -222,6 +229,8 @@ export default class ModifyUser extends React.Component {
     render() {
         return (<div> <h1>  Modify user {this.state.user_id} </h1>
             {this.renderUserProfile()}
+            <br /><br />
+            {this.areYouSure()}
         </div>);
     }
 

@@ -9,7 +9,11 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
+import { renderAreYouSure } from './../are_you_sure.jsx'
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
+
+import Dialog from 'material-ui/Dialog';
+
 
 export default class ModifyDevice extends React.Component {
 
@@ -17,26 +21,37 @@ export default class ModifyDevice extends React.Component {
         super(props);
         this.state = {
             device_id: props.match.params.deviceId,
-            
+
             device_profile: {},
+
+            open: true,
         }
     }
 
 
     FieldListener(block_key, row_key, field_key, data, type, fieldDBName) {
-      
         this.state.device_profile[fieldDBName] = data;
-
         this.setState(this.state);
-
         console.log("Data lenght :" + data.length)
-
     }
 
-
-
-  
     renderProfileLayout2() {
+
+
+          const actions = [
+      <Button
+        label="Cancel"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <Button
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+      />,
+    ];
+
 
         return (
             <div>
@@ -66,16 +81,26 @@ export default class ModifyDevice extends React.Component {
                                 }
                             </CardActions>
                         </Card>)
-                        
+
                 }
-                <Button label="Update device" style={{ margin: 12 }} primary = {true} onClick={ () => this.UpdateDeviceDataAtDB() } />
-                 <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} />    
+                <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateDeviceDataAtDB()} />
+                <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} />
+                <Button label="Dialog" style={{ margin: 12 }} primary={true} onClick={() =>   this.setState({ open: true }) } />
+
+                <Dialog
+                    title="Dialog With Actions"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                >
+                    The actions in this window were passed in as an array of React objects.
+        </Dialog>
+
+
             </div>);
 
     }
-
-
-
 
     readDeviceProfileFromDB() {
 
@@ -121,12 +146,10 @@ export default class ModifyDevice extends React.Component {
 
     UpdateDeviceDataAtDB() {
 
-           console.log("Add device to database");
+        console.log("Add device to database");
         console.log("Field data : " + JSON.stringify(this.state.device_profile));
 
         let post_body = this.state.device_profile;
-        
-
 
         //post body
         let postData = {
@@ -156,7 +179,7 @@ export default class ModifyDevice extends React.Component {
     }
 
 
-     deleteDeviceById(deleted_device_id, array_index) {
+    deleteDeviceById(deleted_device_id, array_index) {
 
         console.log("Delete device id : " + deleted_device_id + " and array index " + array_index);
 
@@ -184,10 +207,10 @@ export default class ModifyDevice extends React.Component {
             .then((response) => {
                 console.log("Fetch response happen !");
 
-               // this.state.devices.splice(array_index, 1);
+                // this.state.devices.splice(array_index, 1);
                 this.setState(this.state);
 
-                 this.props.history.push("/view-devices");
+                this.props.history.push("/view-devices");
 
             })
             .catch(function (error_msg) {
@@ -200,13 +223,42 @@ export default class ModifyDevice extends React.Component {
 
 
 
-
-
-
-
     componentWillMount() {
         this.readDeviceProfileFromDB();
     }
+
+
+    /*
+      handleOpen()  {
+
+        this.state.open = true;
+
+        this.setState(this.state);
+
+    //this.setState({open: true});
+  };
+
+  handleClose () {
+
+    this.state.open = false;
+
+    this.setState(this.state);
+
+   // this.setState({open: false});
+  };
+
+  */
+
+  //  a = 3;
+
+  
+    handleOpen = () => {
+       this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
 
     render() {
@@ -214,6 +266,10 @@ export default class ModifyDevice extends React.Component {
             <h1>  Modify device {this.state.device_id}  </h1>
             <br />< br />
             {this.renderProfileLayout2()}
+            <br /><br />
+            { /* this.areYouSure() */
+                renderAreYouSure("Ok")
+            }
 
         </div>);
     }
