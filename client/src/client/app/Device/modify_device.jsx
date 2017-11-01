@@ -38,19 +38,28 @@ export default class ModifyDevice extends React.Component {
     renderProfileLayout2() {
 
 
-          const actions = [
-      <Button
-        label="Cancel"
-        primary={true}
-        onClick={this.handleClose}
-      />,
-      <Button
-        label="Submit"
-        primary={true}
-        keyboardFocused={true}
-        onClick={this.handleClose}
-      />,
-    ];
+        const actions = [
+            <Button
+                label="Cancel4324"
+                primary={true}
+                onClick={this.handleClose}
+            />,
+            <Button
+                label="Submit23423"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.handleClose}
+            />,
+        ];
+
+
+        //---------------------------------------------
+
+        const modify_user = [];
+
+        const delete_user = [];
+
+        //---------------------------------------------
 
 
         return (
@@ -85,16 +94,18 @@ export default class ModifyDevice extends React.Component {
                 }
                 <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateDeviceDataAtDB()} />
                 <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} />
-                <Button label="Dialog" style={{ margin: 12 }} primary={true} onClick={() =>   this.setState({ open: true }) } />
+                <Button label="Dialog" style={{ margin: 12 }} primary={true} onClick={() => this.setState({ open: true })} />
 
                 <Dialog
-                    title="Dialog With Actions"
+                    title="Dialog title text here"
                     actions={actions}
                     modal={false}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
                 >
-                    The actions in this window were passed in as an array of React objects.
+                  <font color="red"><h1>  Do you want to delete/update this data ? </h1></font>
+       
+                    <TextField placeHolder="write text here" /><Button label = "1" />
         </Dialog>
 
 
@@ -249,11 +260,11 @@ export default class ModifyDevice extends React.Component {
 
   */
 
-  //  a = 3;
+    //  a = 3;
 
-  
+
     handleOpen = () => {
-       this.setState({ open: true });
+        this.setState({ open: true });
     };
 
     handleClose = () => {
