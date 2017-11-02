@@ -6,6 +6,7 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import DatePicker from 'material-ui/DatePicker';
+import Dialog from 'material-ui/Dialog';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
@@ -18,6 +19,8 @@ export default class ModifyUser extends React.Component {
         this.state = {
             user_id: props.match.params.userId,
             user_profile: null,
+            open: false,
+            dialog_command: ""
         }
     }
 
@@ -107,7 +110,7 @@ export default class ModifyUser extends React.Component {
     }
 
 
-    deleteUserById(deleted_user_id, array_index) {
+    deleteUserById() {
 
         //post body
         let postData = {
@@ -116,7 +119,7 @@ export default class ModifyUser extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user_id: deleted_user_id }),
+            body: JSON.stringify({ user_id: this.state.user_id }),
         };
 
         //fetch
@@ -141,9 +144,9 @@ export default class ModifyUser extends React.Component {
                 //  this.state.profile_user = response;
                 //    this.setState(this.state)
                 //this.state.users.splice( this.state.users[deleted_user_id]  , 1);
-               
+
                 // this.state.users.splice(deleted_user_id, 1);
-               //this.state.users.splice(array_index, 1);
+                //this.state.users.splice(array_index, 1);
                 this.props.history.push("/view-all");
 
                 //delete this.state.users[deleted_user_id];
@@ -199,24 +202,64 @@ export default class ModifyUser extends React.Component {
                         </Card>)
 
                 }
-                <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateUserDataAtDB()} />
-                <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.deleteUserById(this.state.user_id, 0); }} />
-                <Button label="Dialog"  style={{ margin: 12 }} primary={true} /> 
+                {/* <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateUserDataAtDB()} /> */}
+                <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "update_user"; this.setState({ open: true }) }} />
+                {/*  <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.deleteUserById(); }} /> */}
+                <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.state.dialog_command = "delete_user"; this.setState({ open: true }) }} />
+                {this.renderDialog(this.state.dialog_command)}
+
             </div>);
 
     }
 
-    areYouSure(){
 
-        return(<div> 
-            Do you want delete/update this data ? 
-            <Button label="NO"  primary={true} style={{ margin: 12 }} />  
-            <Button label="YES"  primary={true} style={{ margin: 12 }}  />
-            
+    renderDialog(dialog_action) {
+
+        let dialog_title = "";
+        let dialog_button;
+        let dialog_content = "";
+
+        // ---- dialog open -> state -> update state or -> delete state
+        // ---- dialog close -> state -> update state or -> delete state
+
+        //update
+        if (dialog_action === "update_user") {
+            dialog_title = "Confirm user update";
+            dialog_button = (<div><Button label="Cancel" primary={true} onClick={this.handleClose} /><Button label="Update" onClick={() => this.UpdateUserDataAtDB()} /></div>);
+            dialog_content = "Are you sure that you want to update this user ?";
+        }
+
+        //delete
+        else if (dialog_action === "delete_user") {
+            dialog_title = "Confirm deleting user";
+            dialog_button = (<div><Button label="Cancel" primary={true} onClick={this.handleClose} /><Button label="Delete" onClick={() => this.deleteUserById()} /></div>);
+            dialog_content = "Are you sure that you want to delete this user ?";
+        }
+
+
+        return (
+            <div>
+                <Dialog title={dialog_title}
+                    modal={true}
+                    actions={dialog_button}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                >
+                    {dialog_content}
+                </Dialog>
             </div>);
+
 
     }
 
+
+      handleOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
 
     //http://knexjs.org/
@@ -230,7 +273,6 @@ export default class ModifyUser extends React.Component {
         return (<div> <h1>  Modify user {this.state.user_id} </h1>
             {this.renderUserProfile()}
             <br /><br />
-            {this.areYouSure()}
         </div>);
     }
 
