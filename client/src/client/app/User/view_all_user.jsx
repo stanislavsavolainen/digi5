@@ -127,6 +127,8 @@ export default class ViewAllUsers extends React.Component {
         //Added button modify and delete (not done)
 
         return (<div >
+            <LinkButton url="/add-user" label="Add user" /> 
+            <br /><br />
             <h1> View All users : </h1>
             {/*drawContent*/}
             <br /><br />
@@ -135,7 +137,8 @@ export default class ViewAllUsers extends React.Component {
                     <TableRow >
                         <TableHeaderColumn>First name</TableHeaderColumn>
                         <TableHeaderColumn>Last name</TableHeaderColumn>
-                        <TableHeaderColumn>Status</TableHeaderColumn>
+                        <TableHeaderColumn>Title</TableHeaderColumn>
+                        <TableHeaderColumn>Team</TableHeaderColumn>
                         <TableHeaderColumn>Profile</TableHeaderColumn>
                         {/*<TableHeaderColumn>Modify</TableHeaderColumn> */}
                     </TableRow>
@@ -146,7 +149,8 @@ export default class ViewAllUsers extends React.Component {
                             <TableRow>
                                 <TableRowColumn >{val.fname}</TableRowColumn>
                                 <TableRowColumn >{val.lname}</TableRowColumn>
-                                <TableRowColumn>{val.status}</TableRowColumn>
+                                 <TableRowColumn >{val.title}</TableRowColumn>
+                                <TableRowColumn>{val.team}</TableRowColumn>
                                 
                                 <TableRowColumn>
                                     <LinkButton label={val.id_user} url={"/modify-user/" + val.id_user} />
@@ -157,6 +161,7 @@ export default class ViewAllUsers extends React.Component {
                     }
                 </TableBody>
             </Table>
+
         </div>);
     }
 

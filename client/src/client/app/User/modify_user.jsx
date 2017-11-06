@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import DatePicker from 'material-ui/DatePicker';
 import Dialog from 'material-ui/Dialog';
+import Checkbox from 'material-ui/Checkbox';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
@@ -175,9 +176,16 @@ export default class ModifyUser extends React.Component {
                 formatDate={new Intl.DateTimeFormat('en-GB').format}
                 locale={'en-GB'} hintText={field.fieldName}
                 onChange={(e, date) => this.FieldListener(date, field.db_name)} />
-            : <TextField hintText={field.fieldName}
-                onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
-                value={this.state.user_profile[field.db_name]} style={{ margin: 12 }} />
+            : field.type === "checkbox" ?
+                <Checkbox
+                    label={field.fieldName}
+                    checked={this.state.user_profile[field.db_name]}
+                      onCheck={ (event ,  isInputChecked ) => this.FieldListener(isInputChecked, field.db_name)} 
+                />
+                :
+                <TextField hintText={field.fieldName}
+                    onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
+                    value={this.state.user_profile[field.db_name]} style={{ margin: 12 }} />
     }
 
     renderUserProfile() {
@@ -253,7 +261,7 @@ export default class ModifyUser extends React.Component {
     }
 
 
-      handleOpen = () => {
+    handleOpen = () => {
         this.setState({ open: true });
     };
 

@@ -18,10 +18,10 @@ var route = [
         myknex.DBreadAllUsers().then(reply);
     }),
 
-    makeRoute('/register_user', function (request, reply) {
+    makeRoute('/add_user', function (request, reply) {
         printLine();
-        printLogText1("Register new user");
-        var registered_user = myknex.DBregisterNewUser(request.payload.user_data);
+        printLogText1("Add new user");
+        var registered_user = myknex.DBAddNewUser(request.payload.user_data);
         //reply("Register new user");
         reply(registered_user);
     }),
@@ -102,7 +102,38 @@ var route = [
 
         reply(JSON.stringify("OK"))
     }),
+
+    makeRoute('/view_license', function (request, reply) {
+
+         printLine();
+
+        printLogText1("View license");//console.log("View license");
+
+        myknex.DBreadAllLicenses().then(reply);
+
+        //reply(JSON.stringify("OK"))
+
+    } ),
+
+     makeRoute('/add_license', function (request, reply) {
+
+         printLine();
+
+        printLogText1("Add license");//console.log("View license");
+        reply(JSON.stringify("OK"))
+    } ),
+
+     makeRoute('/modify_license', function (request, reply) {
+
+         printLine();
+
+        printLogText1("Modify license");//console.log("Modify license");
+        reply(JSON.stringify("OK"))
+    } ),
+
+   
     
+
 ];
 
 

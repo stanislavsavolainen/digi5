@@ -47,9 +47,9 @@ function make_user_data_structure() {
         {
             title: "Permission / Administrative rights",
             rows: [
-                [{ fieldName: "Lukoton", type: "number", db_name : "lukoton"}],
-                [{ fieldName: "Keys", type: "number" , db_name  : "keys"}],
-                [{ fieldName: "Active", type: "number", db_name : "active" }]],
+                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton"}],
+                [{ fieldName: "Keys", type: "checkbox" , db_name  : "keys"}],
+                [{ fieldName: "Active", type: "checkbox", db_name : "active" }]],
         }
     ]
 }

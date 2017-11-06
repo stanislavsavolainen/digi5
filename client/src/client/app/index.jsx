@@ -12,8 +12,8 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
-
-import RegisterUser from './User/register_user.jsx';
+ 
+import AddUser from './User/add_user.jsx';
 import ViewAllUsers from './User/view_all_user.jsx';
 import UserProfile from './User/user_profile.jsx';
 import ViewDevices from './Device/view_devices.jsx';
@@ -58,7 +58,7 @@ class App extends React.Component {
             <div>
                 <Route path="/view-all" component={ViewAllUsers} />
                 <Route path="/view-user/:userId" component={UserProfile} />
-                <Route path="/register-user" component={RegisterUser} />
+                <Route path="/add-user" component={AddUser} />
                 <Route path="/view-devices" component={ViewDevices} />
                 <Route path="/add-device" component={AddDevice} />
                 <Route path="/view-license" component={ViewLicense} />
@@ -84,12 +84,13 @@ class App extends React.Component {
                             <AppBar title="User maintenance system" showMenuIconButton={false} />
                             <LinkButton url="/view-all" label="Users" />
                             { /* <LinkButton url="/view-user" label="View user" />  */}
-                            <LinkButton url="/register-user" label="Register user" />
-                            <LinkButton url="/view-devices" label="View devices" />
-                            <LinkButton url="/add-device" label="Add devices" />
-                            <LinkButton url="/view-license" label="View license" />
-                            <LinkButton url="/add-license" label="Add license" />
+                            { /* <LinkButton url="/register-user" label="Add user" />  */ }
+                            <LinkButton url="/view-devices" label="Devices" />
+                            {/*<LinkButton url="/add-device" label="Add devices" /> */}
+                            <LinkButton url="/view-license" label="License" />
+                           {/* <LinkButton url="/add-license" label="Add license" /> */}
                             <LinkButton url="/view-logs" label="Logs" />
+                            <Button label="Using guide / About" />
                             {this.drawScreen()}
                         </div>
                     </div>

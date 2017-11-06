@@ -38,7 +38,7 @@ function DBreadAllUsers() {
 
 }
 
-function DBregisterNewUser(payload_data) {
+function DBAddNewUser(payload_data) {
     console.log("INSERT INTO users (data, data , data) values(? ? ? )");
 
     // knex('users2').insert(request.payload.user_data).then(() => {
@@ -188,6 +188,37 @@ function DBmodifyDevice(device_object, device_id_parameter) {
 
 // =================== LICENSE DATABASE HANDLER ==================
 
+function DBreadAllLicenses(){
+
+     return (
+
+        knex("license").select().then(function (database_result) {
+            //return JSON.stringify(database_result)
+            return JSON.stringify(database_result);
+        })
+
+    );
+
+
+}
+
+function DBaddLicense( license_object  ){
+
+
+}
+
+
+function DBgetSingleLicense( license_id  ){
+
+
+}
+
+function DBmodifyLicense(license_object , license_id){
+
+}
+
+
+
 
 //-------------- export knex functions ---------------------------
 /*
@@ -211,7 +242,7 @@ export {
 module.exports = {
     DBinitKnex,
     DBreadAllUsers,
-    DBregisterNewUser,
+    DBAddNewUser,
     DBgetSingleUserProfile,
     DBreadAllDevices,
     DBaddNewDevice,
@@ -219,7 +250,8 @@ module.exports = {
     DBdeleteDevice,
     DBgetSingleDeviceProfile,
     DBmodifyDevice,
-    DBmodifyUser
+    DBmodifyUser,
+    DBreadAllLicenses
 }
 
 

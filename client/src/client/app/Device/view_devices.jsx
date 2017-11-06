@@ -111,7 +111,7 @@ export default class ViewDevices extends React.Component {
                 <Table style={{ tableLayout: 'auto' }}  fixedHeader={false} >
                     <TableHeader displaySelectAll={false}  >
                         <TableRow>
-                            <TableHeaderColumn>Device name</TableHeaderColumn>
+                            <TableHeaderColumn>Device name 3434</TableHeaderColumn>
                             <TableHeaderColumn>Device owner</TableHeaderColumn>
                             <TableHeaderColumn>Profiles</TableHeaderColumn>
                            { /* <TableHeaderColumn>Modify</TableHeaderColumn>
@@ -160,12 +160,16 @@ export default class ViewDevices extends React.Component {
     deviceTableLayout(){
 
         return (
+
             <div>
+                <LinkButton url="/add-device" label="Add devices" />
+                <br/>
+
                 <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
-                            <TableHeaderColumn>Device owner</TableHeaderColumn>
+                            <TableHeaderColumn>Device type</TableHeaderColumn>
                             <TableHeaderColumn>Profiles</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
@@ -176,7 +180,7 @@ export default class ViewDevices extends React.Component {
                                 <TableRow>
                                      
                                     <TableRowColumn>{val.name}</TableRowColumn>
-                                    <TableRowColumn>{val.owner_id}</TableRowColumn>
+                                    <TableRowColumn>{val.type}</TableRowColumn>
                                     <TableRowColumn>
                                         <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
