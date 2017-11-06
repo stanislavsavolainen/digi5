@@ -29,6 +29,7 @@ import ModifyUser from './User/modify_user.jsx';
 import DeleteUser from './User/delete_user.jsx';
 import DeviceProfile from './Device/device_profile.jsx';
 import DeleteDevice from './Device/delete_device.jsx'
+import ModifyLicense from './License/modify_license.jsx';
 
 
 const muiTheme = getMuiTheme({
@@ -69,6 +70,7 @@ class App extends React.Component {
                 <Route path="/delete-user/:userId" component={DeleteUser} />
                 <Route path="/device-profile/:deviceId" component={DeviceProfile} />
                 <Route path="/delete-device/:deviceId" component={DeleteDevice} />
+                <Route path="/modify-license/:licenseId" component={ModifyLicense} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )

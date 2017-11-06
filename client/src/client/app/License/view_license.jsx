@@ -126,7 +126,7 @@ export default class ViewLicense extends React.Component {
                                     <TableRowColumn>{val.name}</TableRowColumn>
 
                                     <TableRowColumn>
-                                        123
+                                        123 <LinkButton label={val.license_id} url={"/modify-license/" + val.license_id} />
                                     </TableRowColumn>
 
                                 </TableRow>
