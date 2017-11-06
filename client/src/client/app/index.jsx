@@ -92,7 +92,7 @@ class App extends React.Component {
                             <LinkButton url="/view-license" label="License" />
                            {/* <LinkButton url="/add-license" label="Add license" /> */}
                             <LinkButton url="/view-logs" label="Logs" />
-                            <Button label="Using guide / About" />
+                            <Button label="Using guide / About" style={{ margin: 12 }} primary={true} />
                             {this.drawScreen()}
                         </div>
                     </div>

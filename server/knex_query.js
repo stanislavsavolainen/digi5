@@ -211,6 +211,18 @@ function DBaddLicense( license_object  ){
 function DBgetSingleLicense( license_id  ){
 
 
+    return (
+        //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
+        knex("license").where({ license_id: license_id }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
+
+
 }
 
 function DBmodifyLicense(license_object , license_id){
@@ -251,7 +263,8 @@ module.exports = {
     DBgetSingleDeviceProfile,
     DBmodifyDevice,
     DBmodifyUser,
-    DBreadAllLicenses
+    DBreadAllLicenses,
+    DBgetSingleLicense
 }
 
 

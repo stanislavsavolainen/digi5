@@ -132,6 +132,16 @@ var route = [
     } ),
 
    
+
+     makeRoute('/view_selected_license', function (request, reply) {
+
+         printLine();
+
+        printLogText1("View selected license");//console.log("Modify license");
+       // reply(JSON.stringify("OK"))
+        myknex.DBgetSingleLicense(request.payload.license_id).then(reply);
+
+    } ),
     
 
 ];
