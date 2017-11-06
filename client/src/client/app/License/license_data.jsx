@@ -32,6 +32,7 @@ let license_data_object = [
             ],
             [
                 { fieldName: "User", type: "string", db_name: "user", modify : false },
+              
                 { fieldName: "License activation (pass)", type: "string", db_name: "pass", modify : false },
                 { fieldName: "About", type: "string", db_name: "comments", modify : false },
             ],

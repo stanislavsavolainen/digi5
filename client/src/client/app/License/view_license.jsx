@@ -29,7 +29,7 @@ export default class ViewLicense extends React.Component {
     }
 
 
-    readLicenseFromDatabase(){
+    readLicenseFromDatabase() {
 
         //post body
         let postData = {
@@ -51,9 +51,9 @@ export default class ViewLicense extends React.Component {
                 return resp.json();
             })
             .then((db_license) => {
-              
-               this.state.license = db_license;
-               this.state.setState(this.state);
+
+                this.state.license = db_license;
+                this.setState(this.state);
 
             })
             .catch(function (error_msg) {
@@ -73,10 +73,39 @@ export default class ViewLicense extends React.Component {
 
     }
 
+    /*
+        render() {
+            return (
+    
+                <div>
+                    <LinkButton url="/add-license" label="Add license" />
+                    <br /> View list of all license
+    
+                      <Table>
+                        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                            <TableRow >
+                                <TableHeaderColumn>License name</TableHeaderColumn>
+    
+                                <TableHeaderColumn>Profile</TableHeaderColumn>
+    
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody displayRowCheckbox={false}>
+                            <TableRow>
+                                <TableHeaderColumn> Office </TableHeaderColumn>
+                                <TableHeaderColumn> <Button label="profile" /> </TableHeaderColumn>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+    
+    
+                </div>);
+        }
+    
+        */
 
     render() {
         return (
-
             <div>
                 <LinkButton url="/add-license" label="Add license" />
                 <br /> View list of all license
@@ -91,16 +120,25 @@ export default class ViewLicense extends React.Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
-                        <TableRow>
-                            <TableHeaderColumn> Office </TableHeaderColumn>
-                            <TableHeaderColumn> <Button label="profile" /> </TableHeaderColumn>
-                        </TableRow>
+                        {
+                            this.state.license.map((val, index) =>
+                                <TableRow>
+                                    <TableRowColumn>{val.name}</TableRowColumn>
+
+                                    <TableRowColumn>
+                                        123
+                                    </TableRowColumn>
+
+                                </TableRow>
+                            )
+                        }
                     </TableBody>
                 </Table>
 
-
-            </div>);
+            </div>
+        );
     }
+
 
 }
 
