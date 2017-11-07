@@ -30,7 +30,7 @@ import DeleteUser from './User/delete_user.jsx';
 import DeviceProfile from './Device/device_profile.jsx';
 import DeleteDevice from './Device/delete_device.jsx'
 import ModifyLicense from './License/modify_license.jsx';
-
+import About from './About.jsx';
 
 const muiTheme = getMuiTheme({
     //  card: {
@@ -71,6 +71,7 @@ class App extends React.Component {
                 <Route path="/device-profile/:deviceId" component={DeviceProfile} />
                 <Route path="/delete-device/:deviceId" component={DeleteDevice} />
                 <Route path="/modify-license/:licenseId" component={ModifyLicense} />
+                <Route path="/about" component={About} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )
@@ -92,7 +93,8 @@ class App extends React.Component {
                             <LinkButton url="/view-license" label="License" />
                            {/* <LinkButton url="/add-license" label="Add license" /> */}
                             <LinkButton url="/view-logs" label="Logs" />
-                            <Button label="Using guide / About" style={{ margin: 12 }} primary={true} />
+                            { /*<Button label="Using guide / About" style={{ margin: 12 }} primary={true} /> */}
+                             <LinkButton url="/about" label="About" />
                             {this.drawScreen()}
                         </div>
                     </div>

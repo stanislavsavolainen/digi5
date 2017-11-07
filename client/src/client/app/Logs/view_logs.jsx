@@ -63,6 +63,7 @@ export default class ViewLogs extends React.Component {
             // '/register_user',
             // '/user_profile',
             <div>
+                
                 <Button
                     label="view_all_users"
                     style={{ backgroundColor: 'yellow', color: 'blue' }}

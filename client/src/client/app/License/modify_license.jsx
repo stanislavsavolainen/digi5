@@ -70,6 +70,17 @@ export default class ModifyLicense extends React.Component {
     }
 
 
+
+    pickField(field, field_key){
+
+        return( 
+        <TextField 
+            hintText={ field.fieldName  } 
+            value={this.state.license_profile[field.db_name]}
+            />);
+    }
+
+
     licenseModificationLayout(){
 
         return (
@@ -77,16 +88,14 @@ export default class ModifyLicense extends React.Component {
                        {
                     //remember map return content !
                     //lambda one line = return
-                    this.state.license_profile  != null ? <div /> : make_license_data_structure().map((block, block_key) =>
+                    this.state.license_profile  == null ? <div /> : make_license_data_structure().map((block, block_key) =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>
                                 {
                                     block.rows.map((row, row_key) =>
                                         <div>
-                                            {/*row.map((field, field_key) => this.pickField(field, field_key))*/}
-                                            <Button label="12345" />
-                                            123456
+                                            {row.map((field, field_key) => this.pickField(field, field_key))}
                                         </div>)
                                 }
                             </CardActions>
@@ -104,7 +113,7 @@ export default class ModifyLicense extends React.Component {
     }
 
 
-    render(){ return <div> License modification pageeee <br /> { this.licenseModificationLayout() } </div> }
+    render(){ return <div> License modification page <br /> { this.licenseModificationLayout() } </div> }
 
 
 }
