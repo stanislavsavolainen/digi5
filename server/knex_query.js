@@ -35,7 +35,6 @@ function DBreadAllUsers() {
 
     );
 
-
 }
 
 function DBAddNewUser(payload_data) {
@@ -199,11 +198,19 @@ function DBreadAllLicenses(){
 
     );
 
-
 }
 
 function DBaddLicense( license_object  ){
 
+     knex('license').insert(license_object).then(() => {
+        console.log("Inserted license")
+        // reply("Insert succesful")
+        return ("Insert succesful");
+    })
+        .catch((e) => {
+            console.log(e)
+            return ("Failed");
+        })
 
 }
 
@@ -225,7 +232,26 @@ function DBgetSingleLicense( license_id  ){
 
 }
 
-function DBmodifyLicense(license_object , license_id){
+function DBmodifyLicense(license_object , license_index){
+
+     knex('license').update(license_object).where({ license_id: license_index }).then(
+        () => { console.log("License data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
+
+
+}
+
+
+function DBdeleteLicense( license_index ){
+
+     knex('license').del().where({ license_id: license_index })
+        .then(() => {
+            console.log("License id :" + license_index + "successfyly deleted from database");
+        })
+        .catch((e) => { console.log("Problem to delete user error : " + e); });
 
 }
 
@@ -264,7 +290,10 @@ module.exports = {
     DBmodifyDevice,
     DBmodifyUser,
     DBreadAllLicenses,
-    DBgetSingleLicense
+    DBgetSingleLicense,
+    DBmodifyLicense,
+    DBdeleteLicense,
+    DBaddLicense
 }
 
 

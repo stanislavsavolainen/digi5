@@ -25,7 +25,7 @@ export default class ModifyDevice extends React.Component {
             device_profile: {},
 
             open: false,
-            dialog_command : ""
+            dialog_command: ""
         }
     }
 
@@ -102,19 +102,19 @@ export default class ModifyDevice extends React.Component {
                         </Card>)
 
                 }
-               
+
                 {/* <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateDeviceDataAtDB()} /> */}
-               <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command="update_device"; this.setState({ open: true })   }} /> 
- 
-               { /* <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} /> */}
-               <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command="delete_device"; this.setState({ open: true })   }} /> 
+                <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "update_device"; this.setState({ open: true }) }} />
 
-              
+                { /* <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} /> */}
+                <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "delete_device"; this.setState({ open: true }) }} />
 
-              {  this.renderDialog(this.state.dialog_command) }
 
-                
-            
+
+                {this.renderDialog(this.state.dialog_command)}
+
+
+
             </div>);
 
     }
@@ -198,7 +198,7 @@ export default class ModifyDevice extends React.Component {
 
     deleteDeviceById() {
 
-        console.log("Delete device id : " + this.state.device_id );
+        console.log("Delete device id : " + this.state.device_id);
 
         //post body
         let postData = {
@@ -239,7 +239,7 @@ export default class ModifyDevice extends React.Component {
     }
 
 
-    
+
     renderDialog(dialog_action) {
 
         let dialog_title = "";
@@ -248,7 +248,7 @@ export default class ModifyDevice extends React.Component {
 
         // ---- dialog open -> state -> update state or -> delete state
         // ---- dialog close -> state -> update state or -> delete state
-      
+
         //update
         if (dialog_action === "update_device") {
             dialog_title = "Confirm device update";
@@ -259,26 +259,25 @@ export default class ModifyDevice extends React.Component {
         //delete
         else if (dialog_action === "delete_device") {
             dialog_title = "Confirm deleting device";
-            dialog_button = (<div><Button label="Cancel" primary={true}  onClick={this.handleClose}  /><Button label="Delete" onClick={() => this.deleteDeviceById() } /></div>);
+            dialog_button = (<div><Button label="Cancel" primary={true} onClick={this.handleClose} /><Button label="Delete" onClick={() => this.deleteDeviceById()} /></div>);
             dialog_content = "Are you sure that you want to delete device";
         }
 
-        
+
         return (
             <div>
                 <Dialog title={dialog_title}
                     modal={true}
                     actions={dialog_button}
                     open={this.state.open}
-                   onRequestClose={this.handleClose}
+                    onRequestClose={this.handleClose}
                 >
                     {dialog_content}
                 </Dialog>
             </div>);
 
-        
-        }
-        
+
+    }
 
     componentWillMount() {
         this.readDeviceProfileFromDB();

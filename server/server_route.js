@@ -142,6 +142,20 @@ var route = [
         myknex.DBgetSingleLicense(request.payload.license_id).then(reply);
 
     } ),
+
+     makeRoute('/delete_license', function (request, reply) {
+
+         printLine();
+
+        printLogText1("delete license");//console.log("Modify license");
+       reply(JSON.stringify("OK"))
+       // myknex.DBgetSingleLicense(request.payload.license_id).then(reply);
+
+    } ),
+
+    
+
+
     
 
 ];
