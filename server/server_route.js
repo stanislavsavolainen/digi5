@@ -118,14 +118,22 @@ var route = [
      makeRoute('/add_license', function (request, reply) {
 
          printLine();
+        console.log("License data >>>>>>>>> " + JSON.stringify(request.payload.license_data) );
+        // myknex.DBaddNewDevice(request.payload.device_data)
+         myknex.DBaddLicense(request.payload.license_data);
 
         printLogText1("Add license");//console.log("View license");
+
+
+
         reply(JSON.stringify("OK"))
     } ),
 
      makeRoute('/modify_license', function (request, reply) {
 
          printLine();
+
+          myknex.DBmodifyLicense(request.payload, request.payload.license_id);
 
         printLogText1("Modify license");//console.log("Modify license");
         reply(JSON.stringify("OK"))
@@ -146,6 +154,8 @@ var route = [
      makeRoute('/delete_license', function (request, reply) {
 
          printLine();
+
+         myknex.DBdeleteLicense(request.payload.license_id);
 
         printLogText1("delete license");//console.log("Modify license");
        reply(JSON.stringify("OK"))

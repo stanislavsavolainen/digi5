@@ -3,6 +3,7 @@
 // ======== load hapi-library to handle http ==============================
 const Hapi = require('hapi');
 
+/*
 //========= load knex-library and config it for special database ==========
 const knex = require('knex')({
     client: 'mysql',
@@ -17,6 +18,7 @@ const knex = require('knex')({
 }, (e) => {
     console.log(e);
 });
+*/
 
 //import {  route, initRoute } from './server_route.js';
 //const { initRoute } = require('./server_route.js');

@@ -217,12 +217,20 @@ export default class ModifyLicense extends React.Component {
     };
 
 
+    FieldListener( data , fieldDBName ) {
+        console.log(data);
+       // this.state.license_profile[block_key].rows[row_key][field_key].value = data;
+         this.state.license_profile[fieldDBName] = data; 
+       this.setState(this.state);
+    }
+
     pickField(field, field_key) {
 
         return (
             <TextField
                 hintText={field.fieldName}
-                value={this.state.license_profile[field.db_name]}
+                value={this.state.license_profile[field.db_name]} 
+                onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
             />);
     }
 

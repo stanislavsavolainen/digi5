@@ -132,7 +132,7 @@ export default class ViewAllUsers extends React.Component {
             <h1> View All users : </h1>
             {/*drawContent*/}
             <br /><br />
-            <Table>
+            <Table >
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false} >
                     <TableRow >
                         <TableHeaderColumn>First name</TableHeaderColumn>
@@ -146,7 +146,7 @@ export default class ViewAllUsers extends React.Component {
                 <TableBody displayRowCheckbox={false}>
                     {
                         this.state.users.map((val, index) =>
-                            <TableRow>
+                            <TableRow >
                                 <TableRowColumn >{val.fname}</TableRowColumn>
                                 <TableRowColumn >{val.lname}</TableRowColumn>
                                  <TableRowColumn >{val.title}</TableRowColumn>

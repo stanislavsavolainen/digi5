@@ -20,6 +20,14 @@ let license_model = {
     name : "MS office 2010"
 }
 
+// | license_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+// | device_id    | int(11)      | YES  |     | NULL    |                |
+// | license_code | varchar(45)  | YES  |     | NULL    |                |
+// | user         | varchar(45)  | YES  |     | NULL    |                |
+// | pass         | varchar(45)  | YES  |     | NULL    |                |
+// | name         | varchar(45)  | YES  |     | NULL    |                |
+// | comments     | varchar(100) | YES  |     | NULL    |                |
+
 
 let license_data_object = [
     {
@@ -27,6 +35,7 @@ let license_data_object = [
         rows: [
             [
              //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
+                { fieldName: "License name", type: "string", db_name: "name", modify : false }, 
                 { fieldName: "Device id", type: "number", db_name: "device_id", modify : false },
                 { fieldName: "License code", type: "string", db_name: "license_code" , modify : false},
             ],

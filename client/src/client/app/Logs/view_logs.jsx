@@ -62,8 +62,9 @@ export default class ViewLogs extends React.Component {
             // '/view_all_users',
             // '/register_user',
             // '/user_profile',
+            
             <div>
-                
+                {/*
                 <Button
                     label="view_all_users"
                     style={{ backgroundColor: 'yellow', color: 'blue' }}
@@ -79,8 +80,12 @@ export default class ViewLogs extends React.Component {
                     style={{ backgroundColor: 'yellow', color: 'blue' }}
                     onClick = { () => this.test3() }
                 />
-
+                */
+                }
+                <font> There is no log data at the moment ! </font>
+                
             </div>
+            
         );
     }
 
