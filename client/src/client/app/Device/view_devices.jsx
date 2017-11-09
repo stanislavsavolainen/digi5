@@ -9,6 +9,7 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import Button from 'material-ui/RaisedButton';
 
 import LinkButton from './../LinkButton.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 export default class ViewDevices extends React.Component {
 
@@ -42,7 +43,8 @@ export default class ViewDevices extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_all_devices";
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 return resp.json();
             })

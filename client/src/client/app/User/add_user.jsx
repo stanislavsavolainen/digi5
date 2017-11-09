@@ -7,7 +7,10 @@ import Button from 'material-ui/RaisedButton';
 //import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
-import { ButtonStyle, make_user_data_structure, user_data_structure, TextStyle, advanced_field_name } from './theme_styles.jsx';
+//import { ButtonStyle, make_user_data_structure, user_data_structure, TextStyle, advanced_field_name } from './theme_styles.jsx';
+import {  make_user_data_structure , make_user_data_structure2 } from './user_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
+
 import DatePicker from 'material-ui/DatePicker';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -17,7 +20,7 @@ export default class AddUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_data: make_user_data_structure()
+            user_data: make_user_data_structure2()
         }
     }
 
@@ -116,7 +119,8 @@ export default class AddUser extends React.Component {
         //let link = "/save_to_database2";
         let link = "/add_user";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+       fetch( server_host_for_client  + link, postData)
             .then(() => {
                 console.log("Fetch done")
 

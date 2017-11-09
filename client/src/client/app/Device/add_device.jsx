@@ -4,6 +4,8 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
+
 
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports

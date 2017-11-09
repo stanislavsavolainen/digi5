@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 
 import Button from 'material-ui/RaisedButton';
 
+import { server_host_for_client } from './../client_connection.jsx';
+
 export default class DeleteUser extends React.Component {
 
 
@@ -37,7 +39,8 @@ deleteUserFuncion(){
        // let link = "/read_from_database4"; //read profile data
         let link = "/delete_user";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+       fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json(); 

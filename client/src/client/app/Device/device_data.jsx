@@ -52,33 +52,34 @@ let device_data_object = [
         title: "device information",
         rows: [
             [
-             //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "Name", type: "string", db_name: "name", modify : false },
-                { fieldName: "Type", type: "number", db_name: "type" , modify : false},
+                //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
+                { fieldName: "Name", type: "string", db_name: "name", modify: false },
+                { fieldName: "Type", type: "number", db_name: "type", modify: false },
             ],
             [
-                { fieldName: "Serial number", type: "string", db_name: "serial_number", modify : false },
-                { fieldName: "Warranty", type: "string", db_name: "warranty", modify : false },
-                 { fieldName: "About", type: "string", db_name: "about_device", modify : false },
+                { fieldName: "Serial number", type: "string", db_name: "serial_number", modify: false },
+                { fieldName: "Warranty", type: "string", db_name: "warranty", modify: false },
+                { fieldName: "About", type: "string", db_name: "about_device", modify: false },
             ],
-           
+
         ],
     },
     {
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id", modify : false },
-                { fieldName: "Owner group", type: "string", db_name: "owner_group", modify : false },
+                { fieldName: "Owner", type: "number", db_name: "owner_id", modify: false },
+                { fieldName: "Owner group", type: "string", db_name: "owner_group", modify: false },
             ],
             [
-                { fieldName: "Current user id", type: "number", db_name: "current_user_id", modify : false },
-                { fieldName: "Previous user id", type: "number", db_name: "last_user_id", modify : false },
+                { fieldName: "Current user id", type: "number", db_name: "current_user_id", modify: false },
+                { fieldName: "Previous user id", type: "number", db_name: "last_user_id", modify: false },
             ],
         ]
     }
 
 ]
+
 
 function make_device_data_structure() {
     return device_data_object;
@@ -87,5 +88,83 @@ function make_device_data_structure() {
 
 
 
+// warranty_text  	x	varchar(45)
+// warranty_start		datetime,
+// warranty_expire 	datetime,
+// shop			varchar(45)
 
-export { device_data_model, make_device_data_structure }
+
+// user 			varchar(45)
+// pass 			varchar(45)
+
+
+
+
+
+// last_availabe_data	datetime,
+// LastAvailable		datetime	
+
+
+
+let device_data_object2 = [
+    {
+        title: "device information",
+        rows: [
+            [
+                //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
+                { fieldName: "Reference X", type: "string", db_name: "name" },
+                { fieldName: "Type X", type: "number", db_name: "type" },
+            ],
+            [
+                { fieldName: "Model ?", type: "string" },
+                { fieldName: "Serial number X", type: "string", db_name: "serial_number" },
+                { fieldName: "About X", type: "string", db_name: "about_device", modify: false },
+            ],
+            [
+                { fieldName: "IP address ?", type: "string" },
+            ]
+
+        ],
+    },
+    {
+        title: "user permission",
+        rows: [
+            [
+                { fieldName: "Owner X", type: "number", db_name: "owner_id", modify: false },
+                { fieldName: "Owner group X", type: "string", db_name: "owner_group", modify: false },
+            ],
+            [
+                { fieldName: "Current user id X", type: "number", db_name: "current_user_id", modify: false },
+                { fieldName: "Previous user id X", type: "number", db_name: "last_user_id", modify: false },
+            ],
+            [
+                { fieldName: "Last available date ?", type: "date" },
+                { fieldName: "Last used date ?", type: "date" },
+            ]
+        ]
+    },
+    {
+        title: "Warranty info and device come from",
+        rows: [
+            [
+                { fieldName: "Warranty_text X", type: "string", db_name: "warranty" },
+                { fieldName: "Shop ?", type: "string" },
+            ],
+            [
+                { fieldName: "Warranty start ?", type: "number" },
+                { fieldName: "Warranty exprire ?", type: "number" },
+            ],
+        ]
+    }
+
+]
+
+
+function make_device_data_structure2() {
+    return device_data_object2;
+}
+
+
+
+
+export { device_data_model, make_device_data_structure, make_device_data_structure2 }

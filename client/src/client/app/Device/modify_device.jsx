@@ -9,8 +9,8 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
-import { renderAreYouSure } from './../are_you_sure.jsx'
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 import Dialog from 'material-ui/Dialog';
 
@@ -136,7 +136,9 @@ export default class ModifyDevice extends React.Component {
         // let link = "/read_from_database4"; //read profile data
         let link = "/device_profile";
 
-        fetch(host + link, postData)
+        //fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
+
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
@@ -215,7 +217,8 @@ export default class ModifyDevice extends React.Component {
         // let link = "/read_from_database4"; //read profile data
         let link = "/delete_device";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+       fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();

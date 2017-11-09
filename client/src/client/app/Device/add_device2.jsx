@@ -2,7 +2,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { device_data_model, make_device_data_structure } from './device_data.jsx';
+import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
@@ -20,7 +21,7 @@ export default class AddDevice extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show_devices: make_device_data_structure(),
+            show_devices: make_device_data_structure2(),
             value : 2,
         }
 
@@ -74,7 +75,9 @@ export default class AddDevice extends React.Component {
         let host = "http://127.0.0.1:5659";
         let link = "/add_device";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+      fetch(server_host_for_client  + link, postData)
+       // server_host_for_client 
             .then(() => {
                 console.log("Fetch done");
                 this.props.history.push("/view-devices");

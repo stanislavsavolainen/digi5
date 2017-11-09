@@ -9,6 +9,7 @@ import Dialog from 'material-ui/Dialog';
 
 //my component
 import { license_model, make_license_data_structure } from './license_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 export default class ModifyLicense extends React.Component {
 
@@ -47,7 +48,8 @@ export default class ModifyLicense extends React.Component {
         // let link = "/read_from_database4"; //read profile data
         let link = "/view_selected_license";
 
-        fetch(host + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
@@ -79,7 +81,7 @@ export default class ModifyLicense extends React.Component {
 
         console.log("Update license !");
 
-        
+
         let post_body = this.state.license_profile;
 
         //post body
@@ -98,16 +100,17 @@ export default class ModifyLicense extends React.Component {
         let host = "http://127.0.0.1:5659";
         let link = "/modify_license";
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then(() => {
                 console.log("Fetch done");
-               this.props.history.push("/view-license");
+                this.props.history.push("/view-license");
             })
             .catch(function (error_msg) {
                 console.log("Fetch error : " + error_msg);
             })
-            
-    
+
+
     }
 
 
@@ -115,7 +118,7 @@ export default class ModifyLicense extends React.Component {
         //
         console.log("Delete license");
 
-         //post body
+        //post body
         let postData = {
             method: 'POST',
             headers: {
@@ -130,7 +133,8 @@ export default class ModifyLicense extends React.Component {
         // let link = "/read_from_database4"; //read profile data
         let link = "/delete_license";
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
@@ -217,11 +221,11 @@ export default class ModifyLicense extends React.Component {
     };
 
 
-    FieldListener( data , fieldDBName ) {
+    FieldListener(data, fieldDBName) {
         console.log(data);
-       // this.state.license_profile[block_key].rows[row_key][field_key].value = data;
-         this.state.license_profile[fieldDBName] = data; 
-       this.setState(this.state);
+        // this.state.license_profile[block_key].rows[row_key][field_key].value = data;
+        this.state.license_profile[fieldDBName] = data;
+        this.setState(this.state);
     }
 
     pickField(field, field_key) {
@@ -229,7 +233,7 @@ export default class ModifyLicense extends React.Component {
         return (
             <TextField
                 hintText={field.fieldName}
-                value={this.state.license_profile[field.db_name]} 
+                value={this.state.license_profile[field.db_name]}
                 onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
             />);
     }
@@ -257,8 +261,8 @@ export default class ModifyLicense extends React.Component {
                 }
 
 
-                <Button label="Update license" primary={true} style={{ margin: 12 }} onClick={ () => { this.setState({ dialog_command: "update_license", open : true })  } } />
-                <Button label="Delete license" primary={true} style={{ margin: 12 }} onClick={ () => { this.setState({ dialog_command: "delete_license", open : true }) } } />
+                <Button label="Update license" primary={true} style={{ margin: 12 }} onClick={() => { this.setState({ dialog_command: "update_license", open: true }) }} />
+                <Button label="Delete license" primary={true} style={{ margin: 12 }} onClick={() => { this.setState({ dialog_command: "delete_license", open: true }) }} />
 
                 {this.renderDialog(this.state.dialog_command)}
 

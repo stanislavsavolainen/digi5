@@ -8,8 +8,9 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import { license_model, make_license_data_structure } from './license_data.jsx';
 import Button from 'material-ui/RaisedButton';
 
-
+//my component
 import LinkButton from './../LinkButton.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 
 
@@ -46,7 +47,8 @@ export default class ViewLicense extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_license";
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 return resp.json();
             })

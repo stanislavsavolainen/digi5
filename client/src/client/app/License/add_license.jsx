@@ -8,6 +8,7 @@ import TextField from 'material-ui/TextField';
 
 //my components
 import { license_model, make_license_data_structure } from './license_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 
 export default class AddLicense extends React.Component {
@@ -59,7 +60,8 @@ export default class AddLicense extends React.Component {
         //let link = "/save_to_database2";
         let link = "/add_license";
 
-        fetch(host + link, postData)
+     //   fetch(host + link, postData)
+      fetch( server_host_for_client  + link, postData)
             .then(() => {
                 console.log("Fetch done")
 

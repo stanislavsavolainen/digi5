@@ -7,7 +7,8 @@ import Button from 'material-ui/FlatButton';
 //import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 
-import { ButtonStyle, user_data_structure, field_name } from './theme_styles.jsx';
+//import { ButtonStyle, user_data_structure, field_name } from './theme_styles.jsx';
+import { ButtonStyle, user_data_structure, field_name } from './user_data.jsx';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
@@ -50,7 +51,8 @@ export default class ViewAllUsers extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_all_users";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+       fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 return resp.json();
             })
@@ -86,7 +88,8 @@ export default class ViewAllUsers extends React.Component {
 
 
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();

@@ -11,7 +11,9 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import LinkButton from './../LinkButton.jsx';
 
 
-import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './theme_styles.jsx';
+//import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './theme_styles.jsx';
+import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './user_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 export default class UserProfile extends React.Component {
 
@@ -45,7 +47,8 @@ export default class UserProfile extends React.Component {
        // let link = "/read_from_database4"; //read profile data
         let link = "/user_profile";
 
-        fetch(host + link, postData)
+      //  fetch(host + link, postData)
+       fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json(); 

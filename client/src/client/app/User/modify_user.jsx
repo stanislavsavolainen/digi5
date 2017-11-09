@@ -11,7 +11,8 @@ import Checkbox from 'material-ui/Checkbox';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
-import { make_user_data_structure } from './theme_styles.jsx';
+//import { make_user_data_structure } from './theme_styles.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 export default class ModifyUser extends React.Component {
 
@@ -86,7 +87,8 @@ export default class ModifyUser extends React.Component {
         // let link = "/read_from_database4"; //read profile data
         let link = "/user_profile";
 
-        fetch(host + link, postData)
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
