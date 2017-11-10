@@ -39,7 +39,6 @@ const muiTheme = getMuiTheme({
     //    titleColor: "red",
     //  },
         
-    
    //  textField: {textColor: 'blue', fontSize: '30px'},
 
 });
@@ -92,14 +91,9 @@ class App extends React.Component {
                         <div>
                             <AppBar title="User maintenance system" showMenuIconButton={false} />
                             <LinkButton url="/view-all" label="Users" />
-                            { /* <LinkButton url="/view-user" label="View user" />  */}
-                            { /* <LinkButton url="/register-user" label="Add user" />  */ }
                             <LinkButton url="/view-devices" label="Devices" />
-                            {/*<LinkButton url="/add-device" label="Add devices" /> */}
                             <LinkButton url="/view-license" label="License" />
-                           {/* <LinkButton url="/add-license" label="Add license" /> */}
                             <LinkButton url="/view-logs" label="Logs" />
-                            { /*<Button label="Using guide / About" style={{ margin: 12 }} primary={true} /> */}
                              <LinkButton url="/about" label="About" />
                             {this.drawScreen()}
                         </div>

@@ -48,18 +48,11 @@ deleteUserFuncion(){
             })
             .then((response) => {
                 console.log("Fetch response happen !");
-
-                //  this.handleResponse(response);
-               // console.log("User profile data :" + JSON.stringify(response));
-
-             //  this.state.profile_user = response;
-            //    this.setState(this.state)
-
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
                 console.log("Fetch error : " + error_msg);
-                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+               
             })
 
 

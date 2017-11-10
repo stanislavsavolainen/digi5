@@ -10,8 +10,6 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
 import LinkButton from './../LinkButton.jsx';
 
-
-//import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './theme_styles.jsx';
 import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
@@ -20,7 +18,6 @@ export default class UserProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // screen: 'A'
             user_data: make_user_data_structure(),
             profile_user: [],
             user_id: props.match.params.userId,
@@ -89,9 +86,6 @@ export default class UserProfile extends React.Component {
                                             this.state.profile_user.length > 0 ? field.fieldName + "  :  " + this.state.profile_user[0][field.db_name] : "empty"
                                         } </div>,
 
-                                        {/* <Button
-                                        label={field.fieldName}
-                                        onChange={(event) => console.log("")} /> */},
 
                                     )}</div>)
                         }
@@ -101,7 +95,6 @@ export default class UserProfile extends React.Component {
 
             </div>
         )} <LinkButton url={"/modify-user/" + this.state.user_id} label="Modify user" />
-        { /*<Button label="Delete" primary={true} title="Delete user" /> */}
          <LinkButton url={"/delete-user/" + this.state.user_id} label="Delete user"  />
          </div>);
 

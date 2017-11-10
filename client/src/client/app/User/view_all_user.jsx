@@ -21,11 +21,6 @@ export default class ViewAllUsers extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // screen: 'A'
-          //  result: "",
-          //  p_fname: [],
-          //  p_lname: [],
-          //  p_states: [],
             users: []
         }
     }
@@ -65,7 +60,6 @@ export default class ViewAllUsers extends React.Component {
             .catch(function (error_msg) {
                 // error if connection problem happens 
                 console.log("Fetch error : " + error_msg);
-                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
             })
     }
 
@@ -99,30 +93,15 @@ export default class ViewAllUsers extends React.Component {
             })
             .then((response) => {
                 console.log("Fetch response happen !");
-
-                //  this.handleResponse(response);
-                // console.log("User profile data :" + JSON.stringify(response));
-
-                //  this.state.profile_user = response;
-                //    this.setState(this.state)
-                //this.state.users.splice( this.state.users[deleted_user_id]  , 1);
-               
-                // this.state.users.splice(deleted_user_id, 1);
                this.state.users.splice(array_index, 1);
-
-                //delete this.state.users[deleted_user_id];
                 this.setState(this.state);
-                // this.forceUpdate();
 
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
                 console.log("Fetch error : " + error_msg);
-                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
             })
 
-
-        //this.setState(this.state);
     }
 
 

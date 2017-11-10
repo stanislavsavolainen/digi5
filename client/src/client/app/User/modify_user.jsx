@@ -11,7 +11,6 @@ import Checkbox from 'material-ui/Checkbox';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
-//import { make_user_data_structure } from './theme_styles.jsx';
 import { make_user_data_structure } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
@@ -141,31 +140,14 @@ export default class ModifyUser extends React.Component {
             })
             .then((response) => {
                 console.log("Fetch response happen !");
-
-                //  this.handleResponse(response);
-                // console.log("User profile data :" + JSON.stringify(response));
-
-                //  this.state.profile_user = response;
-                //    this.setState(this.state)
-                //this.state.users.splice( this.state.users[deleted_user_id]  , 1);
-
-                // this.state.users.splice(deleted_user_id, 1);
-                //this.state.users.splice(array_index, 1);
                 this.props.history.push("/view-all");
-
-                //delete this.state.users[deleted_user_id];
-                this.setState(this.state);
-                // this.forceUpdate();
-
+                this.setState(this.state); 
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
                 console.log("Fetch error : " + error_msg);
-                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
             })
 
-
-        //this.setState(this.state);
     }
 
     componentWillMount() {
@@ -213,9 +195,8 @@ export default class ModifyUser extends React.Component {
                         </Card>)
 
                 }
-                {/* <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => this.UpdateUserDataAtDB()} /> */}
+    
                 <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "update_user"; this.setState({ open: true }) }} />
-                {/*  <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.deleteUserById(); }} /> */}
                 <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.state.dialog_command = "delete_user"; this.setState({ open: true }) }} />
                 {this.renderDialog(this.state.dialog_command)}
 
@@ -276,9 +257,6 @@ export default class ModifyUser extends React.Component {
     //http://knexjs.org/
 
     // https://stackoverflow.com/questions/42212497/knex-js-how-to-update-a-field-with-an-expression
-
-
-
 
     render() {
         return (<div> <h1>  Modify user {this.state.user_id} </h1>
