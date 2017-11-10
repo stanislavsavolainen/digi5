@@ -12,6 +12,7 @@ import Checkbox from 'material-ui/Checkbox';
 //my component
 import LinkButton from './../LinkButton.jsx';
 //import { make_user_data_structure } from './theme_styles.jsx';
+import { make_user_data_structure } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 export default class ModifyUser extends React.Component {
