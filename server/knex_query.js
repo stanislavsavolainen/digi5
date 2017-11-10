@@ -35,10 +35,7 @@ function DBreadAllUsers() {
     console.log("SELECT * FROM users");
 
     return (
-
-        // knex("users2").select().then(function (database_result) {
         knex(user_table_name).select().then(function (database_result) {
-            //return JSON.stringify(database_result)
             return JSON.stringify(database_result);
         })
 
@@ -48,17 +45,12 @@ function DBreadAllUsers() {
 
 function DBAddNewUser(payload_data) {
     console.log("INSERT INTO users (data, data , data) values(? ? ? )");
-
-    // knex('users2').insert(request.payload.user_data).then(() => {
-    // knex('users2').insert(payload_data).then(() => {
     knex(user_table_name).insert(payload_data).then(() => {
         console.log("Inserted user")
-        // reply("Insert succesful")
         return ("Insert succesful")
     })
         .catch((e) => {
             console.log(e)
-            //reply("Failed")
             return ("Failed")
         })
 
@@ -67,17 +59,14 @@ function DBAddNewUser(payload_data) {
 function DBgetSingleUserProfile(parameter_id) {
     console.log("SELECT * FROM users WHERE id =" + parameter_id);
 
-    //let id_value = request.payload.user_id;
     let id_value = parameter_id
 
     return (
-        //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
-        // knex("users2").where({ id_user: id_value }).then(function (database_result) {
+     
         knex(user_table_name).where({ id_user: id_value }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
-            //reply("Failed")
             return ("Failed")
         })
     );
@@ -89,7 +78,6 @@ function DBdeleteUser(user_id) {
 
     console.log("Trying to delete user-data from database -> user index : " + user_id);
 
-    //knex('users2').del().where({ id_user: user_id })
     knex(user_table_name).del().where({ id_user: user_id })
         .then(() => {
             console.log("User id ;" + user_id + "successfyly deleted from database");
@@ -103,7 +91,6 @@ function DBmodifyUser(user_object, user_id_parameter) {
 
     console.log("Trying to modify user id : " + user_id_parameter + "  at database");
 
-    // knex('users2').update(user_object).where({ id_user: user_id_parameter }).then(
     knex(user_table_name).update(user_object).where({ id_user: user_id_parameter }).then(
         () => { console.log("User data succesfully updated !"); return ("done") }
     ).catch((e) => {
@@ -119,31 +106,20 @@ function DBmodifyUser(user_object, user_id_parameter) {
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
-    console.log("SELECT * FROM device1");
-
+   
     return (
-
-        // knex("device1").select().then(function (database_result) {
         knex(device_table_name).select().then(function (database_result) {
-            //return JSON.stringify(database_result)
             return JSON.stringify(database_result);
         })
 
     );
 
-
-    //    return (
-    //     <div></div>
-    //  )
 }
 
 function DBaddNewDevice(device_data) {
-    console.log("INSERT INTO device1 (data, data , data) values(? ? ? )");
-
-    // knex('device1').insert(device_data).then(() => {
+    
     knex(device_table_name).insert(device_data).then(() => {
         console.log("Inserted device")
-        // reply("Insert succesful")
         return ("Insert succesful");
     })
         .catch((e) => {
@@ -159,7 +135,6 @@ function DBdeleteDevice(device_index) {
 
     console.log("Trying to delete device-data from database -> device index : " + device_index);
 
-    // knex('device1').del().where({ device_id: device_index })
     knex(device_table_name).del().where({ device_id: device_index })
         .then(() => {
             console.log("Device id ;" + device_index + "successfyly deleted from database");
@@ -173,8 +148,7 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
     console.log("Trying to get device id : " + device_id_parameter + "  profile data from database");
 
     return (
-        //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
-        //  knex("device1").where({ device_id: device_id_parameter }).then(function (database_result) {
+    
         knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -191,8 +165,6 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
 
 function DBmodifyDevice(device_object, device_id_parameter) {
     console.log("Trying to modify device id : " + device_id_parameter + "  at database");
-
-    //knex('device1').update(device_object).where({ device_id: device_id_parameter }).then(
     knex(device_table_name).update(device_object).where({ device_id: device_id_parameter }).then(
         () => { console.log("Device data succesfully updated !"); return ("done") }
     ).catch((e) => {
@@ -209,9 +181,7 @@ function DBreadAllLicenses() {
 
     return (
 
-        //  knex("license").select().then(function (database_result) {
         knex(license_table_name).select().then(function (database_result) {
-            //return JSON.stringify(database_result)
             return JSON.stringify(database_result);
         })
 
@@ -221,7 +191,6 @@ function DBreadAllLicenses() {
 
 function DBaddLicense(license_object) {
 
-    // knex('license').insert(license_object).then(() => {
     knex(license_table_name).insert(license_object).then(() => {
         console.log("Inserted license")
         // reply("Insert succesful")
@@ -239,13 +208,11 @@ function DBgetSingleLicense(license_id) {
 
 
     return (
-        //  knex("users").select().where(likeFilter({ 'id_user': id_value })).then(function (database_result) {
-        // knex("license").where({ license_id: license_id }).then(function (database_result) {
+      
         knex(license_table_name).where({ license_id: license_id }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
-            //reply("Failed")
             return ("Failed")
         })
     );
@@ -255,7 +222,6 @@ function DBgetSingleLicense(license_id) {
 
 function DBmodifyLicense(license_object, license_index) {
 
-    //  knex('license').update(license_object).where({ license_id: license_index }).then(
     knex(license_table_name).update(license_object).where({ license_id: license_index }).then(
         () => { console.log("License data succesfully updated !"); return ("done") }
     ).catch((e) => {
@@ -269,7 +235,6 @@ function DBmodifyLicense(license_object, license_index) {
 
 function DBdeleteLicense(license_index) {
 
-   // knex('license').del().where({ license_id: license_index })
    knex(license_table_name).del().where({ license_id: license_index })
         .then(() => {
             console.log("License id :" + license_index + "successfyly deleted from database");
@@ -280,25 +245,7 @@ function DBdeleteLicense(license_index) {
 
 
 
-
 //-------------- export knex functions ---------------------------
-/*
-export {
-    DBinitKnex,
-    DBreadAllUsers,
-    DBregisterNewUser,
-    DBgetSingleUserProfile,
-    DBreadAllDevices,
-    DBaddNewDevice
-}
-*/
-
-// module.exports.DBinitKnex,
-// module.exports.DBreadAllUsers,
-// module.exports.DBregisterNewUser,
-// module.exports.DBgetSingleUserProfile,
-// module.exports.DBreadAllDevices,
-// module.exports.DBaddNewDevice
 
 module.exports = {
     DBinitKnex,
