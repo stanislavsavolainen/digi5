@@ -32,6 +32,8 @@ import DeleteDevice from './Device/delete_device.jsx'
 import ModifyLicense from './License/modify_license.jsx';
 import About from './About.jsx';
 
+import { server_host_for_client } from './client_connection.jsx';
+
 const muiTheme = getMuiTheme({
     //  card: {
     //    titleColor: "red",

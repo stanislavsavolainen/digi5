@@ -14,6 +14,8 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
 import LinkButton from './../LinkButton.jsx';
 
+import { server_host_for_client } from './../client_connection.jsx';
+
 export default class ViewAllUsers extends React.Component {
 
     constructor(props) {
