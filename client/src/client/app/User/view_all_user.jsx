@@ -137,7 +137,7 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.team}</TableRowColumn>
                                 
                                 <TableRowColumn>
-                                    <LinkButton label={val.id_user} url={"/modify-user/" + val.id_user} />
+                                    <LinkButton label={val.user_id} url={"/modify-user/" + val.user_id} />
                                 </TableRowColumn>
 
                             </TableRow>

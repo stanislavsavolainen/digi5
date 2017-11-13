@@ -74,8 +74,8 @@ var route = [
         printLine();
         printLogText1("Modify user");//console.log("Modify user");
         console.log("Payload content : " + JSON.stringify(request.payload));
-        console.log("User id : " + request.payload.id_user);
-        myknex.DBmodifyUser(request.payload, request.payload.id_user);
+        console.log("User id : " + request.payload.user_id);
+        myknex.DBmodifyUser(request.payload, request.payload.user_id);
         reply(JSON.stringify("OK"))
     }),
 

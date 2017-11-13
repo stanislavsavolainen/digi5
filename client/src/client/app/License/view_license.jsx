@@ -75,36 +75,7 @@ export default class ViewLicense extends React.Component {
 
     }
 
-    /*
-        render() {
-            return (
-    
-                <div>
-                    <LinkButton url="/add-license" label="Add license" />
-                    <br /> View list of all license
-    
-                      <Table>
-                        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                            <TableRow >
-                                <TableHeaderColumn>License name</TableHeaderColumn>
-    
-                                <TableHeaderColumn>Profile</TableHeaderColumn>
-    
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody displayRowCheckbox={false}>
-                            <TableRow>
-                                <TableHeaderColumn> Office </TableHeaderColumn>
-                                <TableHeaderColumn> <Button label="profile" /> </TableHeaderColumn>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-    
-    
-                </div>);
-        }
-    
-        */
+  
 
     render() {
         return (
@@ -144,40 +115,4 @@ export default class ViewLicense extends React.Component {
 
 }
 
-
-
-
-/*
-                 <Table>
-                <TableHeader adjustForCheckbox={false} displaySelectAll={false} >
-                    <TableRow >
-                        <TableHeaderColumn>First name</TableHeaderColumn>
-                        <TableHeaderColumn>Last name</TableHeaderColumn>
-                        <TableHeaderColumn>Title</TableHeaderColumn>
-                        <TableHeaderColumn>Team</TableHeaderColumn>
-                        <TableHeaderColumn>Profile</TableHeaderColumn>
-                    
-           
-           
-                        </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false}>
-                    {
-                        this.state.license.map((val, index) =>
-                            <TableRow>
-                                <TableRowColumn >{val.fname}</TableRowColumn>
-                                <TableRowColumn >{val.lname}</TableRowColumn>
-                                 <TableRowColumn >{val.title}</TableRowColumn>
-                                <TableRowColumn>{val.team}</TableRowColumn>
-                                
-                                <TableRowColumn>
-                                    <LinkButton label={val.id_user} url={"/modify-user/" + val.id_user} />
-                                </TableRowColumn>
-
-                            </TableRow>
-                        )
-                    }
-                </TableBody>
-            </Table>
-*/
 

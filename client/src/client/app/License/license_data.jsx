@@ -35,15 +35,15 @@ let license_data_object = [
         rows: [
             [
              //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "License name", type: "string", db_name: "name", modify : false }, 
-                { fieldName: "Device id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "License code", type: "string", db_name: "license_code" , modify : false},
+                { fieldName: "License name", type: "string", db_name: "name" }, 
+                { fieldName: "Device id", type: "number", db_name: "device_id" },
+                { fieldName: "License code", type: "string", db_name: "license_code"},
             ],
             [
-                { fieldName: "User", type: "string", db_name: "user", modify : false },
+                { fieldName: "User", type: "string", db_name: "user"},
               
-                { fieldName: "License activation (pass)", type: "string", db_name: "pass", modify : false },
-                { fieldName: "About", type: "string", db_name: "comments", modify : false },
+                { fieldName: "License activation (pass)", type: "string", db_name: "pass" },
+                { fieldName: "About", type: "string", db_name: "comments" },
             ],
            
         ],

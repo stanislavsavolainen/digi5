@@ -6,12 +6,13 @@ import { device_data_model, make_device_data_structure, make_device_data_structu
 import { server_host_for_client } from './../client_connection.jsx';
 
 import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
+
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
 
 //import LinkButton from './../LinkButton.jsx';
 import Button from 'material-ui/RaisedButton';
 
-import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -22,27 +23,10 @@ export default class AddDevice extends React.Component {
         super(props);
         this.state = {
             show_devices: make_device_data_structure2(),
-            value : 2,
+            value: 2,
         }
 
     }
-
-
-    // mymap(array, fn) {
-    //     var result = []
-    //     for (var i = 0; i < array.length; ++i) {
-    //         result.push(fn(array[i]))
-    //     }
-    //     return result;
-    // }
-
-    // myreduce(arary, fn, initial) {
-    //     var result = initial;
-    //     for (var i = 0; i < array.length; ++i) {
-    //         result = fn(result, array[i])
-    //     }
-    //     return result;
-    // }
 
 
     addDeviceToDB() {
@@ -75,9 +59,9 @@ export default class AddDevice extends React.Component {
         let host = "http://127.0.0.1:5659";
         let link = "/add_device";
 
-      //  fetch(host + link, postData)
-      fetch(server_host_for_client  + link, postData)
-       // server_host_for_client 
+        //  fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
+            // server_host_for_client 
             .then(() => {
                 console.log("Fetch done");
                 this.props.history.push("/view-devices");
@@ -114,8 +98,14 @@ export default class AddDevice extends React.Component {
                                     block.rows.map((row, row_key) =>
                                         <div>
                                             {row.map((field, field_key) =>
-                                                <TextField hintText={field.fieldName} style={{ margin: 12 }}
-                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
+                                                field.type == "date"
+                                                    ?
+                                                    <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} />
+                                                    :
+                                                    <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
+                                                        onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
+
+
                                         </div>)
                                 }
                             </CardActions>
@@ -126,10 +116,10 @@ export default class AddDevice extends React.Component {
     }
 
     //this function is for DropDownMenu component test
-   // handleChange = (event, index, value) => this.setState({value});
-    handleChange(event, index, value){
-       // this.setState({value})
-       this.state.value = value;
+    // handleChange = (event, index, value) => this.setState({value});
+    handleChange(event, index, value) {
+        // this.setState({value})
+        this.state.value = value;
         this.setState(this.state);
     }
 
@@ -146,7 +136,7 @@ export default class AddDevice extends React.Component {
                     <DatePicker hintText="Open to Year" openToYearSelection={true} />
                 </div>
                 <br /><br />
-                <DropDownMenu value={this.state.value} onChange={(e,i,v) => this.handleChange(e,i,v) } openImmediately={true} style={ { backgroundColor: 'silver', color: 'blue' }} >
+                <DropDownMenu value={this.state.value} onChange={(e, i, v) => this.handleChange(e, i, v)} openImmediately={true} style={{ backgroundColor: 'silver', color: 'blue' }} >
                     <MenuItem value={1} primaryText="Never" />
                     <MenuItem value={2} primaryText="Every Night" />
                     <MenuItem value={3} primaryText="Weeknights" />

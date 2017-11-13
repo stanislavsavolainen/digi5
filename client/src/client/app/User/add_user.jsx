@@ -41,66 +41,7 @@ export default class AddUser extends React.Component {
 
 
         console.log("DATA ORIGINAL : " + JSON.stringify(post_body2.user_data));
-        /*
-                var payload_data = {};
-                //payload_data.splice(0, payload_data.length);
-                for (var i = 0; i < this.state.user_data.length; i++)
-                    for (var j = 0; j < this.state.user_data[i].rows.length; j++)
-                        for (var k = 0; k < this.state.user_data[i].rows[j].length; k++) {
-                            //  console.log(JSON.stringify(this.state.user_data[i].rows[j][k].db_name) + "\n\n");
-                            var temp_db_name_value = this.state.user_data[i].rows[j][k].value;
-                            var temp_db_name_key = user_data_structure[i].rows[j][k].db_name;
-                            if (temp_db_name_value != undefined) {
-                                //  payload_data.push(  {temp_db_name_key} + ':' + '' + {temp_db_name_value} + ''  );
-                                //  payload_data.push(JSON.stringify( {temp_db_name_key}  + ':' + '*' + {temp_db_name_value} + '*'));
-                                //  payload_data.push( temp_db_name_key + t);
-                                //  payload_data.push(":");
-                                //   payload_data.push(temp_db_name_value)
-                                // var temp_json = { [temp_db_name_key] : temp_db_name_value };
-                                // let temp_obj = { [temp_db_name_key] : temp_db_name_value };
-                                // payload_data.push(  [temp_db_name_key] : { temp_db_name_value}  );      
-                                //  payload_data.assign(temp_obj);
-                                // Object.assign(payload_data, temp_obj);       
-                                payload_data[temp_db_name_key] = temp_db_name_value;
-        
-                                // payload_data.push(temp_object);
-                                // var element = temp_db_name_key + ":"  + temp_db_name_value;
-                                // payload_data.push( temp_db_name_key + temp_db_name_value  );
-                                //  payload_data.push( temp_json ) ;
-                                //  payload_data += JSON.stringify(temp_json);
-                                // payload_data += element; 
-        
-                            } else {
-                                // var element = temp_db_name_key + ":"  + temp_db_name_value;
-                                payload_data[temp_db_name_key] = "";
-                                //let temp_obj = { [temp_db_name_key] : ""};
-                                //Object.assign(payload_data, temp_obj);   
-                                //  payload.assign(temp_obj);
-                                //  payload_data.push(temp_obj);
-                                // payload_data.push(  [temp_db_name_key] =  "" );  
-        
-        
-                                //  payload_data.push(temp_object);
-        
-                                //  var temp_json = { [temp_db_name_key] : "" };
-                                //  payload_data.push( temp_json );
-                                // payload_data += JSON.stringify(temp_json);
-                                // payload_data += element;
-        
-                                // payload_data.push();
-                                // payload_data.push("");
-                            }
-                        }
-        
-        
-                let post_body = {
-                    user_data: payload_data
-                }
-        
-                delete post_body.user_data["undefined"]
-        
-                console.log("DATA MYVERSION : " + JSON.stringify(post_body.user_data));
-        */
+     
 
         //post body
         let postData = {
@@ -147,20 +88,7 @@ export default class AddUser extends React.Component {
     FieldListener(block_key, row_key, field_key, data) {
         console.log(data);
         this.state.user_data[block_key].rows[row_key][field_key].value = data;
-        /*
-                console.log("Data lenght :" + data.length);
-        
-                if(type == "date"){
-                    data.setHours(9);
-                    console.log(" Date field -> " + data);
-                    console.log(" Date field -> " + data.toISOString());
-                    
-        
-                    let date_data = data.split("-");
-                    console.log("Modified date "+date_data[2] + "/"+date_data[1] + "/" +date_data[0]);
-        
-                }
-        */
+       
 
     }
 
@@ -184,14 +112,14 @@ export default class AddUser extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                    field.type === "date" ? <DatePicker style={{ display: "inline-block" }} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={(e, date) => this.FieldListener(block_key, row_key, field_key, date, field.type)} okLabel="Yeah" cancelLabel="Nvm" />
+                                    field.type === "date" ? <DatePicker title={field.fieldName} style={{ display: "inline-block" }} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={(e, date) => this.FieldListener(block_key, row_key, field_key, date, field.type)} okLabel="Yeah" cancelLabel="Nvm" />
                                         : field.type === "checkbox" ? 
                                             <Checkbox
-                                            label={field.fieldName}
+                                            label={field.fieldName} title={field.fieldName}
                                             onCheck={(event) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
                                         /> :
                                             <TextField
-                                                hintText={field.fieldName}
+                                                hintText={field.fieldName} title={field.fieldName}
                                                 onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} style={{ margin: 12 }} />
 
                                 )}</div>)
@@ -204,33 +132,7 @@ export default class AddUser extends React.Component {
             </div>
         )} <Button label="Add user" primary={true} onClick={() => this.RegisterUsers()}></Button> </div>);
 
-        /*
-        // for (var i = 0; i < field_name.length; i++) {
-        field_name.forEach((value, key) => {
-            //  drawContent.push(<div>  <br /> {this.state.field_name[i]} <TextField style={{ backgroundColor: 'orange' }} /> </div>);
-            // drawContent.push(<div>  <br /> {field_name[i]} <TextField style={{ backgroundColor: 'orange' }} onChange={(event) => { this.FieldListener(field_index, event.target.value) }} /> </div>);
-            drawContent.push(<TextField hintText={value} style={{ backgroundColor: 'orange' }} onChange={(event) => { this.FieldListener(key, event.target.value) }} />);
-            field_index++;
-        });
-    
-    
-    
-    
-        drawContent.push(<div> ***** USER ADVANCED PROFILE DATA *********** </div>);
-    
-    
-        for (var i = 0; i < advanced_field_name.length; i++) {
-            //  drawContent.push(<div>  <br /> {this.state.field_name[i]} <TextField style={{ backgroundColor: 'orange' }} /> </div>);
-            drawContent.push(<div>  <br />  <TextField hintText={advanced_field_name[i]} style={{ backgroundColor: 'orange' }} onChange={(event) => { this.AdvancedFieldListener(i, event.target.value) }} /> </div>);
-        }
-    
-    
-        return (
-            <div style={{ backgroundColor: 'burlywood' }} >
-                <h1> Register new user </h1> {drawContent}
-                <br /><FlatButton style={ButtonStyle} onClick={() => this.RegisterUsers()}> Register user </FlatButton>
-            </div>);
-        */
+        
     }
 
 }

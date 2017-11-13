@@ -8,7 +8,7 @@ const knex = require('knex')({
         host: '127.0.0.1',
         user: 'root',
         password: '123456',
-        database: 'dbtest1',
+        database: 'dbtest2',
         timezone: '+00:00'
     },
     debug: true
@@ -18,8 +18,8 @@ const knex = require('knex')({
 });
 
 
-var user_table_name = "users2";
-var device_table_name = "device1";
+var user_table_name = "users";
+var device_table_name = "device";
 var license_table_name = "license";
 
 
@@ -33,7 +33,6 @@ function DBinitKnex() {
 
 function DBreadAllUsers() {
     console.log("SELECT * FROM users");
-
     return (
         knex(user_table_name).select().then(function (database_result) {
             return JSON.stringify(database_result);
@@ -63,7 +62,7 @@ function DBgetSingleUserProfile(parameter_id) {
 
     return (
      
-        knex(user_table_name).where({ id_user: id_value }).then(function (database_result) {
+        knex(user_table_name).where({ user_id: id_value }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -78,7 +77,7 @@ function DBdeleteUser(user_id) {
 
     console.log("Trying to delete user-data from database -> user index : " + user_id);
 
-    knex(user_table_name).del().where({ id_user: user_id })
+    knex(user_table_name).del().where({ user_id: user_id })
         .then(() => {
             console.log("User id ;" + user_id + "successfyly deleted from database");
         })
@@ -91,7 +90,7 @@ function DBmodifyUser(user_object, user_id_parameter) {
 
     console.log("Trying to modify user id : " + user_id_parameter + "  at database");
 
-    knex(user_table_name).update(user_object).where({ id_user: user_id_parameter }).then(
+    knex(user_table_name).update(user_object).where({ user_id: user_id_parameter }).then(
         () => { console.log("User data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)

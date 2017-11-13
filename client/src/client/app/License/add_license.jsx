@@ -80,29 +80,6 @@ export default class AddLicense extends React.Component {
 
     drawLayotAddingLicense() {
 
-        /*
-        return (
-
-            <div>{
-
-                <Card>
-                    <CardHeader title="Card title" />
-                    <CardActions>
-                        <font> hello 1 </font> <Button label="1" />
-                    </CardActions>
-                    <CardActions>
-                        <font> hello 2 </font> <Button label="2" />
-                    </CardActions>
-                    <CardActions>
-                        <font> hello 3 </font> <Button label="3" />
-                    </CardActions>
-                </Card>
-
-            } </div>
-        );
-    */
-
-
         return (<div> {this.state.license_data.map((block, block_key) =>
             <div style={{ margin: "30px" }}>
                 <Card>
@@ -114,6 +91,7 @@ export default class AddLicense extends React.Component {
 
                                    <TextField 
                                    hintText={field.fieldName} 
+                                   title={field.fieldName}
                                    style={{ margin: 12 }} 
                                    onChange={(event) => this.FieldListener( block_key, row_key, field_key, event.target.value )}
                                    />
@@ -137,20 +115,7 @@ export default class AddLicense extends React.Component {
 
 
     render() {
-        //return <div> Add new license </div>
-
-        // return(
-        //     <div>
-        //         <br /> License id (autoincrement) : { license_model.license_id }
-        //         <br /> Device id (for device) : { license_model.device_id }
-        //         <br /> License code ( agrement id ?) : { license_model.device_id }
-        //         <br /> User ( right to use license/device with license ) : { license_model.device_id }
-        //         <br /> Pass ( ? = for authenticate/genuine validation ) :{ license_model.device_id }
-        //         <br /> Product Name ( ? )  : { license_model.device_id }
-
-        //     </div>    
-        // );
-
+    
         return <div>  Add license <br /> {this.drawLayotAddingLicense()} </div>
 
     }

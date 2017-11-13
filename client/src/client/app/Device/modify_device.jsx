@@ -6,10 +6,11 @@ import { render } from 'react-dom';
 import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
+import DatePicker from 'material-ui/DatePicker';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
-import { device_data_model, make_device_data_structure } from './device_data.jsx';
+import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 import Dialog from 'material-ui/Dialog';
@@ -78,7 +79,7 @@ export default class ModifyDevice extends React.Component {
                 {
                     //remember map return content !
                     //lambda one line = return
-                    this.state.device_profile.length == 0 ? <div /> : make_device_data_structure().map((block, block_key) =>
+                    this.state.device_profile.length == 0 ? <div /> : make_device_data_structure2().map((block, block_key) =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>
@@ -87,7 +88,11 @@ export default class ModifyDevice extends React.Component {
                                         <div>
                                             {row.map((field, field_key) =>
 
-                                                <TextField hintText={field.fieldName}
+                                            field.type == "date" 
+                                            ? 
+                                             <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} /> 
+                                            :        
+                                                <TextField hintText={field.fieldName} title={field.fieldName}
                                                     onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
                                                     // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>
                                                     value={this.state.device_profile[field.db_name]} style={{ margin: 12 }}
@@ -285,30 +290,6 @@ export default class ModifyDevice extends React.Component {
     componentWillMount() {
         this.readDeviceProfileFromDB();
     }
-
-
-    /*
-      handleOpen()  {
-
-        this.state.open = true;
-
-        this.setState(this.state);
-
-    //this.setState({open: true});
-  };
-
-  handleClose () {
-
-    this.state.open = false;
-
-    this.setState(this.state);
-
-   // this.setState({open: false});
-  };
-
-  */
-
-    //  a = 3;
 
 
     handleOpen = () => {

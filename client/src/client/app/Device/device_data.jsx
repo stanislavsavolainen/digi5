@@ -53,13 +53,13 @@ let device_data_object = [
         rows: [
             [
                 //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "Name", type: "string", db_name: "name", modify: false },
-                { fieldName: "Type", type: "number", db_name: "type", modify: false },
+                { fieldName: "Name", type: "string", db_name: "name" },
+                { fieldName: "Type", type: "number", db_name: "type" },
             ],
             [
-                { fieldName: "Serial number", type: "string", db_name: "serial_number", modify: false },
-                { fieldName: "Warranty", type: "string", db_name: "warranty", modify: false },
-                { fieldName: "About", type: "string", db_name: "about_device", modify: false },
+                { fieldName: "Serial number", type: "string", db_name: "serial_number"},
+                { fieldName: "Warranty", type: "string", db_name: "warranty" },
+                { fieldName: "About", type: "string", db_name: "about_device"},
             ],
 
         ],
@@ -68,12 +68,12 @@ let device_data_object = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id", modify: false },
-                { fieldName: "Owner group", type: "string", db_name: "owner_group", modify: false },
+                { fieldName: "Owner", type: "number", db_name: "owner_id"},
+                { fieldName: "Owner group", type: "string", db_name: "owner_group"},
             ],
             [
-                { fieldName: "Current user id", type: "number", db_name: "current_user_id", modify: false },
-                { fieldName: "Previous user id", type: "number", db_name: "last_user_id", modify: false },
+                { fieldName: "Current user id", type: "number", db_name: "current_user_id" },
+                { fieldName: "Previous user id", type: "number", db_name: "last_user_id" },
             ],
         ]
     }
@@ -112,16 +112,16 @@ let device_data_object2 = [
         rows: [
             [
                 //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "Reference X", type: "string", db_name: "name" },
-                { fieldName: "Type X", type: "number", db_name: "type" },
+                { fieldName: "device name", type: "string", db_name: "name" },
+                { fieldName: "Type ", type: "string", db_name: "type" },
             ],
             [
-                { fieldName: "Model ?", type: "string" },
-                { fieldName: "Serial number X", type: "string", db_name: "serial_number" },
-                { fieldName: "About X", type: "string", db_name: "about_device", modify: false },
+                { fieldName: "Model", type: "string", db_name: "model" },
+                { fieldName: "Serial number", type: "string", db_name: "serial_number" },
+                { fieldName: "About X", type: "string", db_name: "about_device" },
             ],
             [
-                { fieldName: "IP address ?", type: "string" },
+                { fieldName: "IP address ", type: "string", db_name : "ip_address" },
             ]
 
         ],
@@ -130,16 +130,16 @@ let device_data_object2 = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner X", type: "number", db_name: "owner_id", modify: false },
-                { fieldName: "Owner group X", type: "string", db_name: "owner_group", modify: false },
+                { fieldName: "Owner", type: "number", db_name: "owner_id" },
+                { fieldName: "Owner group", type: "string", db_name: "owner_group" },
             ],
             [
-                { fieldName: "Current user id X", type: "number", db_name: "current_user_id", modify: false },
-                { fieldName: "Previous user id X", type: "number", db_name: "last_user_id", modify: false },
+                { fieldName: "Current user id ", type: "number", db_name: "current_user_id" },
+                { fieldName: "Previous user id ", type: "number", db_name: "last_user_id"},
             ],
             [
-                { fieldName: "Last available date ?", type: "date" },
-                { fieldName: "Last used date ?", type: "date" },
+                { fieldName: "Last available date (not working)", type: "date" },
+                { fieldName: "Last used date (not working)", type: "date" },
             ]
         ]
     },
@@ -147,12 +147,12 @@ let device_data_object2 = [
         title: "Warranty info and device come from",
         rows: [
             [
-                { fieldName: "Warranty_text X", type: "string", db_name: "warranty" },
-                { fieldName: "Shop ?", type: "string" },
+                { fieldName: "Warranty info", type: "string", db_name: "warranty" },
+                { fieldName: "Shop", type: "string", db_name: "shop" },
             ],
             [
-                { fieldName: "Warranty start ?", type: "number" },
-                { fieldName: "Warranty exprire ?", type: "number" },
+                { fieldName: "Warranty start (not works)", type: "date" },
+                { fieldName: "Warranty exprire (not working)", type: "date" },
             ],
         ]
     }

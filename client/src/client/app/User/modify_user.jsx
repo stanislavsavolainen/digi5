@@ -11,7 +11,7 @@ import Checkbox from 'material-ui/Checkbox';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
-import { make_user_data_structure } from './user_data.jsx';
+import { make_user_data_structure, make_user_data_structure2  } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 export default class ModifyUser extends React.Component {
@@ -156,19 +156,19 @@ export default class ModifyUser extends React.Component {
 
     pickField(field, field_key) {
         return field.type === "date"
-            ? <DatePicker style={{ display: "inline-block" }}
+            ? <DatePicker style={{ display: "inline-block" }} title={field.fieldName}
                 value={new Date(this.state.user_profile[field.db_name])}
                 formatDate={new Intl.DateTimeFormat('en-GB').format}
                 locale={'en-GB'} hintText={field.fieldName}
                 onChange={(e, date) => this.FieldListener(date, field.db_name)} />
             : field.type === "checkbox" ?
                 <Checkbox
-                    label={field.fieldName}
+                    label={field.fieldName} title={field.fieldName}
                     checked={this.state.user_profile[field.db_name]}
                       onCheck={ (event ,  isInputChecked ) => this.FieldListener(isInputChecked, field.db_name)} 
                 />
                 :
-                <TextField hintText={field.fieldName}
+                <TextField hintText={field.fieldName} title={field.fieldName}
                     onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
                     value={this.state.user_profile[field.db_name]} style={{ margin: 12 }} />
     }
@@ -181,7 +181,7 @@ export default class ModifyUser extends React.Component {
                 {
                     //remember map return content !
                     //lambda one line = return
-                    this.state.user_profile == null ? <div /> : make_user_data_structure().map((block, block_key) =>
+                    this.state.user_profile == null ? <div /> : make_user_data_structure2().map((block, block_key) =>
                         <Card>
                             <CardHeader title={block.title} />
                             <CardActions>

@@ -49,15 +49,12 @@ export default class ViewDevices extends React.Component {
                 return resp.json();
             })
             .then((db_devices) => {
-                // this.state.users = users;
-                // this.setState(this.state);
                 this.state.devices = db_devices;
                 this.setState(this.state);
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
                 console.log("Fetch error : " + error_msg);
-                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
             })
 
     }
@@ -102,62 +99,6 @@ export default class ViewDevices extends React.Component {
             })
 
     }
-
-
-    deviceTableLayout_old() {
-
-        //Added button modify and delete (not done)
-
-        return (
-            <div>
-                <Table style={{ tableLayout: 'auto' }}  fixedHeader={false} >
-                    <TableHeader displaySelectAll={false}  >
-                        <TableRow>
-                            <TableHeaderColumn>Device name 3434</TableHeaderColumn>
-                            <TableHeaderColumn>Device owner</TableHeaderColumn>
-                            <TableHeaderColumn>Profiles</TableHeaderColumn>
-                           { /* <TableHeaderColumn>Modify</TableHeaderColumn>
-                            <TableHeaderColumn>Remove</TableHeaderColumn>
-                           
-                            <TableHeaderColumn>...</TableHeaderColumn>
-                            <TableHeaderColumn>Remove</TableHeaderColumn>
-                            */}
-                        </TableRow>
-                    </TableHeader>
-
-                    <TableBody displayRowCheckbox={false}>
-                        {
-                            this.state.devices.map((val, index) =>
-                                <TableRow>
-                                     <TableRowColumn ></TableRowColumn>
-                                    <TableRowColumn>{val.name}</TableRowColumn>
-                                    <TableRowColumn>{val.owner_id}</TableRowColumn>
-                                    <TableRowColumn>
-                                        { /* <Button label="Profile" primary={true} /> */}
-                                        <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
-                                    </TableRowColumn>
-                                    
-                                    <TableRowColumn>
-                                        { /* <Button label="M" title="modify device" primary={true} />  */}
-                                        { /* <LinkButton label="M" url={"/modify-device/" + val.device_id} /> */ }
-                                    </TableRowColumn>
-                                    <TableRowColumn>
-                                        {/* <Button label="X" title="delete device" primary={true} /> */}
-                                        {/*  <Button label="Delete" title="Delete user" primary={true} onClick={() => { this.deleteDeviceById(val.device_id, index); }} /> */}
-                                        { /* <LinkButton label="X" url={"/delete-device/" + val.device_id} /> */}
-                                    </TableRowColumn>
-                                            
-                                </TableRow>
-                            )
-                        }
-                    </TableBody>
-                </Table>
-            </div>
-        );
-
-
-    }
-
 
     deviceTableLayout(){
 
@@ -204,13 +145,6 @@ export default class ViewDevices extends React.Component {
     render() {
         return (
             <div>
-             {   
-            // <div>
-            //     Show all devices :
-            // <br /> Device name : <font color="green"> {device_data_model.name} </font>
-            //     <br /> Device serial number : <font color="green"> {device_data_model.serial_number} </font>
-            //     <br /><br />
-             }
                 {this.deviceTableLayout()}
             </div>);
     }
