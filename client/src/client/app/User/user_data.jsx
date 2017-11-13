@@ -66,10 +66,7 @@ function make_user_data_structure2() {
                 { fieldName: "E-mail", type: "string", db_name: "email" },
             ],
             [
-                { fieldName: "Photo", type: "string", db_name:"photo" },
-               { fieldName: "External accounts", type: "string", db_name:"external_accounts"  },
-            ],[
-              { fieldName: "About user", type: "string", db_name:"comments" },   
+              { fieldName: "Comments", type: "string", db_name:"comments" },   
             ]
         
             ]
@@ -83,20 +80,20 @@ function make_user_data_structure2() {
                 { fieldName: "Team X", type: "string", db_name: "team" },    
             ],
             [
-                { fieldName: "Location ?", type: "string", db_name : "location" }
+                { fieldName: "Office room ( room and floor at work)", type: "string", db_name : "location" }
             ],
             [
-                { fieldName: "Work start X", type: "date" , db_name : "work_start" },
-                { fieldName: "Work end X", type: "date", db_name : "work_end"  },
+                { fieldName: "Work start", type: "date" , db_name : "work_start" },
+                { fieldName: "Work end", type: "date", db_name : "work_end"  },
             ]]
         },
         {
             title: "Permission / Administrative rights",
             rows: [
-                [{ fieldName: "Lukoton X", type: "checkbox", db_name : "lukoton"}],
-                [{ fieldName: "Keys X", type: "checkbox" , db_name  : "door_keys"}],
+                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton"}],
+                [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys"}],
                 [{ fieldName: "User is visible", type: "checkbox", db_name : "user_visible" }],
-                [{ fieldName: "Ad user", type: "string", db_name : "ad_user"}]
+                
             ],
         }
     ]

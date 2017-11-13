@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import Button from 'material-ui/RaisedButton';
+import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
 export default class ViewLogs extends React.Component {
 
@@ -57,30 +58,42 @@ export default class ViewLogs extends React.Component {
 
 
     render() {
-        // return <div> Show logs data </div>
+    
         return (
-            // '/view_all_users',
-            // '/register_user',
-            // '/user_profile',
             
             <div>
-                {/*
-                <Button
-                    label="view_all_users"
-                    style={{ backgroundColor: 'yellow', color: 'blue' }}
-                    onClick = { () => this.test1() }
-                />
+                {
+                    <Card>
 
-                <Button label="register_user"
-                    style={{ backgroundColor: 'yellow', color: 'blue' }}
-                    onClick = { () => this.test2() }
-                />
+                    <CardHeader title="Log data (posible example -> functionality missing)" />
 
-                <Button label="user_profile"
-                    style={{ backgroundColor: 'yellow', color: 'blue' }}
-                    onClick = { () => this.test3() }
-                />
-                */
+                    <CardActions>
+
+                     <font> log data id 1 </font>    
+                      <Button label="data modified (Event)" /> 
+                      <font > <Button label="2.3.2014" /> </font>
+                      <font> <Button label="action (restore data, bookmark)" /> </font>
+
+                    </CardActions>    
+
+                    <CardActions>
+
+                       <font> log data id 2 </font>   
+                      <Button label="data added (Event)" />
+                       <font> <Button label="6.8.2015" /> </font>
+                       <font> <Button label="action (restore data, bookmark)" /> </font>
+
+                    </CardActions>   
+
+                    <CardActions>
+                     <font> log data id 3 </font> 
+                     <Button label="data deleted (Event)" /> 
+                     <font> <Button label="7.9.2016" /> </font>
+                     <font> <Button label="action (restore data, bookmark)" /> </font>
+
+                    </CardActions>   
+
+                 </Card>
                 }
                 <font> There is no log data at the moment ! </font>
                 

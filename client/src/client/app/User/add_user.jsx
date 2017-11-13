@@ -8,7 +8,7 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
 //import { ButtonStyle, make_user_data_structure, user_data_structure, TextStyle, advanced_field_name } from './theme_styles.jsx';
-import {  make_user_data_structure , make_user_data_structure2 } from './user_data.jsx';
+import { make_user_data_structure , make_user_data_structure2 } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 import DatePicker from 'material-ui/DatePicker';
@@ -112,7 +112,7 @@ export default class AddUser extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                    field.type === "date" ? <DatePicker title={field.fieldName} style={{ display: "inline-block" }} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={(e, date) => this.FieldListener(block_key, row_key, field_key, date, field.type)} okLabel="Yeah" cancelLabel="Nvm" />
+                                    field.type === "date" ? <DatePicker title={field.fieldName} style={{ display: "inline-block" }} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={(e, date) => this.FieldListener(block_key, row_key, field_key, date, field.type)} okLabel="Ok" cancelLabel="Cancel" />
                                         : field.type === "checkbox" ? 
                                             <Checkbox
                                             label={field.fieldName} title={field.fieldName}

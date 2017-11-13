@@ -43,7 +43,7 @@ let license_data_object = [
                 { fieldName: "User", type: "string", db_name: "user"},
               
                 { fieldName: "License activation (pass)", type: "string", db_name: "pass" },
-                { fieldName: "About", type: "string", db_name: "comments" },
+                { fieldName: "Comments", type: "string", db_name: "comments" },
             ],
            
         ],

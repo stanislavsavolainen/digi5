@@ -12,7 +12,7 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
- 
+
 import AddUser from './User/add_user.jsx';
 import ViewAllUsers from './User/view_all_user.jsx';
 import UserProfile from './User/user_profile.jsx';
@@ -31,6 +31,7 @@ import DeviceProfile from './Device/device_profile.jsx';
 import DeleteDevice from './Device/delete_device.jsx'
 import ModifyLicense from './License/modify_license.jsx';
 import About from './About.jsx';
+import HiddenUser from './User/hidden_user.jsx';
 
 import { server_host_for_client } from './client_connection.jsx';
 
@@ -38,8 +39,8 @@ const muiTheme = getMuiTheme({
     //  card: {
     //    titleColor: "red",
     //  },
-        
-   //  textField: {textColor: 'blue', fontSize: '30px'},
+
+    //  textField: {textColor: 'blue', fontSize: '30px'},
 
 });
 
@@ -76,6 +77,7 @@ class App extends React.Component {
                 <Route path="/device-profile/:deviceId" component={DeviceProfile} />
                 <Route path="/delete-device/:deviceId" component={DeleteDevice} />
                 <Route path="/modify-license/:licenseId" component={ModifyLicense} />
+                <Route path="/hidden-user" component={HiddenUser} />
                 <Route path="/about" component={About} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
@@ -94,7 +96,7 @@ class App extends React.Component {
                             <LinkButton url="/view-devices" label="Devices" />
                             <LinkButton url="/view-license" label="License" />
                             <LinkButton url="/view-logs" label="Logs" />
-                             <LinkButton url="/about" label="About" />
+                            {/*  <LinkButton url="/about" label="About" /> */}
                             {this.drawScreen()}
                         </div>
                     </div>

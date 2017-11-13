@@ -118,7 +118,7 @@ let device_data_object2 = [
             [
                 { fieldName: "Model", type: "string", db_name: "model" },
                 { fieldName: "Serial number", type: "string", db_name: "serial_number" },
-                { fieldName: "About X", type: "string", db_name: "about_device" },
+                { fieldName: "About", type: "string", db_name: "about_device" },
             ],
             [
                 { fieldName: "IP address ", type: "string", db_name : "ip_address" },
@@ -131,7 +131,7 @@ let device_data_object2 = [
         rows: [
             [
                 { fieldName: "Owner", type: "number", db_name: "owner_id" },
-                { fieldName: "Owner group", type: "string", db_name: "owner_group" },
+                { fieldName: "Device of team", type: "string", db_name: "owner_group" },
             ],
             [
                 { fieldName: "Current user id ", type: "number", db_name: "current_user_id" },
@@ -147,12 +147,10 @@ let device_data_object2 = [
         title: "Warranty info and device come from",
         rows: [
             [
-                { fieldName: "Warranty info", type: "string", db_name: "warranty" },
                 { fieldName: "Shop", type: "string", db_name: "shop" },
             ],
             [
-                { fieldName: "Warranty start (not works)", type: "date" },
-                { fieldName: "Warranty exprire (not working)", type: "date" },
+                { fieldName: "Warranty exprire (not working, current date + 2 years)", type: "date" },
             ],
         ]
     }

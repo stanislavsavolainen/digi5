@@ -68,27 +68,18 @@ export default class ViewLicense extends React.Component {
     }
 
 
-
-
-
-    viewAllLicenseLayout() {
-
-    }
-
-  
-
     render() {
         return (
             <div>
                 <LinkButton url="/add-license" label="Add license" />
-                <br /> View list of all license
+                <br /> <h1> View list of all licenses </h1>
 
                   <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow >
-                            <TableHeaderColumn>License name</TableHeaderColumn>
 
                             <TableHeaderColumn>Profile</TableHeaderColumn>
+                            <TableHeaderColumn>License name</TableHeaderColumn>
 
                         </TableRow>
                     </TableHeader>
@@ -96,11 +87,12 @@ export default class ViewLicense extends React.Component {
                         {
                             this.state.license.map((val, index) =>
                                 <TableRow>
-                                    <TableRowColumn>{val.name}</TableRowColumn>
 
-                                    <TableRowColumn>
+                                     <TableRowColumn>
                                          <LinkButton label={val.license_id} url={"/modify-license/" + val.license_id} />
                                     </TableRowColumn>
+
+                                    <TableRowColumn>{val.name}</TableRowColumn>
 
                                 </TableRow>
                             )

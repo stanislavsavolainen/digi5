@@ -43,8 +43,8 @@ export default class ViewDevices extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_all_devices";
 
-       // fetch(host + link, postData)
-        fetch( server_host_for_client  + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 return resp.json();
             })
@@ -100,20 +100,21 @@ export default class ViewDevices extends React.Component {
 
     }
 
-    deviceTableLayout(){
+    deviceTableLayout() {
 
         return (
 
             <div>
                 <LinkButton url="/add-device" label="Add devices" />
-                <br/>
-
+                <br />
+                <h1>View all devices </h1><br />
+                
                 <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
+                            <TableHeaderColumn>Profiles</TableHeaderColumn>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device type</TableHeaderColumn>
-                            <TableHeaderColumn>Profiles</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
 
@@ -121,13 +122,15 @@ export default class ViewDevices extends React.Component {
                         {
                             this.state.devices.map((val, index) =>
                                 <TableRow>
-                                     
-                                    <TableRowColumn>{val.name}</TableRowColumn>
-                                    <TableRowColumn>{val.type}</TableRowColumn>
-                                    <TableRowColumn>
+
+                                     <TableRowColumn>
                                         <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
-                                                      
+
+                                    <TableRowColumn>{val.name}</TableRowColumn>
+                                    <TableRowColumn>{val.type}</TableRowColumn>
+                                   
+
                                 </TableRow>
                             )
                         }
@@ -145,6 +148,7 @@ export default class ViewDevices extends React.Component {
     render() {
         return (
             <div>
+
                 {this.deviceTableLayout()}
             </div>);
     }

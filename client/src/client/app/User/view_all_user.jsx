@@ -111,19 +111,21 @@ export default class ViewAllUsers extends React.Component {
         //Added button modify and delete (not done)
 
         return (<div >
-            <LinkButton url="/add-user" label="Add user" /> 
+            <LinkButton url="/add-user" label="Add user" />
+            <LinkButton url="/hidden-user" label="show hidden user" />
+            {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */} 
             <br /><br />
             <h1> View All users : </h1>
+            <br /><font> SELECT * FROM users WHERE user_visible="1"  </font>
             {/*drawContent*/}
             <br /><br />
             <Table >
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false} >
-                    <TableRow >
-                        <TableHeaderColumn>First name</TableHeaderColumn>
-                        <TableHeaderColumn>Last name</TableHeaderColumn>
+                    <TableRow>
+                        <TableHeaderColumn>Profile</TableHeaderColumn>
+                        <TableHeaderColumn>Name</TableHeaderColumn>
                         <TableHeaderColumn>Title</TableHeaderColumn>
                         <TableHeaderColumn>Team</TableHeaderColumn>
-                        <TableHeaderColumn>Profile</TableHeaderColumn>
                         {/*<TableHeaderColumn>Modify</TableHeaderColumn> */}
                     </TableRow>
                 </TableHeader>
@@ -131,14 +133,16 @@ export default class ViewAllUsers extends React.Component {
                     {
                         this.state.users.map((val, index) =>
                             <TableRow >
-                                <TableRowColumn >{val.fname}</TableRowColumn>
-                                <TableRowColumn >{val.lname}</TableRowColumn>
-                                 <TableRowColumn >{val.title}</TableRowColumn>
-                                <TableRowColumn>{val.team}</TableRowColumn>
                                 
                                 <TableRowColumn>
                                     <LinkButton label={val.user_id} url={"/modify-user/" + val.user_id} />
                                 </TableRowColumn>
+
+                                <TableRowColumn >{val.fname + " " +val.lname} </TableRowColumn>
+                                 <TableRowColumn >{val.title}</TableRowColumn>
+                                <TableRowColumn>{val.team}</TableRowColumn>
+
+
 
                             </TableRow>
                         )
