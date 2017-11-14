@@ -1,0 +1,41 @@
+fname	x		varchar(45)
+lname	x		varchar(45)
+title	x		varchar(45),	
+team	x		varchar(45),
+phone	x		varchar(45),
+keys	x		tinyint,
+lukoton	x		tinyint,
+active	x		tinyint,
+email	x		varchar(45),
+slack			varchar(45)
+comments		varchar(100),
+school			varchar(45),
+location		varchar(45),
+work_start x		datetime,
+work_end   x		datetime,
+PHOTO			varchar(45),
+EXTERNAL_ACCOUNTS	varchar(45),
+contract_details	varchar(45),
+ad_user			varchar(45),
+
+
+type 		x	varchar(45)
+serial 		x	varchar(45)
+warranty_text  	x	varchar(45)
+warranty_start		datetime,
+warranty_expire 	datetime,
+shop			varchar(45)
+model 			varhcar(45)
+comments 		varchar(100)
+user 			varchar(45)
+pass 			varchar(45)
+ip_address		varhchar(45)
+references (name) x	varchar(45)		
+inuse 			int(11) 
+last_use_date		int(11)
+last_availabe_data	datetime,
+LastAvailable		datetime		
+
+
+
+

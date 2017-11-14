@@ -76,8 +76,8 @@ function make_user_data_structure2() {
         {
             title: "Work properties",
             rows: [[
-                { fieldName: "Title X", type: "string", db_name: "title" },
-                { fieldName: "Team X", type: "string", db_name: "team" },    
+                { fieldName: "Title", type: "string", db_name: "title" },
+                { fieldName: "Team", type: "string", db_name: "team" },    
             ],
             [
                 { fieldName: "Office room ( room and floor at work)", type: "string", db_name : "location" }

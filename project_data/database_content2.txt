@@ -1,0 +1,134 @@
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) DEFAULT NULL,
+  `lname` varchar(45) DEFAULT NULL,
+  `work_start` datetime DEFAULT NULL,
+  `work_end` datetime DEFAULT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `team` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `door_keys` TINYINT DEFAULT NULL,
+  `lukoton` TINYINT DEFAULT NULL,
+  `user_visible` TINYINT DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `slack` int(11) DEFAULT NULL,
+  `comments` varchar(45) DEFAULT NULL,
+  `school` varchar(45) DEFAULT NULL,
+  `location` varchar(45) DEFAULT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `ad_user` varchar(45) DEFAULT NULL,
+  external_accounts varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+);
+
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_user    | int(11)     | NO   | PRI | NULL    | auto_increment | rename to user_id
+| fname      | varchar(45) | YES  |     | NULL    |                |
+| lname      | varchar(45) | YES  |     | NULL    |                |
+| work_start | datetime    | YES  |     | NULL    |                |
+| work_end   | datetime    | YES  |     | NULL    |                |
+| status     | varchar(45) | YES  |     | NULL    | remove               |
+| title      | varchar(45) | YES  |     | NULL    |                |
+| team       | varchar(45) | YES  |     | NULL    |                |
+| phone      | varchar(45) | YES  |     | NULL    |                |
+| keys       | int(11)     | YES  |     | NULL    | rename to door_keys                |
+| lukoton    | int(11)     | YES  |     | NULL    |                |
+| active     | int(11)     | YES  |     | NULL    | rename to visible                |
+| email      | varchar(45) | YES  |     | NULL    |                |
+| slack      | int(11)     | YES  |     | NULL    |                |
+| comments   | varchar(45) | YES  |     | NULL    |               |
+| school     | varchar(45) | YES  |     | NULL    |                |
+| location   | varchar(45) | YES  |     | NULL    |                |
+| userscol   | varchar(45) | YES  |     | NULL    | remove               |
+| photo      | varchar(45) | YES  |     | NULL    |                |
+| address    | varchar(45) | YES  |     | NULL    | remove               |
+| ad_user    | varchar(45) | YES  |     | NULL    |                |
+
+  visible    |	tinyint		  |	default 1 | add ( not exsist)  -> not need (use active field)
+  external_accounts varchar(45)         add( not exsist ) 		 	
+
++------------+-------------+------+-----+---------+----------------+
+
+
+
+
+CREATE TABLE `device` (
+  `device_id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `model` varchar(45) DEFAULT NULL,
+  `serial_number` varchar(45) DEFAULT NULL,
+  `warranty` varchar(45) DEFAULT NULL,
+  `about_device` varchar(100) DEFAULT NULL,
+  `owner_id` int(11) DEFAULT NULL,
+  `device_of_team` varchar(45) DEFAULT NULL,
+  `current_user_id` int(11) DEFAULT NULL,
+  `last_user_id` int(11) DEFAULT NULL,
+  `device_available` int(11) DEFAULT NULL,
+  `available_after` varchar(45) DEFAULT NULL,
+   ip_address varchar(45) DEFAULT NULL,
+   shop varchar(45) DEFAULT NULL,
+   device_visible TINYINT DEFAULT NULL,
+  PRIMARY KEY (`device_id`)
+);
+
+
+
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| device_id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| type             | int(11)      | YES  |     | NULL    |                |
+| name             | varchar(45)  | YES  |     | NULL    | rename to reference               |
+| model            | varchar(45)  | YES  |     | NULL    |                |
+| serial_number    | varchar(45)  | YES  |     | NULL    |                |
+| warranty         | varchar(45)  | YES  |     | NULL    | rename to warranty_info               |
+| about_device     | varchar(100) | YES  |     | NULL    |                |
+| owner_id         | int(11)      | YES  |     | NULL    |                |
+| owner_group      | varchar(45)  | YES  |     | NULL    | rename device_of_team                |
+| current_user_id  | int(11)      | YES  |     | NULL    |                |
+| last_user_id     | int(11)      | YES  |     | NULL    |                |
+| device_available | int(11)      | YES  |     | NULL    |                |
+| available_after  | varchar(45)  | YES  |     | NULL    |                |
+
+  ip_address	     varchar(45)			   add ( not exsist )
+  warranty_start     datetime				   add ( not exsist  )		
+  warranty_expire    datetime				   add ( not exsist )
+  visible	     tinyint				   add ( not exsist )
+  shop		     varchar(45)			   add ( not exsist )
+  
+
+
++------------------+--------------+------+-----+---------+----------------+
+
+
+
+CREATE TABLE `license` (
+  `license_id` int(11) NOT NULL AUTO_INCREMENT,
+  `device_id` int(11) DEFAULT NULL,
+  `license_code` varchar(45) DEFAULT NULL,
+  `user` varchar(45) DEFAULT NULL,
+  `pass` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `comments` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`license_id`)
+);
+
+
+
+mysqldump -u root -p --databases dbtest2 > /home/stanislav/Digitalents3/data2.sql
+
+
+
+
+
+
+
+
+
+
+
+
+

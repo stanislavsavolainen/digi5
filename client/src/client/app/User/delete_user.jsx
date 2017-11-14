@@ -51,8 +51,7 @@ deleteUserFuncion(){
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
-                console.log("Fetch error : " + error_msg);
-               
+                console.log("Fetch error : " + error_msg); 
             })
 
 
