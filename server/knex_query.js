@@ -102,6 +102,37 @@ function DBmodifyUser(user_object, user_id_parameter) {
 }
 
 
+function DBviewAllVisibleUsers(){
+
+    return (
+     
+        knex(user_table_name).where({ user_visible: "1" }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            return ("Failed")
+        })
+    );
+
+
+}
+
+function DBViewAllHiddenUsers(){
+
+     return (
+     
+        knex(user_table_name).where({ user_visible: "0" }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            return ("Failed")
+        })
+    );
+
+
+}
+
+
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
@@ -262,7 +293,9 @@ module.exports = {
     DBgetSingleLicense,
     DBmodifyLicense,
     DBdeleteLicense,
-    DBaddLicense
+    DBaddLicense,
+    DBviewAllVisibleUsers,
+    DBViewAllHiddenUsers
 }
 
 

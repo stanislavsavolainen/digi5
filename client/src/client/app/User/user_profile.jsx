@@ -86,7 +86,6 @@ export default class UserProfile extends React.Component {
                                             this.state.profile_user.length > 0 ? field.fieldName + "  :  " + this.state.profile_user[0][field.db_name] : "empty"
                                         } </div>,
 
-
                                     )}</div>)
                         }
 

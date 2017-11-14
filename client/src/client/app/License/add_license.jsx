@@ -116,7 +116,7 @@ export default class AddLicense extends React.Component {
 
     render() {
     
-        return <div>  Add license <br /> {this.drawLayotAddingLicense()} </div>
+        return <div> <h1>  Add license </h1> <br /> {this.drawLayotAddingLicense()} </div>
 
     }
 

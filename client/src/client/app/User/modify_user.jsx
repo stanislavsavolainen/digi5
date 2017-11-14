@@ -165,7 +165,7 @@ export default class ModifyUser extends React.Component {
                 <Checkbox
                     label={field.fieldName} title={field.fieldName}
                     checked={this.state.user_profile[field.db_name]}
-                      onCheck={ (event ,  isInputChecked ) => this.FieldListener(isInputChecked, field.db_name)} 
+                    onCheck={ (event ,  isInputChecked ) => this.FieldListener(isInputChecked, field.db_name)} 
                 />
                 :
                 <TextField hintText={field.fieldName} title={field.fieldName}
@@ -197,7 +197,7 @@ export default class ModifyUser extends React.Component {
                 }
     
                 <Button label="Update user" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "update_user"; this.setState({ open: true }) }} />
-                <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.state.dialog_command = "delete_user"; this.setState({ open: true }) }} />
+               {/* <Button label="Delete" style={{ margin: 12 }} title="Delete user" primary={true} onClick={() => { this.state.dialog_command = "delete_user"; this.setState({ open: true }) }} /> */}
                 {this.renderDialog(this.state.dialog_command)}
 
             </div>);

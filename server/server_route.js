@@ -11,7 +11,8 @@ var route = [
     makeRoute('/view_all_users', function (request, reply) {
         printLine();
         printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
-        myknex.DBreadAllUsers().then(reply);
+       // myknex.DBreadAllUsers().then(reply);
+        myknex.DBviewAllVisibleUsers().then(reply)
     }),
 
     makeRoute('/add_user', function (request, reply) {
@@ -118,6 +119,13 @@ var route = [
     }),
 
 
+        makeRoute('/view_all_hidden_users', function (request, reply) {
+        printLine();
+        printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
+       // myknex.DBreadAllUsers().then(reply);
+        myknex.DBViewAllHiddenUsers().then(reply);
+        // myknex.DBviewAllVisibleUsers().then(reply)
+    }),
 
 
 

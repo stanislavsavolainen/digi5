@@ -116,7 +116,8 @@ export default class AddUser extends React.Component {
                                         : field.type === "checkbox" ? 
                                             <Checkbox
                                             label={field.fieldName} title={field.fieldName}
-                                            onCheck={(event) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
+                                           // onCheck={(event ) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
+                                             onCheck={(event ,  isInputChecked ) => this.FieldListener( block_key, row_key, field_key, isInputChecked, field.type )}
                                         /> :
                                             <TextField
                                                 hintText={field.fieldName} title={field.fieldName}

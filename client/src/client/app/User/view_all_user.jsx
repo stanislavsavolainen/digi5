@@ -116,7 +116,6 @@ export default class ViewAllUsers extends React.Component {
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */} 
             <br /><br />
             <h1> View All users : </h1>
-            <br /><font> SELECT * FROM users WHERE user_visible="1"  </font>
             {/*drawContent*/}
             <br /><br />
             <Table >
@@ -131,9 +130,11 @@ export default class ViewAllUsers extends React.Component {
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {
-                        this.state.users.map((val, index) =>
+          
+                        this.state.users.map((val, index) => 
+                             
                             <TableRow >
-                                
+                           
                                 <TableRowColumn>
                                     <LinkButton label={val.user_id} url={"/modify-user/" + val.user_id} />
                                 </TableRowColumn>
@@ -142,10 +143,9 @@ export default class ViewAllUsers extends React.Component {
                                  <TableRowColumn >{val.title}</TableRowColumn>
                                 <TableRowColumn>{val.team}</TableRowColumn>
 
-
-
                             </TableRow>
-                        )
+
+                          )
                     }
                 </TableBody>
             </Table>

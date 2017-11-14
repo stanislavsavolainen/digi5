@@ -263,7 +263,7 @@ export default class ModifyLicense extends React.Component {
 
 
                 <Button label="Update license" primary={true} style={{ margin: 12 }} onClick={() => { this.setState({ dialog_command: "update_license", open: true }) }} />
-                <Button label="Delete license" primary={true} style={{ margin: 12 }} onClick={() => { this.setState({ dialog_command: "delete_license", open: true }) }} />
+               {/* <Button label="Delete license" primary={true} style={{ margin: 12 }} onClick={() => { this.setState({ dialog_command: "delete_license", open: true }) }} /> */}
 
                 {this.renderDialog(this.state.dialog_command)}
 
