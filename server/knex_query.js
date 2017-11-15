@@ -58,7 +58,7 @@ function DBAddNewUser(payload_data) {
 function DBgetSingleUserProfile(parameter_id) {
     console.log("SELECT * FROM users WHERE id =" + parameter_id);
 
-    let id_value = parameter_id
+    let id_value = parameter_id;
 
     return (
      
@@ -205,6 +205,15 @@ function DBmodifyDevice(device_object, device_id_parameter) {
 }
 
 
+function DBviewAllVisibleDevices(){
+
+}
+
+function DBviewAllHiddenDevices(){
+
+}
+
+
 // =================== LICENSE DATABASE HANDLER ==================
 
 function DBreadAllLicenses() {
@@ -274,6 +283,37 @@ function DBdeleteLicense(license_index) {
 }
 
 
+function DBviewAllVisibleLicenses(){
+
+     return (
+    
+        knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
+
+}
+
+function DBviewAllHiddenLicenses(){
+
+     return (
+    
+        knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
+    
+}
+
+
 
 //-------------- export knex functions ---------------------------
 
@@ -295,7 +335,11 @@ module.exports = {
     DBdeleteLicense,
     DBaddLicense,
     DBviewAllVisibleUsers,
-    DBViewAllHiddenUsers
+    DBViewAllHiddenUsers,
+    DBviewAllVisibleDevices,
+    DBviewAllHiddenDevices,
+    DBviewAllVisibleLicenses,
+    DBviewAllHiddenLicenses
 }
 
 

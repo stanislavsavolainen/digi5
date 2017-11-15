@@ -106,9 +106,10 @@ export default class ViewDevices extends React.Component {
 
             <div>
                 <LinkButton url="/add-device" label="Add devices" />
+                <LinkButton url="/hidden-device" label="Show hidden device" />
                 <br />
                 <h1>View all devices </h1><br />
-                
+
                 <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
@@ -123,13 +124,13 @@ export default class ViewDevices extends React.Component {
                             this.state.devices.map((val, index) =>
                                 <TableRow>
 
-                                     <TableRowColumn>
+                                    <TableRowColumn>
                                         <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
                                     </TableRowColumn>
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.type}</TableRowColumn>
-                                   
+
 
                                 </TableRow>
                             )
@@ -143,12 +144,9 @@ export default class ViewDevices extends React.Component {
     }
 
 
-
-
     render() {
         return (
             <div>
-
                 {this.deviceTableLayout()}
             </div>);
     }

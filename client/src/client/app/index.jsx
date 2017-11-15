@@ -32,6 +32,8 @@ import DeleteDevice from './Device/delete_device.jsx'
 import ModifyLicense from './License/modify_license.jsx';
 import About from './About.jsx';
 import HiddenUser from './User/hidden_user.jsx';
+import HiddenDevice from './Device/hidden_device.jsx';
+import HiddenLicense from './License/hidden_license.jsx';
 
 import { server_host_for_client } from './client_connection.jsx';
 
@@ -78,6 +80,8 @@ class App extends React.Component {
                 <Route path="/delete-device/:deviceId" component={DeleteDevice} />
                 <Route path="/modify-license/:licenseId" component={ModifyLicense} />
                 <Route path="/hidden-user" component={HiddenUser} />
+                <Route path="/hidden-device" component={HiddenDevice} />
+                <Route path="/hidden-license" component={HiddenLicense} />
                 <Route path="/about" component={About} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>

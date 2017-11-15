@@ -7,13 +7,15 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import DatePicker from 'material-ui/DatePicker';
+import Checkbox from 'material-ui/Checkbox';
+import Dialog from 'material-ui/Dialog';
 
 //my component
 import LinkButton from './../LinkButton.jsx';
 import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
-import Dialog from 'material-ui/Dialog';
+
 
 
 export default class ModifyDevice extends React.Component {
@@ -91,7 +93,9 @@ export default class ModifyDevice extends React.Component {
                                             field.type == "date" 
                                             ? 
                                              <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} /> 
-                                            :        
+                                            : 
+                                            field.type == "checkbox" ? <Checkbox label={field.fieldName} /> 
+                                            :       
                                                 <TextField hintText={field.fieldName} title={field.fieldName}
                                                     onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
                                                     // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>
@@ -112,7 +116,7 @@ export default class ModifyDevice extends React.Component {
                 <Button label="Update device" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "update_device"; this.setState({ open: true }) }} />
 
                 { /* <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.deleteDeviceById(this.state.device_id, 0); }} /> */}
-                <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "delete_device"; this.setState({ open: true }) }} />
+               {/* <Button label="Delete" style={{ margin: 12 }} primary={true} onClick={() => { this.state.dialog_command = "delete_device"; this.setState({ open: true }) }} /> */}
 
 
 

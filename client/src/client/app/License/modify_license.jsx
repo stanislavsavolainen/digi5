@@ -6,6 +6,7 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
+import Checkbox from 'material-ui/Checkbox';
 
 //my component
 import { license_model, make_license_data_structure } from './license_data.jsx';
@@ -231,6 +232,9 @@ export default class ModifyLicense extends React.Component {
     pickField(field, field_key) {
 
         return (
+
+            field.type == "checkbox" ? <Checkbox  label={field.fieldName} /> 
+            :
             <TextField
                 hintText={field.fieldName}
                 title={field.fieldName}

@@ -8,8 +8,8 @@ import Toolbar from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 
+//my imports
 import LinkButton from './../LinkButton.jsx';
-
 import { make_user_data_structure, user_data_structure, field_name, advanced_field_name, TextStyle2 } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 

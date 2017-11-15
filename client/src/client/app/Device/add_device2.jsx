@@ -2,20 +2,19 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
-import { server_host_for_client } from './../client_connection.jsx';
 
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
-
-import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
-
-//import LinkButton from './../LinkButton.jsx';
+import Checkbox from 'material-ui/Checkbox';
+import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import Button from 'material-ui/RaisedButton';
-
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
+//my imports
+//import LinkButton from './../LinkButton.jsx';
+import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
+import { server_host_for_client } from './../client_connection.jsx';
 
 export default class AddDevice extends React.Component {
 
@@ -101,6 +100,8 @@ export default class AddDevice extends React.Component {
                                                 field.type == "date"
                                                     ?
                                                     <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} />
+                                                    : 
+                                                    field.type == "checkbox" ? <Checkbox label={field.fieldName} /> 
                                                     :
                                                     <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
                                                         onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
@@ -128,7 +129,7 @@ export default class AddDevice extends React.Component {
             <div>
                 {this.drawDeviceAddingLayout()}
                 <Button label="Add device" primary={true} onClick={() => this.addDeviceToDB()} />
-                <br /><br />
+                <br /><br /><br /><br /><br /><br />
                 <div>
                     <DatePicker hintText="Portrait Dialog" />
                     <DatePicker hintText="Landscape Dialog" mode="landscape" />

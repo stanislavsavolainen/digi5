@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-
+import Checkbox from 'material-ui/Checkbox';
 
 import { license_model, make_license_data_structure } from './license_data.jsx';
 import Button from 'material-ui/RaisedButton';
@@ -72,6 +72,7 @@ export default class ViewLicense extends React.Component {
         return (
             <div>
                 <LinkButton url="/add-license" label="Add license" />
+                <LinkButton url="/hidden-license" label="Show hidden license" />
                 <br /> <h1> View list of all licenses </h1>
 
                   <Table>

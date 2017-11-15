@@ -10,6 +10,7 @@ import { server_host_for_client } from './../client_connection.jsx';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
 
+
 export default class AddDevice extends React.Component {
 
     constructor(props) {

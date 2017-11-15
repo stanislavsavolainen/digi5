@@ -134,12 +134,15 @@ let device_data_object2 = [
                 { fieldName: "Device of team", type: "string", db_name: "owner_group" },
             ],
             [
-                { fieldName: "User reservation 42 ", type: "number", db_name: "current_user_id" },
+                { fieldName: "User reservation", type: "number", db_name: "current_user_id" },
                
             ],
             [
-                { fieldName: "Last available rwerwe date (not working)", type: "date" },
+                { fieldName: "Last available date (not working)", type: "date" },
                 { fieldName: "Last used date (not working)", type: "date" },
+            ],
+            [
+                { fieldName: "Device is visible", type: "checkbox" },
             ]
         ]
     },

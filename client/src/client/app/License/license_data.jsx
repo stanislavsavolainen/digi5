@@ -45,6 +45,9 @@ let license_data_object = [
                 { fieldName: "License activation (pass)", type: "string", db_name: "pass" },
                 { fieldName: "Comments", type: "string", db_name: "comments" },
             ],
+             [
+                { fieldName: "License is visible", type: "checkbox" },
+            ]
            
         ],
     },
