@@ -21,6 +21,42 @@ export default class HiddenDevices extends React.Component {
         }
     }
 
+
+    restoreHiddenDevice( restore_device_id ){
+
+         //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( {user_id : restore_device_id} ),
+        };
+
+
+         let link = "/restore_device";
+
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((restore) => {
+
+                this.setState(this.state);
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+
+
+    }
+
     componentWillMount() {
         this.readDevicesFromDatabase();
     }
@@ -114,6 +150,7 @@ export default class HiddenDevices extends React.Component {
                         <TableRow>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device type</TableHeaderColumn>
+                            <TableHeaderColumn>Restore data</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
 
@@ -124,7 +161,9 @@ export default class HiddenDevices extends React.Component {
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.type}</TableRowColumn>
-
+                                    <TableRowColumn>
+                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenDevice(val.device_id) } />
+                                    </TableRowColumn>
 
                                 </TableRow>
                             )

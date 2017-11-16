@@ -25,6 +25,45 @@ export default class HiddenLicense extends React.Component {
         }
     }
 
+
+    restoreHiddenLicense(restore_license_id){
+
+
+         let post_body = {
+            license_id : restore_license_id
+         }
+
+         //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( post_body),
+        };
+
+         let link = "/restore_license";
+
+       // fetch(host + link, postData)
+        fetch( server_host_for_client  + link, postData)
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((restore) => {
+
+                this.setState(this.state);
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+                // document.getElementById("answer_field").innerHTML = "<div align='center'><font color='red'><h1>Node Server is down ! </h1></font></div>";
+            })
+
+
+    }
+
     componentWillMount() {
         this.readLicenseFromDatabase();
     }
@@ -79,6 +118,7 @@ export default class HiddenLicense extends React.Component {
                         <TableRow >
 
                             <TableHeaderColumn>License name</TableHeaderColumn>
+                            <TableRowColumn> Restore </TableRowColumn>
 
                         </TableRow>
                     </TableHeader>
@@ -88,8 +128,13 @@ export default class HiddenLicense extends React.Component {
                                 <TableRow>
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
+                                      <TableRowColumn>
+                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenLicense(val.license_id) } />
+                                    </TableRowColumn>
 
                                 </TableRow>
+
+                              
                             )
                         }
                     </TableBody>

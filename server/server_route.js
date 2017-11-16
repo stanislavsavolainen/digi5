@@ -142,6 +142,9 @@ var route = [
         // myknex.DBviewAllVisibleUsers().then(reply)
     }),
 
+    makeRoute('/restore_user', null),
+    makeRoute('/restore_device', null),
+    makeRoute('/restore_license', null)
 
 
 
