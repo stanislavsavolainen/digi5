@@ -38,7 +38,8 @@ var route = [
     makeRoute('/view_all_devices', function (request, reply) {
         printLine();
         printLogText1("View all devices"); // console.log("View all devices");
-        myknex.DBreadAllDevices().then(reply);
+       // myknex.DBreadAllDevices().then(reply);
+         myknex.DBviewAllVisibleDevices().then(reply)
     }),
 
     makeRoute('/delete_user', function (request, reply) {
@@ -83,7 +84,8 @@ var route = [
     makeRoute('/view_license', function (request, reply) {
         printLine();
         printLogText1("View license");//console.log("View license");
-        myknex.DBreadAllLicenses().then(reply);
+        //myknex.DBreadAllLicenses().then(reply);
+         myknex.DBviewAllVisibleLicenses().then(reply)
     }),
 
     makeRoute('/add_license', function (request, reply) {
@@ -124,6 +126,19 @@ var route = [
         printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
        // myknex.DBreadAllUsers().then(reply);
         myknex.DBViewAllHiddenUsers().then(reply);
+        // myknex.DBviewAllVisibleUsers().then(reply)
+    }),
+
+        makeRoute('/view_all_hidden_devices', function (request, reply) {
+        printLine();
+        printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
+        myknex.DBviewAllHiddenDevices().then(reply);
+    }),
+        makeRoute('/view_all_hidden_licenses', function (request, reply) {
+        printLine();
+        printLogText1("View all users"); // console.log(" >>>> View all users <<<<<<<< ");
+       // myknex.DBreadAllUsers().then(reply);
+        myknex.DBviewAllHiddenLicenses().then(reply);
         // myknex.DBviewAllVisibleUsers().then(reply)
     }),
 

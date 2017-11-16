@@ -101,7 +101,9 @@ export default class AddDevice extends React.Component {
                                                     ?
                                                     <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} />
                                                     : 
-                                                    field.type == "checkbox" ? <Checkbox label={field.fieldName} /> 
+                                                    field.type == "checkbox" ? <Checkbox label={field.fieldName} title={field.fieldName} 
+                                                    onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)} 
+                                                    /> 
                                                     :
                                                     <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
                                                         onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}

@@ -33,7 +33,8 @@ export default class ModifyDevice extends React.Component {
     }
 
 
-    FieldListener(block_key, row_key, field_key, data, type, fieldDBName) {
+  //  FieldListener(block_key, row_key, field_key, data, type, fieldDBName) {
+    FieldListener(data, fieldDBName){
         this.state.device_profile[fieldDBName] = data;
         this.setState(this.state);
         console.log("Data lenght :" + data.length)
@@ -94,10 +95,14 @@ export default class ModifyDevice extends React.Component {
                                             ? 
                                              <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} /> 
                                             : 
-                                            field.type == "checkbox" ? <Checkbox label={field.fieldName} /> 
+                                            field.type == "checkbox" ? 
+                                            <Checkbox label={field.fieldName} title={field.fieldName}
+                                             onCheck={ (event, isInputChecked) => this.FieldListener(isInputChecked, field.db_name)  } 
+                                             checked={this.state.device_profile[field.db_name]}
+                                             /> 
                                             :       
                                                 <TextField hintText={field.fieldName} title={field.fieldName}
-                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type, field.db_name)}
+                                                    onChange={(event) => this.FieldListener(event.target.value, field.db_name)}
                                                     // <div> {this.state.device_profile.length > 0 ? field.fieldName + "  :  " + this.state.device_profile[0][field.db_name] : "empty" } </div>
                                                     value={this.state.device_profile[field.db_name]} style={{ margin: 12 }}
                                                 />

@@ -61,7 +61,7 @@ function DBgetSingleUserProfile(parameter_id) {
     let id_value = parameter_id;
 
     return (
-     
+
         knex(user_table_name).where({ user_id: id_value }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -102,10 +102,10 @@ function DBmodifyUser(user_object, user_id_parameter) {
 }
 
 
-function DBviewAllVisibleUsers(){
+function DBviewAllVisibleUsers() {
 
     return (
-     
+
         knex(user_table_name).where({ user_visible: "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -117,11 +117,11 @@ function DBviewAllVisibleUsers(){
 
 }
 
-function DBViewAllHiddenUsers(){
+function DBViewAllHiddenUsers() {
 
-     return (
-     
-        knex(user_table_name).where({ user_visible: "0" }).then(function (database_result) {
+    return (
+
+        knex(user_table_name).where({ user_visible: "0" }).orWhere({user_visible : null}).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -136,7 +136,7 @@ function DBViewAllHiddenUsers(){
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
-   
+
     return (
         knex(device_table_name).select().then(function (database_result) {
             return JSON.stringify(database_result);
@@ -147,7 +147,7 @@ function DBreadAllDevices() {
 }
 
 function DBaddNewDevice(device_data) {
-    
+
     knex(device_table_name).insert(device_data).then(() => {
         console.log("Inserted device")
         return ("Insert succesful");
@@ -178,7 +178,7 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
     console.log("Trying to get device id : " + device_id_parameter + "  profile data from database");
 
     return (
-    
+
         knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -205,11 +205,34 @@ function DBmodifyDevice(device_object, device_id_parameter) {
 }
 
 
-function DBviewAllVisibleDevices(){
+function DBviewAllVisibleDevices() {
+
+    return (
+
+        knex(device_table_name).where({ device_visible: "1" }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
+
 
 }
 
-function DBviewAllHiddenDevices(){
+function DBviewAllHiddenDevices() {
+
+    return (
+
+        knex(device_table_name).where({ device_visible: "0" }).orWhere({device_visible : null}).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            //reply("Failed")
+            return ("Failed")
+        })
+    );
 
 }
 
@@ -247,7 +270,7 @@ function DBgetSingleLicense(license_id) {
 
 
     return (
-      
+
         knex(license_table_name).where({ license_id: license_id }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -274,7 +297,7 @@ function DBmodifyLicense(license_object, license_index) {
 
 function DBdeleteLicense(license_index) {
 
-   knex(license_table_name).del().where({ license_id: license_index })
+    knex(license_table_name).del().where({ license_id: license_index })
         .then(() => {
             console.log("License id :" + license_index + "successfyly deleted from database");
         })
@@ -283,34 +306,30 @@ function DBdeleteLicense(license_index) {
 }
 
 
-function DBviewAllVisibleLicenses(){
+function DBviewAllVisibleLicenses() {
 
-     return (
-    
-        knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
+    return (
+        knex(license_table_name).where({ license_visible : "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
-            console.log(e)
-            //reply("Failed")
+            console.log(e);
             return ("Failed")
         })
     );
 
 }
 
-function DBviewAllHiddenLicenses(){
+function DBviewAllHiddenLicenses() {
 
-     return (
-    
-        knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
+    return (
+        knex(license_table_name).where({ license_visible : "0" }).orWhere({license_visible : null}).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
-            console.log(e)
-            //reply("Failed")
+            console.log(e);
             return ("Failed")
         })
     );
-    
+
 }
 
 

@@ -233,7 +233,12 @@ export default class ModifyLicense extends React.Component {
 
         return (
 
-            field.type == "checkbox" ? <Checkbox  label={field.fieldName} /> 
+            field.type == "checkbox" 
+            ? 
+            <Checkbox  label={field.fieldName} title={field.fieldName}  
+            checked = { this.state.license_profile[field.db_name] }
+            onCheck = { ( event, isInputChecked ) => this.FieldListener( isInputChecked, field.db_name)  }
+            /> 
             :
             <TextField
                 hintText={field.fieldName}

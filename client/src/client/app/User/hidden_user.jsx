@@ -67,8 +67,10 @@ export default class HiddenUser extends React.Component {
       // return( <div> Hidden user  -> SELECT * FROM users WHERE users_visible = "0"  </div> );
    
                 return (<div >
+             {/*       
             <LinkButton url="/add-user" label="Add user" />
             <LinkButton url="/hidden-user" label="show hidden user" />
+             */}
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */} 
             <br /><br />
             <h1> View hidden users : </h1>

@@ -88,7 +88,12 @@ export default class AddLicense extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                    field.type === "checkbox" ? <Checkbox label={field.fieldName} /> :
+                                    field.type === "checkbox" 
+                                    ? 
+                                    <Checkbox label={field.fieldName} title={field.fieldName} 
+                                    onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked)}  
+                                    />
+                                    :
                                     <TextField
                                         hintText={field.fieldName}
                                         title={field.fieldName}
