@@ -52,7 +52,7 @@ export default class HiddenLicense extends React.Component {
             })
             .then((restore) => {
 
-                  this.state.devices.splice( remove_license_from_state_id, 1  );
+                  this.state.license.splice( remove_license_from_state_id, 1  );
                 this.setState(this.state);
 
             })

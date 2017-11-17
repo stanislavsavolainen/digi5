@@ -63,6 +63,8 @@ export default class ViewLogs extends React.Component {
             
             <div>
                 {
+
+                    /*
                     <Card>
 
                     <CardHeader title="Log data (posible example -> functionality missing)" />
@@ -94,6 +96,8 @@ export default class ViewLogs extends React.Component {
                     </CardActions>   
 
                  </Card>
+
+                 */
                 }
                 <font> There is no log data at the moment ! </font>
                 
