@@ -26,7 +26,7 @@ export default class HiddenLicense extends React.Component {
     }
 
 
-    restoreHiddenLicense(restore_license_id){
+    restoreHiddenLicense(restore_license_id , remove_license_from_state_id){
 
 
          let post_body = {
@@ -40,7 +40,7 @@ export default class HiddenLicense extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify( post_body),
+            body: JSON.stringify(post_body),
         };
 
          let link = "/restore_license";
@@ -52,6 +52,7 @@ export default class HiddenLicense extends React.Component {
             })
             .then((restore) => {
 
+                  this.state.devices.splice( remove_license_from_state_id, 1  );
                 this.setState(this.state);
 
             })
@@ -129,7 +130,7 @@ export default class HiddenLicense extends React.Component {
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                       <TableRowColumn>
-                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenLicense(val.license_id) } />
+                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenLicense(val.license_id, index) } />
                                     </TableRowColumn>
 
                                 </TableRow>

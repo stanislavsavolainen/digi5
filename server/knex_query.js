@@ -133,6 +133,18 @@ function DBViewAllHiddenUsers() {
 }
 
 
+function DBsetUserVisible( p_user_id ){
+
+     knex(user_table_name).update({ user_visible : "1" }).where({ user_id: p_user_id }).then(
+        () => { console.log("User data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
+
+
+}
+
 // =================== DEVICE DATABASE HANDLER =================
 
 function DBreadAllDevices() {
@@ -236,6 +248,17 @@ function DBviewAllHiddenDevices() {
 
 }
 
+function DBsetDeviceVisible(p_device_id){
+
+    knex(device_table_name).update({ device_visible : "1" }).where({ device_id: p_device_id }).then(
+        () => { console.log("Device data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
+
+}
+
 
 // =================== LICENSE DATABASE HANDLER ==================
 
@@ -332,6 +355,17 @@ function DBviewAllHiddenLicenses() {
 
 }
 
+function DBsetLicenseVisible(p_license_id){
+
+    knex(license_table_name).update({ license_visible : "1" }).where({ license_id: p_license_id }).then(
+        () => { console.log("License data succesfully updated !"); return ("done") }
+    ).catch((e) => {
+        console.log(e)
+        return ("Failed")
+    })
+
+}
+
 
 
 //-------------- export knex functions ---------------------------
@@ -358,7 +392,10 @@ module.exports = {
     DBviewAllVisibleDevices,
     DBviewAllHiddenDevices,
     DBviewAllVisibleLicenses,
-    DBviewAllHiddenLicenses
+    DBviewAllHiddenLicenses,
+    DBsetUserVisible,
+    DBsetDeviceVisible,
+    DBsetLicenseVisible
 }
 
 

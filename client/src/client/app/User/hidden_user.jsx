@@ -26,9 +26,7 @@ export default class HiddenUser extends React.Component {
     }
 
 
-    restoreHiddenUser( restore_user_id ){
-
-
+    restoreHiddenUser( restore_user_id , remove_user_from_state_id ){
 
          let post_body = {
             user_id : restore_user_id
@@ -53,6 +51,7 @@ export default class HiddenUser extends React.Component {
             })
             .then((restore) => {
 
+                 this.state.users.splice( remove_user_from_state_id, 1  );
                 this.setState(this.state);
 
             })
@@ -146,7 +145,7 @@ export default class HiddenUser extends React.Component {
                                  <TableRowColumn >{val.title}</TableRowColumn>
                                 <TableRowColumn>{val.team}</TableRowColumn>
                                 <TableRowColumn>
-                                    <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenUser(val.user_id) }/>
+                                    <Button label="restore" style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenUser(val.user_id , index) }/>
                                 </TableRowColumn>
 
                             </TableRow>

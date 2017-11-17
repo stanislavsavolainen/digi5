@@ -22,7 +22,12 @@ export default class HiddenDevices extends React.Component {
     }
 
 
-    restoreHiddenDevice( restore_device_id ){
+    restoreHiddenDevice( restore_device_id, remove_device_from_state_id ){
+
+         let post_body = {
+            device_id : restore_device_id
+         }
+
 
          //post body
         let postData = {
@@ -31,7 +36,7 @@ export default class HiddenDevices extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify( {user_id : restore_device_id} ),
+            body: JSON.stringify( post_body ),
         };
 
 
@@ -44,6 +49,7 @@ export default class HiddenDevices extends React.Component {
             })
             .then((restore) => {
 
+                this.state.devices.splice( remove_device_from_state_id, 1  );
                 this.setState(this.state);
 
             })
@@ -162,7 +168,7 @@ export default class HiddenDevices extends React.Component {
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.type}</TableRowColumn>
                                     <TableRowColumn>
-                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenDevice(val.device_id) } />
+                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenDevice(val.device_id , index) } />
                                     </TableRowColumn>
 
                                 </TableRow>
