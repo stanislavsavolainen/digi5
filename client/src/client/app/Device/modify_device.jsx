@@ -96,7 +96,7 @@ export default class ModifyDevice extends React.Component {
                                              <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} /> 
                                             : 
                                             field.type == "checkbox" ? 
-                                            <Checkbox label={field.fieldName} title={field.fieldName}
+                                            <Checkbox label={field.fieldName} title={field.fieldName} 
                                              onCheck={ (event, isInputChecked) => this.FieldListener(isInputChecked, field.db_name)  } 
                                              checked={this.state.device_profile[field.db_name]}
                                              /> 

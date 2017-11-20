@@ -46,7 +46,7 @@ let license_data_object = [
                 { fieldName: "Comments", type: "string", db_name: "comments" },
             ],
              [
-                { fieldName: "License is visible", type: "checkbox" ,  db_name : "license_visible" },
+                { fieldName: "License is hidden", type: "checkbox" ,  db_name : "license_visible" },
             ]
            
         ],

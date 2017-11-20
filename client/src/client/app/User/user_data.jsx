@@ -48,7 +48,7 @@ function make_user_data_structure() {
             rows: [
                 [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton"}],
                 [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys"}],
-                [{ fieldName: "User is visible", type: "checkbox", db_name : "user_visible" }]],
+                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible" }]],
         }
     ]
 }
@@ -92,7 +92,7 @@ function make_user_data_structure2() {
             rows: [
                 [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton"}],
                 [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys"}],
-                [{ fieldName: "User is visible", type: "checkbox", db_name : "user_visible" }],
+                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible" }],
                 
             ],
         }

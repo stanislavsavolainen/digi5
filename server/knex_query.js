@@ -106,7 +106,7 @@ function DBviewAllVisibleUsers() {
 
     return (
 
-        knex(user_table_name).where({ user_visible: "1" }).then(function (database_result) {
+        knex(user_table_name).where({ user_visible: "0" }).orWhere({user_visible : null}).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -121,7 +121,7 @@ function DBViewAllHiddenUsers() {
 
     return (
 
-        knex(user_table_name).where({ user_visible: "0" }).orWhere({user_visible : null}).then(function (database_result) {
+        knex(user_table_name).where({ user_visible: "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -135,7 +135,7 @@ function DBViewAllHiddenUsers() {
 
 function DBsetUserVisible( p_user_id ){
 
-     knex(user_table_name).update({ user_visible : "1" }).where({ user_id: p_user_id }).then(
+     knex(user_table_name).update({ user_visible : "0" }).where({ user_id: p_user_id }).then(
         () => { console.log("User data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)
@@ -221,7 +221,7 @@ function DBviewAllVisibleDevices() {
 
     return (
 
-        knex(device_table_name).where({ device_visible: "1" }).then(function (database_result) {
+        knex(device_table_name).where({ device_visible: "0" }).orWhere({device_visible : null}).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -237,7 +237,7 @@ function DBviewAllHiddenDevices() {
 
     return (
 
-        knex(device_table_name).where({ device_visible: "0" }).orWhere({device_visible : null}).then(function (database_result) {
+        knex(device_table_name).where({ device_visible: "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -332,7 +332,7 @@ function DBdeleteLicense(license_index) {
 function DBviewAllVisibleLicenses() {
 
     return (
-        knex(license_table_name).where({ license_visible : "1" }).then(function (database_result) {
+        knex(license_table_name).where({ license_visible : "0" }).orWhere({license_visible : null}).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e);
@@ -345,7 +345,7 @@ function DBviewAllVisibleLicenses() {
 function DBviewAllHiddenLicenses() {
 
     return (
-        knex(license_table_name).where({ license_visible : "0" }).orWhere({license_visible : null}).then(function (database_result) {
+        knex(license_table_name).where({ license_visible : "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e);
@@ -357,7 +357,7 @@ function DBviewAllHiddenLicenses() {
 
 function DBsetLicenseVisible(p_license_id){
 
-    knex(license_table_name).update({ license_visible : "1" }).where({ license_id: p_license_id }).then(
+    knex(license_table_name).update({ license_visible : "0" }).where({ license_id: p_license_id }).then(
         () => { console.log("License data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)

@@ -90,7 +90,7 @@ export default class AddLicense extends React.Component {
 
                                     field.type === "checkbox" 
                                     ? 
-                                    <Checkbox label={field.fieldName} title={field.fieldName} 
+                                    <Checkbox label={field.fieldName} title={field.fieldName}
                                     onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked)}  
                                     />
                                     :

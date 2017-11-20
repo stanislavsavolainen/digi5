@@ -8,7 +8,7 @@ import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';//my imports
 //import { ButtonStyle, make_user_data_structure, user_data_structure, TextStyle, advanced_field_name } from './theme_styles.jsx';
-import { make_user_data_structure , make_user_data_structure2 } from './user_data.jsx';
+import { make_user_data_structure, make_user_data_structure2 } from './user_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 import DatePicker from 'material-ui/DatePicker';
@@ -41,7 +41,7 @@ export default class AddUser extends React.Component {
 
 
         console.log("DATA ORIGINAL : " + JSON.stringify(post_body2.user_data));
-     
+
 
         //post body
         let postData = {
@@ -60,8 +60,8 @@ export default class AddUser extends React.Component {
         //let link = "/save_to_database2";
         let link = "/add_user";
 
-      //  fetch(host + link, postData)
-       fetch( server_host_for_client  + link, postData)
+        //  fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then(() => {
                 console.log("Fetch done")
 
@@ -88,7 +88,7 @@ export default class AddUser extends React.Component {
     FieldListener(block_key, row_key, field_key, data) {
         console.log(data);
         this.state.user_data[block_key].rows[row_key][field_key].value = data;
-       
+
 
     }
 
@@ -113,12 +113,12 @@ export default class AddUser extends React.Component {
                                 <div>{row.map((field, field_key) =>
 
                                     field.type === "date" ? <DatePicker title={field.fieldName} style={{ display: "inline-block" }} formatDate={new Intl.DateTimeFormat('en-GB').format} locale={'en-GB'} hintText={field.fieldName} onChange={(e, date) => this.FieldListener(block_key, row_key, field_key, date, field.type)} okLabel="Ok" cancelLabel="Cancel" />
-                                        : field.type === "checkbox" ? 
+                                        : field.type === "checkbox" ?
                                             <Checkbox
-                                            label={field.fieldName} title={field.fieldName}
-                                           // onCheck={(event ) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
-                                             onCheck={(event ,  isInputChecked ) => this.FieldListener( block_key, row_key, field_key, isInputChecked, field.type )}
-                                        /> :
+                                                label={field.fieldName} title={field.fieldName}
+                                                // onCheck={(event ) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
+                                                onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
+                                            /> :
                                             <TextField
                                                 hintText={field.fieldName} title={field.fieldName}
                                                 onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} style={{ margin: 12 }} />
@@ -133,7 +133,7 @@ export default class AddUser extends React.Component {
             </div>
         )} <Button label="Add user" primary={true} onClick={() => this.RegisterUsers()}></Button> </div>);
 
-        
+
     }
 
 }

@@ -142,7 +142,7 @@ let device_data_object2 = [
                 { fieldName: "Last used date (not working)", type: "date" },
             ],
             [
-                { fieldName: "Device is visible", type: "checkbox", db_name: "device_visible" },
+                { fieldName: "Device is hidden", type: "checkbox", db_name: "device_visible"},
             ]
         ]
     },
