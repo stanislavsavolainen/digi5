@@ -10,7 +10,7 @@ var val = require('./server_route.js');
 
 const server = new Hapi.Server();
 
-var hapi_host = 'localhost';
+var hapi_host = '127.0.0.1';
 var hapi_port = 5659;
 
 server.connection({

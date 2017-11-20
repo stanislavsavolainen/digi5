@@ -14,3 +14,7 @@ var allowCrossDomain = function (req, res, next) {
 app.use(express.static("public"));
 
 app.use(allowCrossDomain);
+
+app.listen(port, function(){
+	console.log("Hosting user-maintenance-system -> fron end ! " + port);
+})
