@@ -113,6 +113,7 @@ export default class ViewAllUsers extends React.Component {
         return (<div >
             <LinkButton url="/add-user" label="Add user" />
             <LinkButton url="/hidden-user" label="show hidden user" />
+            <font > Filtering search with drop down by team ( developer, ict, support, etc.. ) </font>
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */} 
             <br /><br />
             <h1> View All users : </h1>
@@ -145,7 +146,6 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn>{val.team}</TableRowColumn>
                                 <TableRowColumn>{val.comments}</TableRowColumn>
                             </TableRow>
-
                           )
                     }
                 </TableBody>

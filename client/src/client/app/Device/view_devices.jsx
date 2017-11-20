@@ -107,6 +107,7 @@ export default class ViewDevices extends React.Component {
             <div>
                 <LinkButton url="/add-device" label="Add devices" />
                 <LinkButton url="/hidden-device" label="Show hidden device" />
+                   <font > Filtering search with drop down by type ( laptop, desktop, tablet-pc, etc.. ) </font>
                 <br />
                 <h1>View all devices </h1><br />
 

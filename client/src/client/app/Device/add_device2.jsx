@@ -11,21 +11,35 @@ import Button from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
+
+
 //my imports
 //import LinkButton from './../LinkButton.jsx';
 import { device_data_model, make_device_data_structure, make_device_data_structure2 } from './device_data.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
+
+// http://www.material-ui.com/#/components/dropdown-menu
+
+const items = [];
+for (let i = 0; i < 100; i++) {
+    items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
+}
+
 export default class AddDevice extends React.Component {
 
     constructor(props) {
         super(props);
+      //  this.state = { value: 10 };
         this.state = {
             show_devices: make_device_data_structure2(),
             value: 2,
+
         }
 
     }
+
+    handleChange = (event, index, value) => this.setState({ value });
 
 
     addDeviceToDB() {
@@ -100,13 +114,13 @@ export default class AddDevice extends React.Component {
                                                 field.type == "date"
                                                     ?
                                                     <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} />
-                                                    : 
-                                                    field.type == "checkbox" ? <Checkbox label={field.fieldName} title={field.fieldName} 
-                                                    onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)} 
-                                                    /> 
                                                     :
-                                                    <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
-                                                        onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
+                                                    field.type == "checkbox" ? <Checkbox label={field.fieldName} title={field.fieldName}
+                                                        onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
+                                                    />
+                                                        :
+                                                        <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
+                                                            onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
 
 
                                         </div>)
@@ -146,6 +160,12 @@ export default class AddDevice extends React.Component {
                     <MenuItem value={4} primaryText="Weekends" />
                     <MenuItem value={5} primaryText="Weekly" />
                 </DropDownMenu>
+                <br /><br />
+                <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange}>
+                    {items}
+                </DropDownMenu>
+
+
             </div>);
     }
 
