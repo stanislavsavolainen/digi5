@@ -125,6 +125,7 @@ export default class ViewAllUsers extends React.Component {
                         <TableHeaderColumn>Name</TableHeaderColumn>
                         <TableHeaderColumn>Title</TableHeaderColumn>
                         <TableHeaderColumn>Team</TableHeaderColumn>
+                         <TableHeaderColumn>Comments</TableHeaderColumn>
                         {/*<TableHeaderColumn>Modify</TableHeaderColumn> */}
                     </TableRow>
                 </TableHeader>
@@ -142,7 +143,7 @@ export default class ViewAllUsers extends React.Component {
                                 <TableRowColumn >{val.fname + " " +val.lname} </TableRowColumn>
                                  <TableRowColumn >{val.title}</TableRowColumn>
                                 <TableRowColumn>{val.team}</TableRowColumn>
-
+                                <TableRowColumn>{val.comments}</TableRowColumn>
                             </TableRow>
 
                           )

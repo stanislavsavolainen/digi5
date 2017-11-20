@@ -118,7 +118,7 @@ let device_data_object2 = [
             [
                 { fieldName: "Model", type: "string", db_name: "model" },
                 { fieldName: "Serial number", type: "string", db_name: "serial_number" },
-                { fieldName: "About", type: "string", db_name: "about_device" },
+                { fieldName: "Comments", type: "string", db_name: "about_device" },
             ],
             [
                 { fieldName: "IP address ", type: "string", db_name : "ip_address" },

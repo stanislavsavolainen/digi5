@@ -81,6 +81,7 @@ export default class ViewLicense extends React.Component {
 
                             <TableHeaderColumn>Profile</TableHeaderColumn>
                             <TableHeaderColumn>License name</TableHeaderColumn>
+                            <TableHeaderColumn>Comments</TableHeaderColumn>
 
                         </TableRow>
                     </TableHeader>
@@ -94,6 +95,7 @@ export default class ViewLicense extends React.Component {
                                     </TableRowColumn>
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
+                                    <TableRowColumn>{val.comments} </TableRowColumn>
 
                                 </TableRow>
                             )

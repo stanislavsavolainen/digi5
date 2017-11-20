@@ -116,6 +116,7 @@ export default class ViewDevices extends React.Component {
                             <TableHeaderColumn>Profiles</TableHeaderColumn>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device type</TableHeaderColumn>
+                              <TableHeaderColumn>Comments</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
 
@@ -130,6 +131,7 @@ export default class ViewDevices extends React.Component {
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
                                     <TableRowColumn>{val.type}</TableRowColumn>
+                                    <TableRowColumn>{val.about}</TableRowColumn>
 
 
                                 </TableRow>
