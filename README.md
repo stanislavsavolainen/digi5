@@ -13,7 +13,11 @@ Backend : NodeJS with hapi-module + MySql database via knex
 >>>>>> https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04
 
 #mysql strict mode
----------------------
+
+#---------------------------------------
+
+https://stackoverflow.com/questions/23921117/disable-only-full-group-by
+
 console : sudo nano /etc/mysql/conf.d/disable_strict_mode.cnf
 
 To make JavaScript data compatible with MySQL datetime field put following content to disable_strict_mode.cnf file :
@@ -21,6 +25,7 @@ To make JavaScript data compatible with MySQL datetime field put following conte
 [mysqld]
 sql_mode=ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
+sudo service mysql restart
 >>>>> https://github.com/stanislavsavolainen/digi5/blob/master/project_data/Screenshot%20from%202017-10-26%2015-43-45.png
 
 --------------------
