@@ -132,7 +132,7 @@ export default class ModifyUser extends React.Component {
 
 
 
-        fetch(host + link, postData)
+        fetch( server_host_for_client + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
