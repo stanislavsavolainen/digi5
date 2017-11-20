@@ -2,3 +2,5 @@ junk1.txt
 /old_server/node_modules/
 /server/node_modules/
 /client/node_modules/
+/client/src/client/node_modules/
+
