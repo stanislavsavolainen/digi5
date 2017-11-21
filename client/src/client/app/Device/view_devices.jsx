@@ -5,11 +5,18 @@ import { render } from 'react-dom';
 
 import { device_data_model, make_device_data_structure } from './device_data.jsx';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-
+import TextField from 'material-ui/TextField';
 import Button from 'material-ui/RaisedButton';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 import LinkButton from './../LinkButton.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
+
+const items = [];
+for (let i = 0; i < 100; i++) {
+    items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
+}
 
 export default class ViewDevices extends React.Component {
 
@@ -17,13 +24,16 @@ export default class ViewDevices extends React.Component {
         super(props);
         this.state = {
             show_devices: make_device_data_structure(),
-            devices: []
+            devices: [],
+            value: 2
         }
     }
 
     componentWillMount() {
         this.readDevicesFromDatabase();
     }
+
+     handleChange = (event, index, value) => this.setState({ value });
 
 
     readDevicesFromDatabase() {
@@ -107,7 +117,13 @@ export default class ViewDevices extends React.Component {
             <div>
                 <LinkButton url="/add-device" label="Add devices" />
                 <LinkButton url="/hidden-device" label="Show hidden device" />
-                   <font > Filtering search with drop down by type ( laptop, desktop, tablet-pc, etc.. ) </font>
+                <font style={{ backgroundColor: 'silver', fontSize: '50' }}>
+                    Filtering :
+                    <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
+                        {items}
+                    </DropDownMenu>
+                     <LinkButton url="" label="Filter search by device type" />
+                </font>
                 <br />
                 <h1>View all devices </h1><br />
 
@@ -117,7 +133,7 @@ export default class ViewDevices extends React.Component {
                             <TableHeaderColumn>Profiles</TableHeaderColumn>
                             <TableHeaderColumn>Device name</TableHeaderColumn>
                             <TableHeaderColumn>Device type</TableHeaderColumn>
-                              <TableHeaderColumn>Comments</TableHeaderColumn>
+                            <TableHeaderColumn>Comments</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
 

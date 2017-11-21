@@ -11,17 +11,25 @@ import TextField from 'material-ui/TextField';
 import { ButtonStyle, user_data_structure, field_name } from './user_data.jsx';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 import LinkButton from './../LinkButton.jsx';
 
 import { server_host_for_client } from './../client_connection.jsx';
+
+const items = [];
+for (let i = 0; i < 100; i++) {
+    items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
+}
 
 export default class ViewAllUsers extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+            users: [],
+            value: 2
         }
     }
 
@@ -29,6 +37,8 @@ export default class ViewAllUsers extends React.Component {
         this.getAllUsers();
     }
 
+
+     handleChange = (event, index, value) => this.setState({ value });
 
 
     getAllUsers() {
@@ -48,8 +58,8 @@ export default class ViewAllUsers extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_all_users";
 
-      //  fetch(host + link, postData)
-       fetch( server_host_for_client  + link, postData)
+        //  fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 return resp.json();
             })
@@ -84,8 +94,8 @@ export default class ViewAllUsers extends React.Component {
 
 
 
-       // fetch(host + link, postData)
-        fetch( server_host_for_client  + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 console.log(" >>> first then happen");
                 return resp.json();
@@ -93,7 +103,7 @@ export default class ViewAllUsers extends React.Component {
             })
             .then((response) => {
                 console.log("Fetch response happen !");
-               this.state.users.splice(array_index, 1);
+                this.state.users.splice(array_index, 1);
                 this.setState(this.state);
 
             })
@@ -113,8 +123,15 @@ export default class ViewAllUsers extends React.Component {
         return (<div >
             <LinkButton url="/add-user" label="Add user" />
             <LinkButton url="/hidden-user" label="show hidden user" />
-            <font > Filtering search with drop down by team ( developer, ict, support, etc.. ) </font>
-            {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */} 
+            <font style={{ backgroundColor: 'silver', fontSize: '50' }} >
+                Filtering :
+              
+                <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
+                    {items}
+                </DropDownMenu>
+                  <LinkButton url="" label="Filter search by user team" />
+            </font>
+            {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */}
             <br /><br />
             <h1> View All users : </h1>
             {/*drawContent*/}
@@ -126,27 +143,27 @@ export default class ViewAllUsers extends React.Component {
                         <TableHeaderColumn>Name</TableHeaderColumn>
                         <TableHeaderColumn>Title</TableHeaderColumn>
                         <TableHeaderColumn>Team</TableHeaderColumn>
-                         <TableHeaderColumn>Comments</TableHeaderColumn>
+                        <TableHeaderColumn>Comments</TableHeaderColumn>
                         {/*<TableHeaderColumn>Modify</TableHeaderColumn> */}
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {
-          
-                        this.state.users.map((val, index) => 
-                             
+
+                        this.state.users.map((val, index) =>
+
                             <TableRow >
-                           
+
                                 <TableRowColumn>
                                     <LinkButton label={val.user_id} url={"/modify-user/" + val.user_id} />
                                 </TableRowColumn>
 
-                                <TableRowColumn >{val.fname + " " +val.lname} </TableRowColumn>
-                                 <TableRowColumn >{val.title}</TableRowColumn>
+                                <TableRowColumn >{val.fname + " " + val.lname} </TableRowColumn>
+                                <TableRowColumn >{val.title}</TableRowColumn>
                                 <TableRowColumn>{val.team}</TableRowColumn>
                                 <TableRowColumn>{val.comments}</TableRowColumn>
                             </TableRow>
-                          )
+                        )
                     }
                 </TableBody>
             </Table>
