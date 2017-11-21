@@ -95,7 +95,7 @@ class App extends React.Component {
                 <MuiThemeProvider muiTheme={muiTheme}>
                     <div>
                         <div>
-                            <AppBar title="User maintenance system ( public version 1.1 )" showMenuIconButton={false} />
+                            <AppBar title="User maintenance system ( development version 1.2 )" showMenuIconButton={false} />
                             <LinkButton url="/view-all" label="Users" />
                             <LinkButton url="/view-devices" label="Devices" />
                             <LinkButton url="/view-license" label="License" />
