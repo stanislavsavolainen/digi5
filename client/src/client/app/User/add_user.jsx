@@ -13,6 +13,8 @@ import { server_host_for_client } from './../client_connection.jsx';
 
 import DatePicker from 'material-ui/DatePicker';
 import Checkbox from 'material-ui/Checkbox';
+import ActionHome from 'material-ui/svg-icons/action/home';
+import IconButton from 'material-ui/IconButton';
 
 
 export default class AddUser extends React.Component {
@@ -119,9 +121,14 @@ export default class AddUser extends React.Component {
                                                 // onCheck={(event ) => this.FieldListener( block_key, row_key, field_key, event.target.value, field.type )}
                                                 onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
                                             /> :
+                                            [
                                             <TextField
                                                 hintText={field.fieldName} title={field.fieldName}
                                                 onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} style={{ margin: 12 }} />
+                                            , <IconButton tooltip={ <div><font> 123</font> <br />  <font> 345 </font></div> } touch={true} tooltipPosition="bottom-center">
+                                                                <ActionHome />
+                                                            </IconButton>
+                                            ]    
 
                                 )}</div>)
 

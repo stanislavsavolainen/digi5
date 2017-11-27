@@ -5,6 +5,8 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import Button from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
+import ActionHome from 'material-ui/svg-icons/action/home';
+import IconButton from 'material-ui/IconButton';
 
 
 //my components
@@ -73,7 +75,7 @@ export default class AddLicense extends React.Component {
                 console.log("Fetch error : " + error_msg);
             })
 
-        }
+    }
 
 
 
@@ -88,18 +90,23 @@ export default class AddLicense extends React.Component {
                             block.rows.map((row, row_key) =>
                                 <div>{row.map((field, field_key) =>
 
-                                    field.type === "checkbox" 
-                                    ? 
-                                    <Checkbox label={field.fieldName} title={field.fieldName}
-                                    onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked)}  
-                                    />
-                                    :
-                                    <TextField
-                                        hintText={field.fieldName}
-                                        title={field.fieldName}
-                                        style={{ margin: 12 }}
-                                        onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value)}
-                                    />
+                                    field.type === "checkbox"
+                                        ?
+                                        <Checkbox label={field.fieldName} title={field.fieldName}
+                                            onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked)}
+                                        />
+                                        : [
+                                            <TextField
+                                                hintText={field.fieldName}
+                                                title={field.fieldName}
+                                                style={{ margin: 12 }}
+                                                onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value)}
+                                            />
+                                            , <IconButton tooltip={<div><font> 123</font> <br />  <font> 345 </font></div>} touch={true} tooltipPosition="bottom-center">
+                                                <ActionHome />
+                                            </IconButton>
+
+                                        ]
 
 
                                 )}</div>)
