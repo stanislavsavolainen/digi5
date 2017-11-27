@@ -34,6 +34,8 @@ import About from './About.jsx';
 import HiddenUser from './User/hidden_user.jsx';
 import HiddenDevice from './Device/hidden_device.jsx';
 import HiddenLicense from './License/hidden_license.jsx';
+import FiltterUser from './User/filtter_user.jsx';
+import FiltterDevice from './Device/filtter_device.jsx';
 
 import { server_host_for_client } from './client_connection.jsx';
 
@@ -83,6 +85,8 @@ class App extends React.Component {
                 <Route path="/hidden-device" component={HiddenDevice} />
                 <Route path="/hidden-license" component={HiddenLicense} />
                 <Route path="/about" component={About} />
+                <Route path="/filtter-user/:userTeam" component={FiltterUser} />
+                <Route path="/filtter-device/:deviceType" component={FiltterDevice} />
                 <Route exact={true} path="/" render={() => "Welcome"} />
             </div>
         )

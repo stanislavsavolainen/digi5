@@ -125,7 +125,7 @@ export default class ViewDevices extends React.Component {
                     <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
                         {items}
                     </DropDownMenu>
-                     <LinkButton url="" label="Filter search by device type" />
+                     <LinkButton url={"/filtter-device/" + this.state.value } label="Filter search by device type" />
                 </font>
                 <br />
                 <h1>View all devices </h1><br />

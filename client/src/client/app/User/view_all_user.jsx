@@ -182,7 +182,7 @@ export default class ViewAllUsers extends React.Component {
                 <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
                     {items}
                 </DropDownMenu>
-                <LinkButton url="" label="Filter search by user team" />
+                <LinkButton url={"/filtter-user/" + this.state.value } label="Filter search by user team" />
             </font>
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */}
             <br /><br />
