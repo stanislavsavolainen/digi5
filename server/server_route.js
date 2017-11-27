@@ -161,7 +161,26 @@ var route = [
         printLogText1("Restore license");
         myknex.DBsetLicenseVisible(request.payload.license_id);
          reply(JSON.stringify("OK"))
-    })
+    }),
+
+     makeRoute('/user_team_option', function (request, reply) {
+        printLine();
+        printLogText1("User team option"); // console.log(" >>>> View all users <<<<<<<< ");
+        // myknex.DBreadAllUsers().then(reply);
+       // myknex.DBviewAllVisibleUsers().then(reply)
+       myknex.DBUserTeamOnly().then(reply);
+    }),
+
+    makeRoute('/device_type_option', function (request, reply) {
+        printLine();
+        printLogText1("Device type option"); // console.log(" >>>> View all users <<<<<<<< ");
+        // myknex.DBreadAllUsers().then(reply);
+       // myknex.DBviewAllVisibleUsers().then(reply)
+       myknex.DBDeviceTypeOnly().then(reply);
+    }),
+
+
+
 
 
 

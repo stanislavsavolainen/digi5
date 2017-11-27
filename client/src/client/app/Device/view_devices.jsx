@@ -14,9 +14,11 @@ import LinkButton from './../LinkButton.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
 const items = [];
+/*
 for (let i = 0; i < 100; i++) {
     items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
 }
+*/
 
 export default class ViewDevices extends React.Component {
 
@@ -31,6 +33,7 @@ export default class ViewDevices extends React.Component {
 
     componentWillMount() {
         this.readDevicesFromDatabase();
+        this.readTypeDataFromDatabase();
     }
 
      handleChange = (event, index, value) => this.setState({ value });
@@ -162,6 +165,49 @@ export default class ViewDevices extends React.Component {
 
     }
 
+    readTypeDataFromDatabase(){
+
+            //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify("Menu"),
+        };
+
+        let link = "/device_type_option";
+
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+               
+                console.log("PUSH DATA TO FILTER DROP DOWN");
+                console.log(JSON.stringify(response));
+
+                let data_element = "";
+
+                for (data_element in response) {
+                    console.log( " >>>>>>>>>> " + response[data_element].type );
+                     let data =  response[data_element].type;
+                      items.push(<MenuItem value={data} key={data} primaryText={`Device type : ${data}`} />);
+                }
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+            })
+
+
+    }
 
     render() {
         return (

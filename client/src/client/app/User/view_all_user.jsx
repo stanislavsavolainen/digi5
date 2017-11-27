@@ -20,7 +20,7 @@ import { server_host_for_client } from './../client_connection.jsx';
 
 const items = [];
 for (let i = 0; i < 100; i++) {
-    items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
+    //items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
 }
 
 export default class ViewAllUsers extends React.Component {
@@ -35,10 +35,11 @@ export default class ViewAllUsers extends React.Component {
 
     componentWillMount() {
         this.getAllUsers();
+        this.readTeamDataFromDatabase();
     }
 
 
-     handleChange = (event, index, value) => this.setState({ value });
+    handleChange = (event, index, value) => this.setState({ value });
 
 
     getAllUsers() {
@@ -116,6 +117,58 @@ export default class ViewAllUsers extends React.Component {
 
 
 
+    readTeamDataFromDatabase() {
+
+        //post body
+        let postData = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify("Menu"),
+        };
+
+        //fetch
+        //let host = "http://127.0.0.1:5659";
+        // let link = "/read_from_database4"; //read profile data
+        let link = "/user_team_option";
+
+
+
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
+            .then((resp) => {
+                console.log(" >>> first then happen");
+                return resp.json();
+                // return resp.text();
+            })
+            .then((response) => {
+                console.log("Fetch response happen !");
+
+                console.log("PUSH DATA TO FILTER DROP DOWN");
+                console.log(JSON.stringify(response));
+
+                let data_element = "";
+                for (data_element in response) {
+                    console.log( " >>>>>>>>>> " + response[data_element].team );
+                       let data =  response[data_element].team;
+                      items.push(<MenuItem value={data} key={data} primaryText={`User team : ${data}`} />);
+                }
+
+
+            })
+            .catch(function (error_msg) {
+                // error if connection problem happens 
+                console.log("Fetch error : " + error_msg);
+            })
+
+
+
+
+    }
+
+
     render() {
 
         //Added button modify and delete (not done)
@@ -125,11 +178,11 @@ export default class ViewAllUsers extends React.Component {
             <LinkButton url="/hidden-user" label="show hidden user" />
             <font style={{ backgroundColor: 'silver', fontSize: '50' }} >
                 Filtering :
-              
+
                 <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
                     {items}
                 </DropDownMenu>
-                  <LinkButton url="" label="Filter search by user team" />
+                <LinkButton url="" label="Filter search by user team" />
             </font>
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */}
             <br /><br />

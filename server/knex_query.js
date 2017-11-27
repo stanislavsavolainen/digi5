@@ -50,7 +50,7 @@ function DBAddNewUser(payload_data) {
     })
         .catch((e) => {
             console.log(e)
-            return ("Failed")
+            return ("Failed");
         })
 
 }
@@ -66,7 +66,7 @@ function DBgetSingleUserProfile(parameter_id) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
-            return ("Failed")
+            return ("Failed");
         })
     );
 
@@ -106,7 +106,7 @@ function DBviewAllVisibleUsers() {
 
     return (
 
-        knex(user_table_name).where({ user_visible: "0" }).orWhere({user_visible : null}).then(function (database_result) {
+        knex(user_table_name).where({ user_visible: "0" }).orWhere({ user_visible: null }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -133,9 +133,9 @@ function DBViewAllHiddenUsers() {
 }
 
 
-function DBsetUserVisible( p_user_id ){
+function DBsetUserVisible(p_user_id) {
 
-     knex(user_table_name).update({ user_visible : "0" }).where({ user_id: p_user_id }).then(
+    knex(user_table_name).update({ user_visible: "0" }).where({ user_id: p_user_id }).then(
         () => { console.log("User data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)
@@ -144,6 +144,37 @@ function DBsetUserVisible( p_user_id ){
 
 
 }
+
+function DBUserTeamOnly() {
+
+   return( 
+    knex('users')
+        .select()
+        .distinct('team')
+        .then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            return ("Failed")
+        })
+
+   );
+
+}
+
+function DBfilterUserByTeam(p_team) {
+
+      return (
+        knex(user_table_name).where({ team : p_team }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e);
+            return ("Failed");
+        })
+    );
+
+}
+
 
 // =================== DEVICE DATABASE HANDLER =================
 
@@ -221,7 +252,7 @@ function DBviewAllVisibleDevices() {
 
     return (
 
-        knex(device_table_name).where({ device_visible: "0" }).orWhere({device_visible : null}).then(function (database_result) {
+        knex(device_table_name).where({ device_visible: "0" }).orWhere({ device_visible: null }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e)
@@ -248,9 +279,9 @@ function DBviewAllHiddenDevices() {
 
 }
 
-function DBsetDeviceVisible(p_device_id){
+function DBsetDeviceVisible(p_device_id) {
 
-    knex(device_table_name).update({ device_visible : "1" }).where({ device_id: p_device_id }).then(
+    knex(device_table_name).update({ device_visible: "1" }).where({ device_id: p_device_id }).then(
         () => { console.log("Device data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)
@@ -258,6 +289,39 @@ function DBsetDeviceVisible(p_device_id){
     })
 
 }
+
+
+function DBDeviceTypeOnly() {
+
+    return(
+    knex('device')
+        .select()
+        .distinct('type')
+        .then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            return ("Failed")
+        })
+
+    );
+
+}
+
+function DBfilterDeviceByType( p_type ) {
+
+      return (
+        knex(device_table_name).where({ type: p_type }).then(function (database_result) {
+            return JSON.stringify(database_result);
+        }).catch((e) => {
+            console.log(e)
+            return ("Failed")
+        })
+    );
+
+
+}
+
 
 
 // =================== LICENSE DATABASE HANDLER ==================
@@ -332,7 +396,7 @@ function DBdeleteLicense(license_index) {
 function DBviewAllVisibleLicenses() {
 
     return (
-        knex(license_table_name).where({ license_visible : "0" }).orWhere({license_visible : null}).then(function (database_result) {
+        knex(license_table_name).where({ license_visible: "0" }).orWhere({ license_visible: null }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e);
@@ -345,7 +409,7 @@ function DBviewAllVisibleLicenses() {
 function DBviewAllHiddenLicenses() {
 
     return (
-        knex(license_table_name).where({ license_visible : "1" }).then(function (database_result) {
+        knex(license_table_name).where({ license_visible: "1" }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
             console.log(e);
@@ -355,9 +419,9 @@ function DBviewAllHiddenLicenses() {
 
 }
 
-function DBsetLicenseVisible(p_license_id){
+function DBsetLicenseVisible(p_license_id) {
 
-    knex(license_table_name).update({ license_visible : "0" }).where({ license_id: p_license_id }).then(
+    knex(license_table_name).update({ license_visible: "0" }).where({ license_id: p_license_id }).then(
         () => { console.log("License data succesfully updated !"); return ("done") }
     ).catch((e) => {
         console.log(e)
@@ -395,7 +459,12 @@ module.exports = {
     DBviewAllHiddenLicenses,
     DBsetUserVisible,
     DBsetDeviceVisible,
-    DBsetLicenseVisible
+    DBsetLicenseVisible,
+    DBfilterUserByTeam,
+    DBfilterDeviceByType,
+    DBDeviceTypeOnly,
+    DBUserTeamOnly,
+
 }
 
 
