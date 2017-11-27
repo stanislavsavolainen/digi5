@@ -10,7 +10,8 @@ import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import Button from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-
+import ActionHome from 'material-ui/svg-icons/action/home';
+import IconButton from 'material-ui/IconButton';
 
 
 //my imports
@@ -30,7 +31,7 @@ export default class AddDevice extends React.Component {
 
     constructor(props) {
         super(props);
-      //  this.state = { value: 10 };
+        //  this.state = { value: 10 };
         this.state = {
             show_devices: make_device_data_structure2(),
             value: 2,
@@ -111,6 +112,7 @@ export default class AddDevice extends React.Component {
                                     block.rows.map((row, row_key) =>
                                         <div>
                                             {row.map((field, field_key) =>
+
                                                 field.type == "date"
                                                     ?
                                                     <DatePicker hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName} />
@@ -119,8 +121,15 @@ export default class AddDevice extends React.Component {
                                                         onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
                                                     />
                                                         :
-                                                        <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
-                                                            onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />)}
+                                                        [
+                                                            <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
+                                                                onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />
+                                                            ,
+                                                            <IconButton tooltip={ <div><font> 123</font> <br />  <font> 345 </font></div> } touch={true} tooltipPosition="bottom-center">
+                                                                <ActionHome />
+                                                            </IconButton>
+                                                        ]
+                                            )}
 
 
                                         </div>)
