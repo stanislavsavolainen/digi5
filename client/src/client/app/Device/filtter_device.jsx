@@ -55,7 +55,7 @@ export default class FiltterDevice extends React.Component {
 
 
     render() {
-        return (<div> Filttered devices : </div>);
+        return (<div> Filttered devices : { this.state.device_type } </div>);
     }
 
 }

@@ -49,7 +49,7 @@ export default class FiltterUser extends React.Component {
 
 
     render() {
-        return ( <div> Filttered user : </div>);
+        return ( <div> Filttered user by team : { this.state.user_team } </div>);
     }
 
 }
