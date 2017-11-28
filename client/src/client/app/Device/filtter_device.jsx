@@ -11,11 +11,14 @@ export default class FiltterDevice extends React.Component {
         super(props);
         this.state = {
             device_type: props.match.params.deviceType,
+            devices : [],
         }
     }
 
 
         readDevicesFromDatabase() {
+
+        let type = "";    
 
         //post body
         let postData = {
@@ -24,7 +27,7 @@ export default class FiltterDevice extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ type : device_type }),
+            body: JSON.stringify({ type : this.state.device_type }),
         };
 
         //fetch
@@ -38,8 +41,10 @@ export default class FiltterDevice extends React.Component {
                 return resp.json();
             })
             .then((db_devices) => {
-                this.state.devices = db_devices;
-                this.setState(this.state);
+               // this.state.devices = db_devices;
+
+               //use spread for saving old state
+                this.setState( {  ... this.state ,  devices : db_devices });
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 

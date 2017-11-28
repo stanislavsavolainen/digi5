@@ -148,7 +148,7 @@ function DBsetUserVisible(p_user_id) {
 function DBUserTeamOnly() {
 
    return( 
-    knex('users')
+    knex(user_table_name)
         .select()
         .distinct('team')
         .then(function (database_result) {
@@ -162,7 +162,7 @@ function DBUserTeamOnly() {
 
 }
 
-function DBfilterUserByTeam(p_team) {
+function DBfiltterUserByTeam(p_team) {
 
       return (
         knex(user_table_name).where({ team : p_team }).then(function (database_result) {
@@ -221,7 +221,6 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
     console.log("Trying to get device id : " + device_id_parameter + "  profile data from database");
 
     return (
-
         knex(device_table_name).where({ device_id: device_id_parameter }).then(function (database_result) {
             return JSON.stringify(database_result);
         }).catch((e) => {
@@ -230,7 +229,6 @@ function DBgetSingleDeviceProfile(device_id_parameter) {
             return ("Failed")
         })
     );
-
 
 }
 
@@ -308,7 +306,7 @@ function DBDeviceTypeOnly() {
 
 }
 
-function DBfilterDeviceByType( p_type ) {
+function DBfiltterDeviceByType( p_type ) {
 
       return (
         knex(device_table_name).where({ type: p_type }).then(function (database_result) {
@@ -460,8 +458,8 @@ module.exports = {
     DBsetUserVisible,
     DBsetDeviceVisible,
     DBsetLicenseVisible,
-    DBfilterUserByTeam,
-    DBfilterDeviceByType,
+    DBfiltterUserByTeam,
+    DBfiltterDeviceByType,
     DBDeviceTypeOnly,
     DBUserTeamOnly,
 

@@ -9,12 +9,17 @@ export default class FiltterUser extends React.Component {
         super(props);
         this.state = {
             user_team: props.match.params.userTeam,
+            users : [],
         }
     }
 
-     componentWillMount() {}
+     componentWillMount() {
+        this.readDevicesFromDatabase();
+     }
 
        readDevicesFromDatabase() {
+
+        let team ="";
 
         //post body
         let postData = {
@@ -23,7 +28,7 @@ export default class FiltterUser extends React.Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ team : user_team }),
+            body: JSON.stringify({ team : this.state.user_team }),
         };
 
         //fetch
@@ -36,9 +41,13 @@ export default class FiltterUser extends React.Component {
             .then((resp) => {
                 return resp.json();
             })
-            .then((db_devices) => {
-                this.state.devices = db_devices;
-                this.setState(this.state);
+            .then((db_users) => {
+               // this.state.users = db_users;
+               // this.setState(this.state);
+
+                 //use spread for saving old state
+                this.setState( {  ... this.state ,  users : db_user });
+
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
