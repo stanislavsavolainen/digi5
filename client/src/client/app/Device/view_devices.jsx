@@ -13,7 +13,7 @@ import MenuItem from 'material-ui/MenuItem';
 import LinkButton from './../LinkButton.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
-const items = [];
+var items = [];
 /*
 for (let i = 0; i < 100; i++) {
     items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
@@ -123,7 +123,7 @@ export default class ViewDevices extends React.Component {
                 <font style={{ backgroundColor: 'silver', fontSize: '50' }}>
                     Filtering :
                     <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
-                        {items}
+                        {this.state.items}
                     </DropDownMenu>
                      <LinkButton url={"/filtter-device/" + this.state.value } label="Filter search by device type" />
                 </font>
@@ -192,14 +192,24 @@ export default class ViewDevices extends React.Component {
                 console.log("PUSH DATA TO FILTER DROP DOWN");
                 console.log(JSON.stringify(response));
 
+                /*                
                 let data_element = "";
-
+                
                 for (data_element in response) {
                     console.log( " >>>>>>>>>> " + response[data_element].type );
                      let data =  response[data_element].type;
                       items.push(<MenuItem value={data} key={data} primaryText={`Device type : ${data}`} />);
                 }
+                */
 
+                
+                 const items = response.map( ( element, key ) => {
+                     let data =  response[key].type;
+                    return <MenuItem value={data} key={data} primaryText={`Device type : ${data}`} />
+                })
+
+                 this.setState( { ...this.state, items  } )
+                
             })
             .catch(function (error_msg) {
                 // error if connection problem happens 
