@@ -179,13 +179,13 @@ var route = [
        myknex.DBDeviceTypeOnly().then(reply);
     }),
 
-      makeRoute('/read_filtterd_user', function (request, reply) {
+      makeRoute('/read_filtterd_users', function (request, reply) {
         printLine();
         printLogText1("Read Filttered users"); // console.log(" >>>> View all users <<<<<<<< ");
         myknex.DBfiltterUserByTeam(request.payload.team).then(reply);
     }),
 
-        makeRoute('/read_filtterd_device', function (request, reply) {
+        makeRoute('/read_filtterd_devices', function (request, reply) {
         printLine();
         printLogText1("Read Filttered devices"); // console.log(" >>>> View all users <<<<<<<< ");
         myknex.DBfiltterDeviceByType(request.payload.type).then(reply);
