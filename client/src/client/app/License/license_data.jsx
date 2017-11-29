@@ -35,18 +35,18 @@ let license_data_object = [
         rows: [
             [
              //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "License name", type: "string", db_name: "name" }, 
-                { fieldName: "Device id", type: "number", db_name: "device_id" },
-                { fieldName: "License code", type: "string", db_name: "license_code"},
+                { fieldName: "License name", type: "string", db_name: "name", info : "" }, 
+                { fieldName: "Device id", type: "number", db_name: "device_id", info : "" },
+                { fieldName: "License code", type: "string", db_name: "license_code", info : "You probaly want that your product is activated."},
             ],
             [
                 { fieldName: "User", type: "string", db_name: "user"},
               
-                { fieldName: "License activation (pass)", type: "string", db_name: "pass" },
-                { fieldName: "Comments", type: "string", db_name: "comments" },
+                { fieldName: "License activation (pass)", type: "string", db_name: "pass", info : "if there is cloud autehntication service then I need your login" },
+                { fieldName: "Comments", type: "string", db_name: "comments", info : "" },
             ],
              [
-                { fieldName: "License is hidden", type: "checkbox" ,  db_name : "license_visible" },
+                { fieldName: "License is hidden", type: "checkbox" ,  db_name : "license_visible", info : "" },
             ]
            
         ],

@@ -53,13 +53,13 @@ let device_data_object = [
         rows: [
             [
                 //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "Name", type: "string", db_name: "name" },
-                { fieldName: "Type", type: "number", db_name: "type" },
+                { fieldName: "Name", type: "string", db_name: "name" ,  info : "Tell me how you call your device ?" },
+                { fieldName: "Type", type: "number", db_name: "type" , info : "MUST HAVE !" },
             ],
             [
-                { fieldName: "Serial number", type: "string", db_name: "serial_number"},
-                { fieldName: "Warranty", type: "string", db_name: "warranty" },
-                { fieldName: "About", type: "string", db_name: "about_device"},
+                { fieldName: "Serial number", type: "string", db_name: "serial_number", info : "" },
+                { fieldName: "Warranty", type: "string", db_name: "warranty", info : "" },
+                { fieldName: "About", type: "string", db_name: "about_device", info : ""},
             ],
 
         ],
@@ -68,12 +68,12 @@ let device_data_object = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id"},
-                { fieldName: "Owner group", type: "string", db_name: "owner_group"},
+                { fieldName: "Owner", type: "number", db_name: "owner_id", info : "who is actually owning this device ?"},
+                { fieldName: "Owner group", type: "string", db_name: "owner_group", info : "if owner is not one person, then tell me group for returning"},
             ],
             [
-                { fieldName: "Current user id", type: "number", db_name: "current_user_id" },
-                { fieldName: "Previous user id", type: "number", db_name: "last_user_id" },
+                { fieldName: "Current user id", type: "number", db_name: "current_user_id", info : "who is using this device at the moment ? " },
+                { fieldName: "Previous user id", type: "number", db_name: "last_user_id", info : "" },
             ],
         ]
     }
@@ -112,16 +112,16 @@ let device_data_object2 = [
         rows: [
             [
                 //    { fieldName: "Id", type: "number", db_name: "device_id", modify : false },
-                { fieldName: "device name", type: "string", db_name: "name" },
-                { fieldName: "Type ", type: "string", db_name: "type" },
+                { fieldName: "device name", type: "string", db_name: "name", info : "Tell me how you call your device ?"  },
+                { fieldName: "Type ", type: "string", db_name: "type", info : "MUST HAVE !" },
             ],
             [
-                { fieldName: "Model", type: "string", db_name: "model" },
-                { fieldName: "Serial number", type: "string", db_name: "serial_number" },
-                { fieldName: "Comments", type: "string", db_name: "about_device" },
+                { fieldName: "Model", type: "string", db_name: "model", info : "" },
+                { fieldName: "Serial number", type: "string", db_name: "serial_number", info: "" },
+                { fieldName: "Comments", type: "string", db_name: "about_device", info : "" },
             ],
             [
-                { fieldName: "IP address ", type: "string", db_name : "ip_address" },
+                { fieldName: "IP address ", type: "string", db_name : "ip_address", info : "" },
             ]
 
         ],
@@ -130,19 +130,19 @@ let device_data_object2 = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id" },
-                { fieldName: "Device of team", type: "string", db_name: "owner_group" },
+                { fieldName: "Owner", type: "number", db_name: "owner_id", info : "who is actually owning this device ?" },
+                { fieldName: "Device of team", type: "string", db_name: "owner_group", info : "if owner is not one person, then tell me group for returning"  },
             ],
             [
-                { fieldName: "User reservation", type: "number", db_name: "current_user_id" },
+                { fieldName: "User reservation", type: "number", db_name: "current_user_id", info : "" },
                
             ],
             [
-                { fieldName: "Last available date (not working)", type: "date" },
-                { fieldName: "Last used date (not working)", type: "date" },
+                { fieldName: "Last available date (not working)", type: "date", info: "" },
+                { fieldName: "Last used date (not working)", type: "date", info : "" },
             ],
             [
-                { fieldName: "Device is hidden", type: "checkbox", db_name: "device_visible"},
+                { fieldName: "Device is hidden", type: "checkbox", db_name: "device_visible", info : ""},
             ]
         ]
     },
@@ -150,10 +150,10 @@ let device_data_object2 = [
         title: "Warranty info and device come from",
         rows: [
             [
-                { fieldName: "Shop", type: "string", db_name: "shop" },
+                { fieldName: "Shop", type: "string", db_name: "shop", info : "" },
             ],
             [
-                { fieldName: "Warranty exprire (not working, current date + 2 years)", type: "date" },
+                { fieldName: "Warranty exprire (not working, current date + 2 years)", type: "date", info : "" },
             ],
         ]
     }

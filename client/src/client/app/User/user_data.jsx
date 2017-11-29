@@ -58,15 +58,15 @@ function make_user_data_structure2() {
         {
             title: "Personal details",
             rows: [[
-                { fieldName: "First name", type: "string", db_name: "fname" },
-                { fieldName: "Last name", type: "string", db_name: "lname" },
+                { fieldName: "First name", type: "string", db_name: "fname", info : "" },
+                { fieldName: "Last name", type: "string", db_name: "lname", info : "" },
             ],
             [
-                { fieldName: "Phone", type: "string" , db_name: "phone"},
-                { fieldName: "E-mail", type: "string", db_name: "email" },
+                { fieldName: "Phone", type: "string" , db_name: "phone", info : "if I want to call you, then I need your number"},
+                { fieldName: "E-mail", type: "string", db_name: "email", info : "" },
             ],
             [
-              { fieldName: "Comments", type: "string", db_name:"comments" },   
+              { fieldName: "Comments", type: "string", db_name:"comments", info : "Tell me more about this user ? some detailed info ?" },   
             ]
         
             ]
@@ -76,23 +76,23 @@ function make_user_data_structure2() {
         {
             title: "Work properties",
             rows: [[
-                { fieldName: "Title", type: "string", db_name: "title" },
-                { fieldName: "Team", type: "string", db_name: "team" },    
+                { fieldName: "Title", type: "string", db_name: "title", info : "" },
+                { fieldName: "Team", type: "string", db_name: "team", info : "MUST HAVE ! (filtter search)" },    
             ],
             [
-                { fieldName: "Office room ( room and floor at work)", type: "string", db_name : "location" }
+                { fieldName: "Office room ( room and floor at work)", type: "string", db_name : "location", info : "Tell me your room number and floor , if I want to visit you face-to-face!" }
             ],
             [
-                { fieldName: "Work start", type: "date" , db_name : "work_start" },
-                { fieldName: "Work end", type: "date", db_name : "work_end"  },
+                { fieldName: "Work start", type: "date" , db_name : "work_start", info : "" },
+                { fieldName: "Work end", type: "date", db_name : "work_end" , info : "" },
             ]]
         },
         {
             title: "Permission / Administrative rights",
             rows: [
-                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton"}],
-                [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys"}],
-                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible" }],
+                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton", info : ""}],
+                [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys", info : ""}],
+                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible", info : "" }],
                 
             ],
         }

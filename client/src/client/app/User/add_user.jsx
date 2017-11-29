@@ -125,7 +125,7 @@ export default class AddUser extends React.Component {
                                             <TextField
                                                 hintText={field.fieldName} title={field.fieldName}
                                                 onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} style={{ margin: 12 }} />
-                                            , <IconButton tooltip={ <div><font> 123</font> <br />  <font> 345 </font></div> } touch={true} tooltipPosition="bottom-center">
+                                            , <IconButton tooltip={ <div><font> Input data : { field.type } </font> <br />  <font> Field info : { field.info } </font></div> } touch={true} tooltipPosition="bottom-center">
                                                                 <ActionHome />
                                                             </IconButton>
                                             ]    

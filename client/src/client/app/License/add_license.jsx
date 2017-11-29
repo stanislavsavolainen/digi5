@@ -102,7 +102,7 @@ export default class AddLicense extends React.Component {
                                                 style={{ margin: 12 }}
                                                 onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value)}
                                             />
-                                            , <IconButton tooltip={<div><font> 123</font> <br />  <font> 345 </font></div>} touch={true} tooltipPosition="bottom-center">
+                                            , <IconButton tooltip={<div><font>  Input data : { field.type } </font> <br />  <font> Field info : { field.info  } </font></div>} touch={true} tooltipPosition="bottom-center">
                                                 <ActionHome />
                                             </IconButton>
 
