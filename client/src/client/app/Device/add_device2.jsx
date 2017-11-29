@@ -120,15 +120,18 @@ export default class AddDevice extends React.Component {
                                                     field.type == "checkbox" ? <Checkbox label={field.fieldName} title={field.fieldName}
                                                         onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
                                                     />
-                                                        :
-                                                        [
-                                                            <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
-                                                                onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />
-                                                            ,
-                                                            <IconButton tooltip={ <div><font> Input data : { field.type } </font> <br />  <font> Field info { field.info } </font></div> } touch={true} tooltipPosition="bottom-center">
-                                                                <ActionHome />
-                                                            </IconButton>
-                                                        ]
+                                                        : field.type == "number" ? [ <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} title={field.fieldName} >
+                                                            {items}
+                                                        </DropDownMenu> ]
+                                                            :
+                                                            [
+                                                                <TextField hintText={field.fieldName} style={{ margin: 12 }} title={field.fieldName}
+                                                                    onChange={(event) => this.FieldListener(block_key, row_key, field_key, event.target.value, field.type)} />
+                                                                ,
+                                                                <IconButton tooltip={<div><font> Input data : {field.type} </font> <br />  <font> Field info {field.info} </font></div>} touch={true} tooltipPosition="bottom-center">
+                                                                    <ActionHome />
+                                                                </IconButton>
+                                                            ]
                                             )}
 
 
