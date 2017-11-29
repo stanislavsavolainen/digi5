@@ -9,11 +9,13 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card'; //my imports
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import LinkButton from './../LinkButton.jsx';
 import { server_host_for_client } from './../client_connection.jsx';
 
-var items = [];
+
 /*
 for (let i = 0; i < 100; i++) {
     items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
@@ -36,7 +38,7 @@ export default class ViewDevices extends React.Component {
         this.readTypeDataFromDatabase();
     }
 
-     handleChange = (event, index, value) => this.setState({ value });
+    handleChange = (event, index, value) => this.setState({ value });
 
 
     readDevicesFromDatabase() {
@@ -118,60 +120,70 @@ export default class ViewDevices extends React.Component {
         return (
 
             <div>
-                <LinkButton url="/add-device" label="Add devices" />
+                <div>
+              
+
+                <Toolbar style={{ width : "100%" }}>
+                
+                 <ToolbarGroup>
+                     <LinkButton url="/add-device" label="Add devices" />
                 <LinkButton url="/hidden-device" label="Show hidden device" />
-                <font style={{ backgroundColor: 'silver', fontSize: '50' }}>
-                    Filtering :
-                    <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
+                    </ToolbarGroup>
+
+                    <ToolbarGroup>
+                        <ToolbarTitle text="Filtter view by :" /> 
+                        <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#00bcd4", color : "white" }}>
                         {this.state.items}
-                    </DropDownMenu>
-                     <LinkButton url={"/filtter-device/" + this.state.value } label="Filter search by device type" />
-                </font>
-                <br />
-                <h1>View all devices </h1><br />
-
-                <Table>
-                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                        <TableRow>
-                            <TableHeaderColumn>Profiles</TableHeaderColumn>
-                            <TableHeaderColumn>Device name</TableHeaderColumn>
-                            <TableHeaderColumn>Device type</TableHeaderColumn>
-                            <TableHeaderColumn>Comments</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-
-                    <TableBody displayRowCheckbox={false}>
-                        {
-                            this.state.devices.map((val, index) =>
-                                <TableRow>
-
-                                    <TableRowColumn>
-                                        <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
-                                    </TableRowColumn>
-
-                                    <TableRowColumn>{val.name}</TableRowColumn>
-                                    <TableRowColumn>{val.type}</TableRowColumn>
-                                    <TableRowColumn>{val.about}</TableRowColumn>
-
-
-                                </TableRow>
-                            )
-                        }
-                    </TableBody>
-                </Table>
+                        </DropDownMenu>
+                          <LinkButton url={"/filtter-device/" + this.state.value} label="Filter search by device type" />
+                         </ToolbarGroup>
+                </Toolbar>
             </div>
-        );
+                    <br />
+                    <h1>View all devices </h1><br />
+
+                    <Table>
+                        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                            <TableRow>
+                                <TableHeaderColumn>Profiles</TableHeaderColumn>
+                                <TableHeaderColumn>Device name</TableHeaderColumn>
+                                <TableHeaderColumn>Device type</TableHeaderColumn>
+                                <TableHeaderColumn>Comments</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+
+                        <TableBody displayRowCheckbox={false}>
+                            {
+                                this.state.devices.map((val, index) =>
+                                    <TableRow>
+
+                                        <TableRowColumn>
+                                            <LinkButton label={val.device_id} url={"/modify-device/" + val.device_id} />
+                                        </TableRowColumn>
+
+                                        <TableRowColumn>{val.name}</TableRowColumn>
+                                        <TableRowColumn>{val.type}</TableRowColumn>
+                                        <TableRowColumn>{val.about}</TableRowColumn>
+
+
+                                    </TableRow>
+                                )
+                            }
+                        </TableBody>
+                    </Table>
+            </div>
+                );
 
 
     }
 
     readTypeDataFromDatabase(){
 
-            //post body
-        let postData = {
-            method: 'POST',
+                    //post body
+                    let postData = {
+                    method: 'POST',
             headers: {
-                Accept: 'application/json',
+                    Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify("Menu"),
@@ -182,39 +194,39 @@ export default class ViewDevices extends React.Component {
         // fetch(host + link, postData)
         fetch(server_host_for_client + link, postData)
             .then((resp) => {
-                console.log(" >>> first then happen");
+                    console.log(" >>> first then happen");
                 return resp.json();
                 // return resp.text();
             })
             .then((response) => {
-                console.log("Fetch response happen !");
+                    console.log("Fetch response happen !");
                
                 console.log("PUSH DATA TO FILTER DROP DOWN");
                 console.log(JSON.stringify(response));
 
-                /*                
+                /*
                 let data_element = "";
-                
+
                 for (data_element in response) {
-                    console.log( " >>>>>>>>>> " + response[data_element].type );
-                     let data =  response[data_element].type;
+                    console.log(" >>>>>>>>>> " + response[data_element].type);
+                let data =  response[data_element].type;
                       items.push(<MenuItem value={data} key={data} primaryText={`Device type : ${data}`} />);
                 }
                 */
 
-                
+
                  const items = response.map( ( element, key ) => {
-                     let data =  response[key].type;
+                    let data =  response[key].type;
                     return <MenuItem value={data} key={data} primaryText={`Device type : ${data}`} />
                 })
 
-                 this.setState( { ...this.state, items  } )
-                
+                 this.setState( {...this.state, items  } )
+
             })
             .catch(function (error_msg) {
-                // error if connection problem happens 
-                console.log("Fetch error : " + error_msg);
-            })
+                    // error if connection problem happens 
+                    console.log("Fetch error : " + error_msg);
+                })
 
 
     }
@@ -222,8 +234,8 @@ export default class ViewDevices extends React.Component {
     render() {
         return (
             <div>
-                {this.deviceTableLayout()}
-            </div>);
+                    {this.deviceTableLayout()}
+                </div>);
     }
 
 }

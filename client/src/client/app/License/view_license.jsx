@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import { license_model, make_license_data_structure } from './license_data.jsx';
 import Button from 'material-ui/RaisedButton';
@@ -47,8 +48,8 @@ export default class ViewLicense extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_license";
 
-       // fetch(host + link, postData)
-        fetch( server_host_for_client  + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 return resp.json();
             })
@@ -71,11 +72,16 @@ export default class ViewLicense extends React.Component {
     render() {
         return (
             <div>
-                <LinkButton url="/add-license" label="Add license" />
-                <LinkButton url="/hidden-license" label="Show hidden license" />
+                <Toolbar style={{ width: "100%" }}>
+                    <ToolbarGroup>
+                        <LinkButton url="/add-license" label="Add license" />
+                        <LinkButton url="/hidden-license" label="Show hidden license" />
+                    </ToolbarGroup>
+                </Toolbar>
+
                 <br /> <h1> View list of all licenses </h1>
 
-                  <Table>
+                <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow >
 
@@ -90,8 +96,8 @@ export default class ViewLicense extends React.Component {
                             this.state.license.map((val, index) =>
                                 <TableRow>
 
-                                     <TableRowColumn>
-                                         <LinkButton label={val.license_id} url={"/modify-license/" + val.license_id} />
+                                    <TableRowColumn>
+                                        <LinkButton label={val.license_id} url={"/modify-license/" + val.license_id} />
                                     </TableRowColumn>
 
                                     <TableRowColumn>{val.name}</TableRowColumn>

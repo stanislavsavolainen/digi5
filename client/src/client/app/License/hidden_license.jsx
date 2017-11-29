@@ -26,14 +26,14 @@ export default class HiddenLicense extends React.Component {
     }
 
 
-    restoreHiddenLicense(restore_license_id , remove_license_from_state_id){
+    restoreHiddenLicense(restore_license_id, remove_license_from_state_id) {
 
 
-         let post_body = {
-            license_id : restore_license_id
-         }
+        let post_body = {
+            license_id: restore_license_id
+        }
 
-         //post body
+        //post body
         let postData = {
             method: 'POST',
             headers: {
@@ -43,16 +43,16 @@ export default class HiddenLicense extends React.Component {
             body: JSON.stringify(post_body),
         };
 
-         let link = "/restore_license";
+        let link = "/restore_license";
 
-       // fetch(host + link, postData)
-        fetch( server_host_for_client  + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 return resp.json();
             })
             .then((restore) => {
 
-                  this.state.license.splice( remove_license_from_state_id, 1  );
+                this.state.license.splice(remove_license_from_state_id, 1);
                 this.setState(this.state);
 
             })
@@ -87,8 +87,8 @@ export default class HiddenLicense extends React.Component {
         //let link = "/read_from_database3";
         let link = "/view_all_hidden_licenses";
 
-       // fetch(host + link, postData)
-        fetch( server_host_for_client  + link, postData)
+        // fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then((resp) => {
                 return resp.json();
             })
@@ -111,10 +111,10 @@ export default class HiddenLicense extends React.Component {
     render() {
         return (
             <div>
-               
+
                 <br /> <h1> View hidden licenses </h1>
 
-                  <Table>
+                <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow >
 
@@ -129,13 +129,13 @@ export default class HiddenLicense extends React.Component {
                                 <TableRow>
 
                                     <TableRowColumn>{val.name}</TableRowColumn>
-                                      <TableRowColumn>
-                                       <Button label="restore"  style={{ margin: 12 }} primary={true} onClick={ () => this.restoreHiddenLicense(val.license_id, index) } />
+                                    <TableRowColumn>
+                                        <Button label="restore" style={{ margin: 12 }} primary={true} onClick={() => this.restoreHiddenLicense(val.license_id, index)} />
                                     </TableRowColumn>
 
                                 </TableRow>
 
-                              
+
                             )
                         }
                     </TableBody>

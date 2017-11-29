@@ -13,6 +13,7 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import { Card, CardActions, CardHeader, CardTitle } from 'material-ui/Card';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import LinkButton from './../LinkButton.jsx';
 
@@ -146,12 +147,12 @@ export default class ViewAllUsers extends React.Component {
                 console.log("PUSH DATA TO FILTER DROP DOWN");
                 console.log(JSON.stringify(response));
 
-                const items = response.map( ( element, key ) => {
-                     let data =  response[key].team;
+                const items = response.map((element, key) => {
+                    let data = response[key].team;
                     return <MenuItem value={data} key={data} primaryText={`User team : ${data}`} />
                 })
 
-                this.setState( { ...this.state, items  } )
+                this.setState({ ...this.state, items })
 
 
             })
@@ -171,16 +172,23 @@ export default class ViewAllUsers extends React.Component {
         //Added button modify and delete (not done)
 
         return (<div >
-            <LinkButton url="/add-user" label="Add user" />
-            <LinkButton url="/hidden-user" label="show hidden user" />
-            <font style={{ backgroundColor: 'silver', fontSize: '50' }} >
-                Filtering :
+          
+            <Toolbar style={{ width: "100%" }}>
 
-                <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} style={{ backgroundColor: "#22C489" }}>
-                    {this.state.items}
-                </DropDownMenu>
-                <LinkButton url={"/filtter-user/" + this.state.value } label="Filter search by user team" />
-            </font>
+                <ToolbarGroup>
+                    <LinkButton url="/add-user" label="Add user" />
+                    <LinkButton url="/hidden-user" label="show hidden user" />
+                </ToolbarGroup>
+
+                <ToolbarGroup>
+                    <ToolbarTitle text="Filtter view by :" />
+                    <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange}  style={{ backgroundColor: "#00bcd4", color : "white" }} >
+                     {this.state.items}
+                    </DropDownMenu>
+                    <LinkButton url={"/filtter-user/" + this.state.value} label="Filter search by user team" />
+                </ToolbarGroup>
+            </Toolbar>
+
             {/*<Link label="Show hidden user" style={{ margin: 12 }} primary={true} /> */}
             <br /><br />
             <h1> View All users : </h1>
