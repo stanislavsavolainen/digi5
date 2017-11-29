@@ -100,8 +100,6 @@ function make_user_data_structure2() {
 }
 
 
-
-
 let user_data_structure = make_user_data_structure()
 let advanced_field_name = ["Lukoton", "Title", "Work Begin", "Work End", "Etc."];
 
