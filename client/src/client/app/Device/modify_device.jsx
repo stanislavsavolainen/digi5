@@ -200,7 +200,7 @@ export default class ModifyDevice extends React.Component {
         let host = "http://127.0.0.1:5659";
         let link = "/modify_device";
 
-        fetch(host + link, postData)
+        fetch(server_host_for_client + link, postData)
             .then(() => {
                 console.log("Fetch done");
                 this.props.history.push("/view-devices");
