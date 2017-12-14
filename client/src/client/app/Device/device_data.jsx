@@ -118,7 +118,7 @@ let device_data_object2 = [
             [
                 { fieldName: "Model", type: "string", db_name: "model", info : "" },
                 { fieldName: "Serial number", type: "string", db_name: "serial_number", info: "" },
-                { fieldName: "Comments", type: "string", db_name: "about_device", info : "" },
+                { fieldName: "Comments", type: "string", db_name: "about_device", info : "Information about the device location, purpose, etc." },
             ],
             [
                 { fieldName: "IP address ", type: "string", db_name : "ip_address", info : "" },
@@ -130,11 +130,11 @@ let device_data_object2 = [
         title: "user permission",
         rows: [
             [
-                { fieldName: "Owner", type: "number", db_name: "owner_id", info : "who is actually owning this device ?" },
-                { fieldName: "Device of team", type: "string", db_name: "owner_group", info : "if owner is not one person, then tell me group for returning"  },
+                { fieldName: "Owner", type: "number", db_name: "owner_id", info : "Information about the device location, purpose, etc." },
+                { fieldName: "Owner group", type: "string", db_name: "owner_group", info : "Choose from the dropdown menu the Name of team which owners this device."  },
             ],
             [
-                { fieldName: "User reservation", type: "number", db_name: "current_user_id", info : "" },
+                { fieldName: "User reservation", type: "number", db_name: "current_user_id", info : "Current user name who has reserved the device." },
                
             ],
             [

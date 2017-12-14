@@ -120,7 +120,7 @@ export default class AddDevice extends React.Component {
                                                     field.type == "checkbox" ? <Checkbox label={field.fieldName} title={field.fieldName}
                                                         onCheck={(event, isInputChecked) => this.FieldListener(block_key, row_key, field_key, isInputChecked, field.type)}
                                                     />
-                                                        : field.type == "number" ? [ <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} title={field.fieldName} >
+                                                        : field.type == "number" ? [ <font> { /* field.fieldName  */} </font> ,  <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange} title={field.fieldName} >
                                                             {items}
                                                         </DropDownMenu> ]
                                                             :

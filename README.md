@@ -33,6 +33,10 @@ sudo service mysql restart
 #mysql -> mysqldump ( export to sql file )
 mysqldump -u root -p --databases dbtest1 > /home/database_backup/data1.sql 
 
+# mysql -> mysqldump ( import sql file )
+
+... command missing
+
 >>>>> https://github.com/stanislavsavolainen/digi5/blob/master/project_data/data3.sql
 
 check backup file to figure out how it works, but content will be probaply depricated (MySQL alter table is used to update current data at database).
@@ -52,8 +56,8 @@ If MySQL is located in same place as back-end server then host can be at 127.0.0
 - JavaScript
 - NodeJS
 - ReactJS with webpack and babel
-- Ecmascript 5 and 6 with arrow and lambda function
-- JSON tree datastructure with functional programming (like map, reduce and filter functions)
+- Ecmascript 5 and 6 with lambda function
+- Javascript object datastructure with functional programming (like map, reduce and filter functions)
 - JavaScript ternary operator ( for example select material-ui component by conditional statement)
 - Material-ui ( with ReactJS)
 - React-Router(ReactJS) to change links when page changed
@@ -62,7 +66,7 @@ If MySQL is located in same place as back-end server then host can be at 127.0.0
 - MySQL (mysqldump, mysql strict mode)
 - NodeJS hapi-module for http-request and http-response handling at back-end.
 
-=> Project contain all necessary files, so there only 'nmp install' need to be done at client and server folder. Remember also create database with tables.
+=> Project contain all necessary files, so there only 'npm install' need to be done at client and server folder. Remember also create database with tables.
 
 
 

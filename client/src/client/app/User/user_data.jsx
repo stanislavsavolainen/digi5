@@ -66,7 +66,7 @@ function make_user_data_structure2() {
                 { fieldName: "E-mail", type: "string", db_name: "email", info : "" },
             ],
             [
-              { fieldName: "Comments", type: "string", db_name:"comments", info : "Tell me more about this user ? some detailed info ?" },   
+              { fieldName: "Comments", type: "string", db_name:"comments", info : "Describe here shortly the actions and activities assigned to this worker." },   
             ]
         
             ]
@@ -80,7 +80,7 @@ function make_user_data_structure2() {
                 { fieldName: "Team", type: "string", db_name: "team", info : "MUST HAVE ! (filtter search)" },    
             ],
             [
-                { fieldName: "Office room ( room and floor at work)", type: "string", db_name : "location", info : "Tell me your room number and floor , if I want to visit you face-to-face!" }
+                { fieldName: "Office room", type: "string", db_name : "location", info : "Tell here the location of the user, like: floor number and room number." }
             ],
             [
                 { fieldName: "Work start", type: "date" , db_name : "work_start", info : "" },
@@ -90,9 +90,9 @@ function make_user_data_structure2() {
         {
             title: "Permission / Administrative rights",
             rows: [
-                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton", info : ""}],
-                [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys", info : ""}],
-                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible", info : "" }],
+                [{ fieldName: "Lukoton", type: "checkbox", db_name : "lukoton", info : "Mark here if user has Lukoton application installed."}],
+                [{ fieldName: "Keys", type: "checkbox" , db_name  : "door_keys", info : "Mark here if user has Keys to the office building"}],
+                [{ fieldName: "User is hidden", type: "checkbox", db_name : "user_visible", info : "Mark here if the user is no longer working in the company either temprarily or constantly" }],
                 
             ],
         }
