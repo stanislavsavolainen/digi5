@@ -163,7 +163,7 @@ export default class ViewDevices extends React.Component {
 
                                         <TableRowColumn>{val.name}</TableRowColumn>
                                         <TableRowColumn>{val.type}</TableRowColumn>
-                                        <TableRowColumn>{val.about}</TableRowColumn>
+                                        <TableRowColumn>{val.about_device}</TableRowColumn>
 
 
                                     </TableRow>
